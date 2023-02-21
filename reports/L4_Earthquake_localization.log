@@ -1,0 +1,74 @@
+Traceback (most recent call last):
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/nbclient/client.py", line 608, in async_setup_kernel
+    yield
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/gabriele/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from obspy.core.event import read_events
+from obspy.core.inventory import read_inventory
+
+directory = "Amatrice-Norcia-Visso/"
+
+file = directory+"Seismic_Inventory.xml"
+inventory = read_inventory(file)
+
+file = directory + "7073641_Accumuli.xml"
+catalog = read_events(file)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn[3], line 7[0m
+[1;32m      4[0m directory [38;5;241m=[39m [38;5;124m"[39m[38;5;124mAmatrice-Norcia-Visso/[39m[38;5;124m"[39m
+[1;32m      6[0m file [38;5;241m=[39m directory[38;5;241m+[39m[38;5;124m"[39m[38;5;124mSeismic_Inventory.xml[39m[38;5;124m"[39m
+[0;32m----> 7[0m inventory [38;5;241m=[39m [43mread_inventory[49m[43m([49m[43mfile[49m[43m)[49m
+[1;32m      9[0m file [38;5;241m=[39m directory [38;5;241m+[39m [38;5;124m"[39m[38;5;124m7073641_Accumuli.xml[39m[38;5;124m"[39m
+[1;32m     10[0m catalog [38;5;241m=[39m read_events(file)
+
+File [0;32m~/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/decorator.py:232[0m, in [0;36mdecorate.<locals>.fun[0;34m(*args, **kw)[0m
+[1;32m    230[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m kwsyntax:
+[1;32m    231[0m     args, kw [38;5;241m=[39m fix(args, kw, sig)
+[0;32m--> 232[0m [38;5;28;01mreturn[39;00m [43mcaller[49m[43m([49m[43mfunc[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[43m([49m[43mextras[49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[43margs[49m[43m)[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkw[49m[43m)[49m
+
+File [0;32m~/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/obspy/core/util/decorator.py:297[0m, in [0;36mmap_example_filename.<locals>._map_example_filename[0;34m(func, *args, **kwargs)[0m
+[1;32m    295[0m                 [38;5;28;01mexcept[39;00m [38;5;167;01mIOError[39;00m:
+[1;32m    296[0m                     [38;5;28;01mpass[39;00m
+[0;32m--> 297[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/obspy/core/inventory/inventory.py:91[0m, in [0;36mread_inventory[0;34m(path_or_file_object, format, level, *args, **kwargs)[0m
+[1;32m     89[0m     [38;5;28;01mreturn[39;00m _create_example_inventory()
+[1;32m     90[0m [38;5;28;01melse[39;00m:
+[0;32m---> 91[0m     [38;5;28;01mreturn[39;00m [43m_generic_reader[49m[43m([49m[43mpath_or_file_object[49m[43m,[49m[43m [49m[43m_read[49m[43m,[49m[43m [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[38;5;28;43mformat[39;49m[43m,[49m
+[1;32m     92[0m [43m                           [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/obspy/core/util/base.py:656[0m, in [0;36m_generic_reader[0;34m(pathname_or_url, callback_func, **kwargs)[0m
+[1;32m    654[0m         [38;5;28;01mraise[39;00m [38;5;167;01mException[39;00m([38;5;124m"[39m[38;5;124mNo file matching file pattern: [39m[38;5;132;01m%s[39;00m[38;5;124m"[39m [38;5;241m%[39m pathname)
+[1;32m    655[0m     [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m glob[38;5;241m.[39mhas_magic(pathname) [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m Path(pathname)[38;5;241m.[39mis_file():
+[0;32m--> 656[0m         [38;5;28;01mraise[39;00m [38;5;167;01mIOError[39;00m([38;5;241m2[39m, [38;5;124m"[39m[38;5;124mNo such file or directory[39m[38;5;124m"[39m, pathname)
+[1;32m    658[0m generic [38;5;241m=[39m callback_func(pathnames[[38;5;241m0[39m], [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m    659[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(pathnames) [38;5;241m>[39m [38;5;241m1[39m:
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'Amatrice-Norcia-Visso/Seismic_Inventory.xml'
+FileNotFoundError: [Errno 2] No such file or directory: 'Amatrice-Norcia-Visso/Seismic_Inventory.xml'
+

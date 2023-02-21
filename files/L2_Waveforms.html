@@ -1,0 +1,1879 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>7. Waveform processing &#8212; Seismology and Laboratory</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Local magnitude" href="L3_Local_magnitude.html" />
+    <link rel="prev" title="6. Seismic catalogs and networks" href="L1_Seismic_catalogs_and_networks.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/gc_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Seismology and Laboratory</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Seismology and Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Setup
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="S1_Setup.html">
+   1. Working with JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="S2_Tutorial.html">
+   2. Tutorial on Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="T0_Harmonic.html">
+   3. Harmonic oscillators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="T1_Fourier.html">
+   4. Fourier transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="T2_Discrete.html">
+   5. Discrete Fourier transform
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratory
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L1_Seismic_catalogs_and_networks.html">
+   6. Seismic catalogs and networks
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Waveform processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L3_Local_magnitude.html">
+   8. Local magnitude
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L4_Earthquake_localization.html">
+   9. Earthquake localization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="A0_Dirac.html">
+   10. Dirac delta function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A1_Geographic_Maps.html">
+   11. Geographic maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A2_Inverse_Theory.html">
+   12. Inverse problem theory
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Libraries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L0_Libraries.html">
+   13. Libraries
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/files/L2_Waveforms.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ffiles/L2_Waveforms.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/files/L2_Waveforms.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-our-first-waveforms">
+   7.1. Downloading our first waveforms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaps">
+     7.1.1. Gaps
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aftershocks">
+     7.1.2. Aftershocks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processing">
+   7.2. Processing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing">
+     7.2.1. Preprocessing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#response-function">
+     7.2.2. Response function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ground-motion">
+     7.2.3. Ground motion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#noise">
+   7.3. Noise
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering">
+     7.3.1. Filtering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zero-phase-filtering">
+     7.3.2. Zero phase filtering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ground-motion-and-picking">
+   7.4. Ground motion and picking
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Waveform processing</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-our-first-waveforms">
+   7.1. Downloading our first waveforms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaps">
+     7.1.1. Gaps
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aftershocks">
+     7.1.2. Aftershocks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processing">
+   7.2. Processing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing">
+     7.2.1. Preprocessing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#response-function">
+     7.2.2. Response function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ground-motion">
+     7.2.3. Ground motion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#noise">
+   7.3. Noise
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering">
+     7.3.1. Filtering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zero-phase-filtering">
+     7.3.2. Zero phase filtering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ground-motion-and-picking">
+   7.4. Ground motion and picking
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="waveform-processing">
+<span id="chap-w"></span><h1><span class="section-number">7. </span>Waveform processing<a class="headerlink" href="#waveform-processing" title="Permalink to this headline">#</a></h1>
+<div class="contents local topic" id="sections">
+<p class="topic-title">Sections</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#downloading-our-first-waveforms" id="id1">Downloading our first waveforms</a></p>
+<ul>
+<li><p><a class="reference internal" href="#gaps" id="id2">Gaps</a></p></li>
+<li><p><a class="reference internal" href="#aftershocks" id="id3">Aftershocks</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#processing" id="id4">Processing</a></p>
+<ul>
+<li><p><a class="reference internal" href="#preprocessing" id="id5">Preprocessing</a></p></li>
+<li><p><a class="reference internal" href="#response-function" id="id6">Response function</a></p></li>
+<li><p><a class="reference internal" href="#ground-motion" id="id7">Ground motion</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#noise" id="id8">Noise</a></p>
+<ul>
+<li><p><a class="reference internal" href="#filtering" id="id9">Filtering</a></p></li>
+<li><p><a class="reference internal" href="#zero-phase-filtering" id="id10">Zero phase filtering</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#ground-motion-and-picking" id="id11">Ground motion and picking</a></p></li>
+</ul>
+</div>
+<div class="full-width docutils">
+<p>In this lecture, we will learn how to download the seismic waveforms as recorded by seismometer and process them to retrive the ground motion. In this perspective, let us import the main python libraries</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> widget
+<span class="kn">import</span> <span class="nn">lab</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and set the <code class="docutils literal notranslate"><span class="pre">Client</span></code> with INGV as provider</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">obspy.clients.fdsn</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s2">&quot;INGV&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FDSN Webservice Client (base url: http://webservices.ingv.it)
+Available Services: &#39;dataselect&#39; (v1.1.0), &#39;event&#39; (v1.52.9), &#39;station&#39; (v1.1.54), &#39;available_event_catalogs&#39;, &#39;available_event_contributors&#39;, &#39;eida-auth&#39;
+
+Use e.g. client.help(&#39;dataselect&#39;) for the
+parameter description of the individual services
+or client.help() for parameter description of
+all webservices.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Then, we read the seismic inventory and the catalog containing only the 2016-08-24 M6 Accumuli earthquake that we downloaded in the  <a class="reference internal" href="L1_Seismic_catalogs_and_networks.html#chap-l1"><span class="std std-numref">Lecture 6</span></a> <a class="reference internal" href="L1_Seismic_catalogs_and_networks.html#chap-l1"><span class="std std-ref">Seismic catalogs and networks</span></a></p>
+</div>
+<div class="cell tag_full-width tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">obspy.core.event</span> <span class="kn">import</span> <span class="n">read_events</span>
+<span class="kn">from</span> <span class="nn">obspy.core.inventory</span> <span class="kn">import</span> <span class="n">read_inventory</span>
+
+<span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;Amatrice-Norcia-Visso/&quot;</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">directory</span><span class="o">+</span><span class="s2">&quot;Seismic_Inventory.xml&quot;</span>
+<span class="n">inventory</span> <span class="o">=</span> <span class="n">read_inventory</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;7073641_Accumuli.xml&quot;</span>
+<span class="n">catalog</span> <span class="o">=</span> <span class="n">read_events</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;Amatrice-Norcia-Visso/&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">file</span> <span class="o">=</span> <span class="n">directory</span><span class="o">+</span><span class="s2">&quot;Seismic_Inventory.xml&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">read_inventory</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">file</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;7073641_Accumuli.xml&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">catalog</span> <span class="o">=</span> <span class="n">read_events</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/decorator.py:232,</span> in <span class="ni">decorate.&lt;locals&gt;.fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">232</span> <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/obspy/core/util/decorator.py:297,</span> in <span class="ni">map_example_filename.&lt;locals&gt;._map_example_filename</span><span class="nt">(func, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">295</span>                 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span>                     <span class="k">pass</span>
+<span class="ne">--&gt; </span><span class="mi">297</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/obspy/core/inventory/inventory.py:91,</span> in <span class="ni">read_inventory</span><span class="nt">(path_or_file_object, format, level, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>     <span class="k">return</span> <span class="n">_create_example_inventory</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">91</span>     <span class="k">return</span> <span class="n">_generic_reader</span><span class="p">(</span><span class="n">path_or_file_object</span><span class="p">,</span> <span class="n">_read</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>                            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/seislab/lib/python3.11/site-packages/obspy/core/util/base.py:656,</span> in <span class="ni">_generic_reader</span><span class="nt">(pathname_or_url, callback_func, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span>         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No file matching file pattern: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pathname</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">655</span>     <span class="k">elif</span> <span class="ow">not</span> <span class="n">glob</span><span class="o">.</span><span class="n">has_magic</span><span class="p">(</span><span class="n">pathname</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">pathname</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">656</span>         <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;No such file or directory&quot;</span><span class="p">,</span> <span class="n">pathname</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">658</span> <span class="n">generic</span> <span class="o">=</span> <span class="n">callback_func</span><span class="p">(</span><span class="n">pathnames</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">659</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pathnames</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;Amatrice-Norcia-Visso/Seismic_Inventory.xml&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and we get the <code class="docutils literal notranslate"><span class="pre">event</span></code> of 2016-08-24 M6 Accumuli earthquake and the preferred <code class="docutils literal notranslate"><span class="pre">origin</span></code> by the Bollettino Sismico Italiano</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">event</span> <span class="o">=</span> <span class="n">catalog</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">origin</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_origin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Hereinafter, we make a plot of the seismic stations of the <code class="docutils literal notranslate"><span class="pre">inventory</span></code> centred at the longitude and latitude of the prefferred <code class="docutils literal notranslate"><span class="pre">origin</span></code></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circle</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">maxradius</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">longitude</span><span class="o">=</span><span class="n">origin</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span><span class="n">latitude</span><span class="o">=</span><span class="n">origin</span><span class="o">.</span><span class="n">latitude</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">setup_map</span><span class="p">(</span><span class="n">circle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;M6 Accumuli&quot;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">inventory</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_11_0.png" src="../_images/L2_Waveforms_11_0.png" />
+</div>
+</div>
+<section id="downloading-our-first-waveforms">
+<h2><a class="toc-backref" href="#id1"><span class="section-number">7.1. </span>Downloading our first waveforms</a><a class="headerlink" href="#downloading-our-first-waveforms" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>Let us define the network and station codes of the case study seismic station  <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'IV.MRLC'</span></code></span></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">network_code</span><span class="p">,</span> <span class="n">station_code</span> <span class="o">=</span> <span class="s2">&quot;IV&quot;</span><span class="p">,</span> <span class="s2">&quot;MRLC&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and select it from the inventory</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inv</span> <span class="o">=</span> <span class="n">inventory</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network_code</span><span class="p">,</span><span class="n">station</span><span class="o">=</span><span class="n">station_code</span><span class="p">,</span><span class="n">time</span><span class="o">=</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">station</span> <span class="o">=</span> <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">station</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Station MRLC (Muro Lucano)
+	Station Code: MRLC
+	Channel Count: 18/24 (Selected/Total)
+	2003-03-01T00:00:00.000000Z - 
+	Access: open 
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m
+	Available Channels:
+	    ..HN[ZNE]   100.0 Hz  2011-08-08 to 2017-04-10
+	    ..HH[ZNE]   100.0 Hz  2005-03-23 to None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Using the function <code class="docutils literal notranslate"><span class="pre">distance</span></code> from the module <code class="docutils literal notranslate"><span class="pre">geopy</span></code> we can calculate the distance between the seismic station <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'IV.MRLC'</span></code></span> and the earthquake origin</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geopy</span> <span class="kn">import</span> <span class="n">distance</span> <span class="k">as</span> <span class="n">geopy_distance</span>
+
+<span class="n">distance</span> <span class="o">=</span> <span class="n">geopy_distance</span><span class="o">.</span><span class="n">distance</span><span class="p">((</span><span class="n">station</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span><span class="n">station</span><span class="o">.</span><span class="n">longitude</span><span class="p">),(</span><span class="n">origin</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span><span class="n">origin</span><span class="o">.</span><span class="n">longitude</span><span class="p">))</span><span class="o">.</span><span class="n">km</span>
+<span class="n">distance_deg</span> <span class="o">=</span> <span class="n">distance</span><span class="o">/</span><span class="mi">6371</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distance: </span><span class="si">{0:6.1f}</span><span class="s2"> [km] or </span><span class="si">{0:6.3f}</span><span class="s2"> [deg]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span><span class="n">distance_deg</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance:  285.9 [km] or 285.870 [deg]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Here we make a geographic plot centered at the seismic station <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'IV.MRLC'</span></code></span> where we also show the earthquake origin (the red circle has the calculated distance of <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">285.9</span></code></span> km as radius)</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circle</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">maxradius</span><span class="o">=</span><span class="n">distance_deg</span><span class="p">,</span><span class="n">longitude</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span><span class="n">latitude</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">latitude</span><span class="p">)</span>
+<span class="n">prefix</span> <span class="o">=</span> <span class="n">network_code</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">station_code</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;The &quot;</span><span class="o">+</span><span class="n">prefix</span><span class="o">+</span><span class="s2">&quot; seismic station and the M=6 Accumuli earthquake&quot;</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">setup_map</span><span class="p">(</span><span class="n">circle</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">prefix</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_22_0.png" src="../_images/L2_Waveforms_22_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>Let us now download the waveforms for the selected seismic station that we will save in a file with the standard format <a class="reference external" href="https://ds.iris.edu/ds/nodes/dmc/data/formats/miniseed/">mini-seed</a></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">directory</span><span class="o">+</span><span class="n">prefix</span><span class="o">+</span><span class="s2">&quot;_Long.mseed&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amatrice-Norcia-Visso/IV.MRLC_Long.mseed
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>We first define the starttime and the endtime that we set 30 minutes before and 90 minutes after the origin time</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">obspy</span> <span class="kn">import</span> <span class="n">UTCDateTime</span>
+
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span> <span class="o">-</span> <span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span>    
+<span class="n">endtime</span>   <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="mi">90</span> <span class="o">*</span> <span class="mi">60</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and we get a list with all the channels of the seismic station</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">channels</span> <span class="o">=</span>  <span class="p">[</span> <span class="n">channel</span><span class="o">.</span><span class="n">code</span> <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">station</span><span class="p">]</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HHE,HHN,HHZ,HNE,HNN,HNZ
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>We can now use the function <code class="docutils literal notranslate"><span class="pre">client.get_waveforms</span></code> to download the raw data giving as argument the network, station, location and channel codes, the time windows on which we are interested in and the file in which we want to save the data</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">get_waveforms</span><span class="p">(</span><span class="n">network_code</span><span class="p">,</span><span class="n">station_code</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="n">channels</span><span class="p">,</span> <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Using the function <code class="docutils literal notranslate"><span class="pre">read</span></code> from <code class="docutils literal notranslate"><span class="pre">obspy</span></code> we can read the file and get the <code class="docutils literal notranslate"><span class="pre">Stream</span></code> object that we have just downloaded</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">obspy</span> <span class="kn">import</span> <span class="n">read</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16 Trace(s) in Stream:
+IV.MRLC..HHE | 2016-08-24T01:06:30.430000Z - 2016-08-24T01:19:21.790000Z | 100.0 Hz, 77137 samples
+IV.MRLC..HHE | 2016-08-24T01:19:23.120000Z - 2016-08-24T02:37:33.250000Z | 100.0 Hz, 469014 samples
+IV.MRLC..HHE | 2016-08-24T02:37:34.440000Z - 2016-08-24T02:52:34.490000Z | 100.0 Hz, 90006 samples
+IV.MRLC..HHE | 2016-08-24T02:52:36.660000Z - 2016-08-24T03:06:32.580000Z | 100.0 Hz, 83593 samples
+IV.MRLC..HHN | 2016-08-24T01:06:28.700000Z - 2016-08-24T01:13:24.980000Z | 100.0 Hz, 41629 samples
+IV.MRLC..HHN | 2016-08-24T01:13:26.170000Z - 2016-08-24T01:19:21.740000Z | 100.0 Hz, 35558 samples
+IV.MRLC..HHN | 2016-08-24T01:19:23.430000Z - 2016-08-24T03:06:32.640000Z | 100.0 Hz, 642922 samples
+IV.MRLC..HHZ | 2016-08-24T01:06:28.410000Z - 2016-08-24T01:19:20.910000Z | 100.0 Hz, 77251 samples
+IV.MRLC..HHZ | 2016-08-24T01:19:23.080000Z - 2016-08-24T03:06:33.050000Z | 100.0 Hz, 642998 samples
+IV.MRLC..HNE | 2016-08-24T01:06:31.430000Z - 2016-08-24T03:06:33.230000Z | 100.0 Hz, 720181 samples
+IV.MRLC..HNN | 2016-08-24T01:06:30.990000Z - 2016-08-24T01:28:10.640000Z | 100.0 Hz, 129966 samples
+IV.MRLC..HNN | 2016-08-24T01:28:12.890000Z - 2016-08-24T02:44:06.600000Z | 100.0 Hz, 455372 samples
+IV.MRLC..HNN | 2016-08-24T02:44:08.850000Z - 2016-08-24T03:06:38.080000Z | 100.0 Hz, 134924 samples
+IV.MRLC..HNZ | 2016-08-24T01:06:31.270000Z - 2016-08-24T01:13:22.280000Z | 100.0 Hz, 41102 samples
+IV.MRLC..HNZ | 2016-08-24T01:13:24.530000Z - 2016-08-24T01:58:39.180000Z | 100.0 Hz, 271466 samples
+IV.MRLC..HNZ | 2016-08-24T01:58:41.430000Z - 2016-08-24T03:06:34.230000Z | 100.0 Hz, 407281 samples
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>It can be seen as a list of <code class="docutils literal notranslate"><span class="pre">Trace</span></code> objects</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">trace</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IV.MRLC..HHE | 2016-08-24T01:06:30.430000Z - 2016-08-24T01:19:21.790000Z | 100.0 Hz, 77137 samples
+IV.MRLC..HHE | 2016-08-24T01:19:23.120000Z - 2016-08-24T02:37:33.250000Z | 100.0 Hz, 469014 samples
+IV.MRLC..HHE | 2016-08-24T02:37:34.440000Z - 2016-08-24T02:52:34.490000Z | 100.0 Hz, 90006 samples
+IV.MRLC..HHE | 2016-08-24T02:52:36.660000Z - 2016-08-24T03:06:32.580000Z | 100.0 Hz, 83593 samples
+IV.MRLC..HHN | 2016-08-24T01:06:28.700000Z - 2016-08-24T01:13:24.980000Z | 100.0 Hz, 41629 samples
+IV.MRLC..HHN | 2016-08-24T01:13:26.170000Z - 2016-08-24T01:19:21.740000Z | 100.0 Hz, 35558 samples
+IV.MRLC..HHN | 2016-08-24T01:19:23.430000Z - 2016-08-24T03:06:32.640000Z | 100.0 Hz, 642922 samples
+IV.MRLC..HHZ | 2016-08-24T01:06:28.410000Z - 2016-08-24T01:19:20.910000Z | 100.0 Hz, 77251 samples
+IV.MRLC..HHZ | 2016-08-24T01:19:23.080000Z - 2016-08-24T03:06:33.050000Z | 100.0 Hz, 642998 samples
+IV.MRLC..HNE | 2016-08-24T01:06:31.430000Z - 2016-08-24T03:06:33.230000Z | 100.0 Hz, 720181 samples
+IV.MRLC..HNN | 2016-08-24T01:06:30.990000Z - 2016-08-24T01:28:10.640000Z | 100.0 Hz, 129966 samples
+IV.MRLC..HNN | 2016-08-24T01:28:12.890000Z - 2016-08-24T02:44:06.600000Z | 100.0 Hz, 455372 samples
+IV.MRLC..HNN | 2016-08-24T02:44:08.850000Z - 2016-08-24T03:06:38.080000Z | 100.0 Hz, 134924 samples
+IV.MRLC..HNZ | 2016-08-24T01:06:31.270000Z - 2016-08-24T01:13:22.280000Z | 100.0 Hz, 41102 samples
+IV.MRLC..HNZ | 2016-08-24T01:13:24.530000Z - 2016-08-24T01:58:39.180000Z | 100.0 Hz, 271466 samples
+IV.MRLC..HNZ | 2016-08-24T01:58:41.430000Z - 2016-08-24T03:06:34.230000Z | 100.0 Hz, 407281 samples
+</pre></div>
+</div>
+</div>
+</div>
+<section id="gaps">
+<h3><a class="toc-backref" href="#id2"><span class="section-number">7.1.1. </span>Gaps</a><a class="headerlink" href="#gaps" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Because we downloaded the raw data for both the velocimeter (HH*) and the accelerometer (HN*), we should expect only six traces, i.e. three traces for each kind of sensor. The fact that we got <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">16</span></code></span> traces instead of 6 is due to the presence of gaps</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span><span class="o">.</span><span class="n">print_gaps</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Source            Last Sample                 Next Sample                 Delta           Samples 
+IV.MRLC..HHE      2016-08-24T01:19:21.790000Z 2016-08-24T01:19:23.120000Z 1.320000        132     
+IV.MRLC..HHE      2016-08-24T02:37:33.250000Z 2016-08-24T02:37:34.440000Z 1.180000        118     
+IV.MRLC..HHE      2016-08-24T02:52:34.490000Z 2016-08-24T02:52:36.660000Z 2.160000        216     
+IV.MRLC..HHN      2016-08-24T01:13:24.980000Z 2016-08-24T01:13:26.170000Z 1.180000        118     
+IV.MRLC..HHN      2016-08-24T01:19:21.740000Z 2016-08-24T01:19:23.430000Z 1.680000        168     
+IV.MRLC..HHZ      2016-08-24T01:19:20.910000Z 2016-08-24T01:19:23.080000Z 2.160000        216     
+IV.MRLC..HNN      2016-08-24T01:28:10.640000Z 2016-08-24T01:28:12.890000Z 2.240000        224     
+IV.MRLC..HNN      2016-08-24T02:44:06.600000Z 2016-08-24T02:44:08.850000Z 2.240000        224     
+IV.MRLC..HNZ      2016-08-24T01:13:22.280000Z 2016-08-24T01:13:24.530000Z 2.240000        224     
+IV.MRLC..HNZ      2016-08-24T01:58:39.180000Z 2016-08-24T01:58:41.430000Z 2.240000        224     
+Total: 10 gap(s) and 0 overlap(s)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Let us give a look to the first <code class="docutils literal notranslate"><span class="pre">trace</span></code>. It contains both data</p>
+</div>
+<div class="cell tag_full-width tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trace</span> <span class="o">=</span> <span class="n">stream</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DATA:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Number of samplings:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATA:
+
+ [-184  -45 -148 ... 1279 1154 1026]
+
+Number of samplings:
+
+ 77137
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and meta data</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">METADATA:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>METADATA:
+
+          network: IV
+         station: MRLC
+        location: 
+         channel: HHE
+       starttime: 2016-08-24T01:06:30.430000Z
+         endtime: 2016-08-24T01:19:21.790000Z
+   sampling_rate: 100.0
+           delta: 0.01
+            npts: 77137
+           calib: 1.0
+         _format: MSEED
+           mseed: AttribDict({&#39;dataquality&#39;: &#39;D&#39;, &#39;number_of_records&#39;: 244, &#39;encoding&#39;: &#39;STEIM2&#39;, &#39;byteorder&#39;: &#39;&gt;&#39;, &#39;record_length&#39;: 512, &#39;filesize&#39;: 5043712})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>The data are integers numbers, the so called counts, which are the outputs of the digitizer of the seismometer. From the metadata, instead, we can learn that the data refer to the time period from <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">2016-08-24T01:06:30.430000Z</span></code></span> to <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">2016-08-24T01:19:21.790000Z</span></code></span> sampled every <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">0.01</span></code></span> s (i.e., with a sampling rate of <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">100</span></code></span> Hz).</p>
+<p>We can have a first look to the data plotting them using the function <code class="docutils literal notranslate"><span class="pre">lab.plot_time</span></code> which also show the gaps with vertical red ranges</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raw data timeseries (counts) and the gaps (vertical red ranges)&quot;</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<figure class="align-default" id="fig-stream">
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_46_0.png" src="../_images/L2_Waveforms_46_0.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Raw data time series. The reference time <span class="math notranslate nohighlight">\(t=0\)</span> corresponds to the origin time of the M6 Accumuli earthquake and the red vertical bands indicate gaps in the time series due to malfunctionings of the channels of the seismometers or problems during the data transfer.</span><a class="headerlink" href="#fig-stream" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="aftershocks">
+<h3><a class="toc-backref" href="#id3"><span class="section-number">7.1.2. </span>Aftershocks</a><a class="headerlink" href="#aftershocks" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Let us now download all the earthquakes with <span class="math notranslate nohighlight">\(M\geq3.5\)</span> occurred in the same period for which we download the waveforms in a circle of radius slighly grater (by about 50 km) than the distance between the seismic station and the M6 Accumuli earthquake</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circle</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">maxradius</span><span class="o">=</span><span class="n">distance_deg</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">latitude</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;Events_&quot;</span><span class="o">+</span><span class="n">network_code</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">station_code</span><span class="o">+</span><span class="s2">&quot;.xml&quot;</span>
+<span class="n">client</span><span class="o">.</span><span class="n">get_events</span><span class="p">(</span><span class="o">**</span><span class="n">circle</span><span class="p">,</span> <span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">,</span> <span class="n">minmagnitude</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+<span class="n">catalog</span> <span class="o">=</span> <span class="n">read_events</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">catalog</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19 Event(s) in Catalog:
+2016-08-24T02:59:35.240000Z | +42.799,  +13.131 | 3.9  Mw | manual
+2016-08-24T02:55:39.900000Z | +42.646,  +13.309 | 3.6  ML | manual
+...
+2016-08-24T01:37:26.580000Z | +42.712,  +13.253 | 4.5  ML | manual
+2016-08-24T01:36:32.000000Z | +42.698,  +13.233 | 6.0  Mw | manual
+To see all events call &#39;print(CatalogObject.__str__(print_all=True))&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and plot them</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;The &quot;</span><span class="o">+</span><span class="n">network_code</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="n">station_code</span><span class="o">+</span><span class="s2">&quot; seismic station and the aftershocks&quot;</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">setup_map</span><span class="p">(</span><span class="n">circle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<figure class="align-default" id="fig-aftershocks">
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_55_0.png" src="../_images/L2_Waveforms_55_0.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 7.2 </span><span class="caption-text">Earthquakes (M&gt;3.5) occurred from 30 minutes before and 90 minutes after the M=6 Accumuli earthquake in the surroudings of the seismic station <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'IV.MRLC'</span></code></span>. We note that there is only one cluster of earthquakes. Considering that they have occurred after the M=6 Accumuli earthquake, we can consider them after shocks of the main shock.</span><a class="headerlink" href="#fig-aftershocks" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="full-width docutils">
+<p>Let us now plot again the raw data time series and draw vertical green lines in correspondence of the origin time of each earthquake in the just downloaded <code class="docutils literal notranslate"><span class="pre">catalog</span></code></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raw data time series (counts) and the aftershocks (green vertical lines)&quot;</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span> 
+
+<span class="k">for</span> <span class="n">new_event</span> <span class="ow">in</span> <span class="n">catalog</span><span class="p">:</span>
+    <span class="n">new_origin</span> <span class="o">=</span> <span class="n">new_event</span><span class="o">.</span><span class="n">preferred_origin</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">new_origin</span><span class="o">.</span><span class="n">time</span><span class="o">-</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<figure class="align-default" id="fig-gaps-aftreshocks">
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_60_0.png" src="../_images/L2_Waveforms_60_0.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 7.3 </span><span class="caption-text">As <a class="reference internal" href="#fig-stream"><span class="std std-numref">Figure 7.1</span></a> but with vertical green lines drawn in correspondence of the origin time of the aftershocks.</span><a class="headerlink" href="#fig-gaps-aftreshocks" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="processing">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">7.2. </span>Processing</a><a class="headerlink" href="#processing" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>For the sake of simplicity, let us select from the <code class="docutils literal notranslate"><span class="pre">stream</span></code> only the vertical channels and focus only on 500 seconds before and 1000 seconds after the origin time (for a total of 25 minutes) and plot the raw data of the two selected and trimmed traces</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s2">&quot;*Z&quot;</span><span class="p">)</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">trim</span><span class="p">(</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span> <span class="n">endtime</span><span class="o">=</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="o">+</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Raw data times series (counts) trimmed 500 seconds before and 1000 seconds after the earthquake origin time&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_64_0.png" src="../_images/L2_Waveforms_64_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>For the sake of comparison between the original and processed streams, we remove the mean values from all the trace</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span><span class="o">.</span><span class="n">detrend</span><span class="p">(</span><span class="s2">&quot;constant&quot;</span><span class="p">)</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Raw data times series (counts) after removing the mean value&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_66_0.png" src="../_images/L2_Waveforms_66_0.png" />
+</div>
+</div>
+<section id="preprocessing">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">7.2.1. </span>Preprocessing</a><a class="headerlink" href="#preprocessing" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>In order to retrieve the ground motion from the raw data, first we have to make them suitable for the Fast Fourier Transform (FFT). This means that we have to modify the traces so that they can be seen as periodic signals and that the operations of convolutions can be performed without wrap around effects.</p>
+<p>In order to make periodic the data, first, we shall remove a long term trend for reducing the jump between the beginning and the end of the trace (using the method <code class="docutils literal notranslate"><span class="pre">stream.detrend</span></code> with <code class="docutils literal notranslate"><span class="pre">type=&quot;polynomial</span></code> we can fit a polynomial of given order to the data and remove it)</p>
+</div>
+<div class="cell tag_output_scroll tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">detrend</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;polynomial&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Here, we have made a copy of the original <code class="docutils literal notranslate"><span class="pre">stream</span></code> before applying the <code class="docutils literal notranslate"><span class="pre">.detrend</span></code> method</p>
+<p>Second, we shall apply a cosine taper for guaranting a smooth transition towards the same value (say zero) at the beginning and the end of the trace (using the method <code class="docutils literal notranslate"><span class="pre">stream.taper</span></code> with <code class="docutils literal notranslate"><span class="pre">type=cosine</span></code>). In this way the first and last samples of the trace will coincide and, so, there will be no issues concerning the artificial discontinuity when the the trace data will be seen as periodic.</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Here, we plot the original and preprocessed stream drawing also the vertical ranges (in shaded blue) where the cosine taper acted</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison between original and preprocessed (detrend and taper) streams&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">original_stream</span><span class="p">,</span>  <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span>           <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span><span class="n">trace</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">,</span><span class="n">original_stream</span><span class="p">):</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">npts</span><span class="p">,</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">delta</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mf">0.05</span><span class="p">)</span><span class="o">*</span><span class="n">d</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">starttime</span><span class="o">-</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span>
+    <span class="n">end</span>   <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">endtime</span><span class="o">-</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span><span class="o">+</span><span class="n">T</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">T</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span>     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_73_0.png" src="../_images/L2_Waveforms_73_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>In the end, in order to make safe the operation of convolution, we shall add to the trace some zero samples after its end, long enough to prohibit wrap around effects during convolution. This last task can be accomplieshed by doubling the length of the trace and setting to zero all the added samples (using the method <code class="docutils literal notranslate"><span class="pre">trace.trim</span></code>). The exact final number of the sampling is custoraily decided in order to speed up the FFT calculations and can be obtained using the function <code class="docutils literal notranslate"><span class="pre">_npts2nfft</span></code> from the module <code class="docutils literal notranslate"><span class="pre">obspy.signal.util</span></code></p>
+</div>
+<div class="cell tag_output_scroll tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">obspy.signal.util</span> <span class="kn">import</span> <span class="n">_npts2nfft</span>
+
+<span class="k">for</span> <span class="n">trace</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">npts</span><span class="p">,</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">delta</span>
+    <span class="n">nn</span> <span class="o">=</span> <span class="n">_npts2nfft</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="p">(</span><span class="n">nn</span><span class="o">-</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">d</span>
+    <span class="n">endtime</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">endtime</span> <span class="o">+</span> <span class="n">T</span>
+    <span class="n">trace</span><span class="o">.</span><span class="n">trim</span><span class="p">(</span><span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Here, we plot the original and preprocessed streams drawing also the vertical range (in shaded blue) where the stream has been padded with zeros</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison between original and preprocessed (detrend, taper and pad) streams&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">original_stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span>          <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span><span class="n">original_trace</span><span class="p">,</span><span class="n">pre_trace</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">,</span><span class="n">original_stream</span><span class="p">,</span><span class="n">stream</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">original_trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">endtime</span><span class="o">-</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">endtime</span><span class="o">-</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_77_0.png" src="../_images/L2_Waveforms_77_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>All these preprocessing steps are collected in the function <code class="docutils literal notranslate"><span class="pre">lab.preprocessing</span></code> and the same result is obtianed as follows</p>
+</div>
+<div class="cell tag_hide-cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocessing</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">taper</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
+    <span class="n">pre_stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">pre_stream</span><span class="o">.</span><span class="n">detrend</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;polynomial&quot;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">pre_stream</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="n">taper</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">trace</span> <span class="ow">in</span> <span class="n">pre_stream</span><span class="p">:</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">npts</span><span class="p">,</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">delta</span>
+        <span class="n">nn</span> <span class="o">=</span> <span class="n">_npts2nfft</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="p">(</span><span class="n">nn</span><span class="o">-</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">d</span>
+        <span class="n">endtime</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">endtime</span> <span class="o">+</span> <span class="n">T</span>
+        <span class="n">trace</span><span class="o">.</span><span class="n">trim</span><span class="p">(</span><span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pre_stream</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">preprocessing</span><span class="p">(</span><span class="n">original_stream</span><span class="p">)</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison between original and preprocessed streams (counts)&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">original_stream</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span>          <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_80_0.png" src="../_images/L2_Waveforms_80_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>The importance of the preprocessing can be better appreciate by comparing the spectra of the original and processed streams</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison between the original and preprocessed stream spectra (counts Hz) in log scale&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">original_stream</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span>          <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_82_0.png" src="../_images/L2_Waveforms_82_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison between the original and preprocessed stream spectra (counts Hz) in linear scale&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">original_stream</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_83_0.png" src="../_images/L2_Waveforms_83_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>As we can see, especially for the accelerometer which is characterized by a strong linear trend, the spectrum of the preprocessed stream is smaller at low frequencies. Also, specially for the velocimeter, the spectrum of the preprocessed stream is smaller  at high frequency because we apply the cosine taper, thus removing the discontinuity between the end and the beginning of the timeseries.</p>
+</div>
+</section>
+<section id="response-function">
+<h3><a class="toc-backref" href="#id6"><span class="section-number">7.2.2. </span>Response function</a><a class="headerlink" href="#response-function" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>As already mentioned, what we have plotted so far are counts and so, in the following, we shall learn how to retrive the ground motion from them. In this perspective, we load the information about response function of the seismometers to each <code class="docutils literal notranslate"><span class="pre">trace</span></code> of the <code class="docutils literal notranslate"><span class="pre">stream</span></code> using the method <code class="docutils literal notranslate"><span class="pre">stream.attach_response</span></code> with argument an inventory where we can find the response functions</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">attach_response</span><span class="p">(</span><span class="n">inventory</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MISSING:&quot;</span><span class="p">,</span><span class="n">missing</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MISSING: []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>This method return the list of traces for which the response function has not been found in the inventory. In the present case, the list is empty and, so, all the required response functions have been found.</p>
+<p>Giving a look to the metadata of the first <code class="docutils literal notranslate"><span class="pre">trace</span></code> of the <code class="docutils literal notranslate"><span class="pre">stream</span></code> we now see that there is an additional field named <code class="docutils literal notranslate"><span class="pre">response</span></code></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trace</span> <span class="o">=</span> <span class="n">stream</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         network: IV
+         station: MRLC
+        location: 
+         channel: HHZ
+       starttime: 2016-08-24T01:28:12.000000Z
+         endtime: 2016-08-24T02:18:12.030000Z
+   sampling_rate: 100.0
+           delta: 0.01
+            npts: 300004
+           calib: 1.0
+         _format: MSEED
+           mseed: AttribDict({&#39;dataquality&#39;: &#39;D&#39;, &#39;number_of_records&#39;: 1783, &#39;encoding&#39;: &#39;STEIM2&#39;, &#39;byteorder&#39;: &#39;&gt;&#39;, &#39;record_length&#39;: 512, &#39;filesize&#39;: 5043712})
+      processing: [&#39;ObsPy 1.4.0: trim(endtime=UTCDateTime(2016, 8, 24, 1, 53, 12)::fill_value=None::nearest_sample=True::pad=False::starttime=UTCDateTime(2016, 8, 24, 1, 28, 12))&#39;, &quot;ObsPy 1.4.0: detrend(options={}::type=&#39;constant&#39;)&quot;, &quot;ObsPy 1.4.0: detrend(options={&#39;order&#39;: 1}::type=&#39;polynomial&#39;)&quot;, &quot;ObsPy 1.4.0: taper(max_length=None::max_percentage=0.05::side=&#39;both&#39;::type=&#39;cosine&#39;)&quot;, &#39;ObsPy 1.4.0: trim(endtime=UTCDateTime(2016, 8, 24, 2, 18, 12, 30000)::fill_value=0::nearest_sample=True::pad=True::starttime=None)&#39;]
+        response: Channel Response
+	From M/S (None) to COUNTS (None)
+	Overall Sensitivity: 1.5e+09 defined at 0.200 Hz
+	5 stages:
+		Stage 1: PolesZerosResponseStage from M/S to V, gain: 1500
+		Stage 2: CoefficientsTypeResponseStage from V to COUNTS, gain: 1e+06
+		Stage 3: CoefficientsTypeResponseStage from COUNTS to COUNTS, gain: 1
+		Stage 4: CoefficientsTypeResponseStage from COUNTS to COUNTS, gain: 1
+		Stage 5: CoefficientsTypeResponseStage from COUNTS to COUNTS, gain: 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and, similar to what we have already done in <a class="reference internal" href="L1_Seismic_catalogs_and_networks.html#chap-l1"><span class="std std-numref">Lecture 6</span></a> <a class="reference internal" href="L1_Seismic_catalogs_and_networks.html#chap-l1"><span class="std std-ref">Seismic catalogs and networks</span></a>, we plot it using the function <code class="docutils literal notranslate"><span class="pre">lab.plot_response</span></code></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Response functions from the input units (m/s or m/s$^2$) to counts&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_response</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_90_0.png" src="../_images/L2_Waveforms_90_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>Before removing the whole response functions, we can simply give a look to the processed stream removing the instrument sensitivities. In this way, we have a first estimate of the ground velocity (from the velocimeter) and of the ground acceleration (from the accelerometer), although it does not yet take into account the the frequency dependence of the the spectral amplitude of the response function and the phase delay</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stream_sens</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">stream_sens</span><span class="o">.</span><span class="n">remove_sensitivity</span><span class="p">()</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Preprocessed stream corrected by the instrument sensitivity (m/s or m/s$^2$)&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream_sens</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">remove_sensitivity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m/s&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m/s$^2$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_92_0.png" src="../_images/L2_Waveforms_92_0.png" />
+</div>
+</div>
+<hr class="docutils" />
+<div class="full-width docutils">
+<p><font size="4"> <strong>Exercise</strong> </font></p>
+<p>Let us define two <code class="docutils literal notranslate"><span class="pre">Stream</span></code> objects with the traces for the only channels of velocimeter and of the accelerometer</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acce</span> <span class="o">=</span> <span class="n">stream_sens</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s2">&quot;HN*&quot;</span><span class="p">)</span>
+<span class="n">velo</span> <span class="o">=</span> <span class="n">stream_sens</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s2">&quot;HH*&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p><strong>Tasks</strong></p>
+<ol class="simple">
+<li><p>Perform the first derivative with respect to time in the frequency domain of the <code class="docutils literal notranslate"><span class="pre">Stream</span></code> object <code class="docutils literal notranslate"><span class="pre">velo</span></code></p></li>
+<li><p>Compare the <code class="docutils literal notranslate"><span class="pre">Stream</span></code> object <code class="docutils literal notranslate"><span class="pre">acce</span></code> and the first time derivative of <code class="docutils literal notranslate"><span class="pre">Stream</span></code> object <code class="docutils literal notranslate"><span class="pre">velo</span></code> in the time and spactral domain</p></li>
+</ol>
+</div>
+<div class="full-width docutils">
+<p><strong>Solution 1</strong></p>
+<p>Recalling eq. <a class="reference internal" href="T1_Fourier.html#equation-t1-13">(4.14)</a>, we first define a function returning the frequencies <code class="docutils literal notranslate"><span class="pre">fs</span></code> and the discrete Fourier transform <code class="docutils literal notranslate"><span class="pre">Zs</span></code> of the trace data, as well as the number of samplings <code class="docutils literal notranslate"><span class="pre">n</span></code> and the time step <code class="docutils literal notranslate"><span class="pre">d</span></code></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################################</span>
+<span class="k">def</span> <span class="nf">get_fft_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">):</span>
+    
+    <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">npts</span><span class="p">,</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">delta</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">Zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span>
+    
+    <span class="k">return</span> <span class="n">fs</span><span class="p">,</span><span class="n">Zs</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">d</span>
+<span class="c1">###########################################################</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and we use it in the following function which return a <code class="docutils literal notranslate"><span class="pre">Stream</span></code> object of which the trace data are updated with the inverse discrete Fourier transform of discrete Fourier transform multiplied by <span class="math notranslate nohighlight">\(i\,\omega\)</span></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################################</span>
+<span class="k">def</span> <span class="nf">time_derivative</span><span class="p">(</span><span class="n">stream</span><span class="p">):</span>
+    <span class="n">der_stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">trace</span> <span class="ow">in</span> <span class="n">der_stream</span><span class="p">:</span>
+        <span class="n">fs</span><span class="p">,</span><span class="n">Zs</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="n">get_fft_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+        <span class="n">ss</span> <span class="o">=</span> <span class="mi">2</span><span class="n">j</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fs</span>
+        <span class="n">trace</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">Zs</span><span class="o">*</span><span class="n">ss</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">d</span>
+    <span class="k">return</span> <span class="n">der_stream</span>
+<span class="c1">###########################################################</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>We thus obtain the first time derivative of <code class="docutils literal notranslate"><span class="pre">velo</span></code> as follows</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">der_velo</span> <span class="o">=</span> <span class="n">time_derivative</span><span class="p">(</span><span class="n">velo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p><strong>Solution 2</strong></p>
+<p>We plot the data time series from the accelerometer and the first time derivative of those from the velocimeter. We note that we have worked on the stream objects after removing the instrument sensitivity in order to make meaningfull the comparison</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison between the accelerometer and the first time derivative of the velocimeter</span><span class="se">\n</span><span class="s2">preprocessed data corrected by the instrument sensitivity (m/s$^2$)&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">acce</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;acce&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">der_velo</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;der_velo&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m/s$^2$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_103_0.png" src="../_images/L2_Waveforms_103_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison between the accelerometer and the first time derivative of the velocimeter</span><span class="se">\n</span><span class="s2">preprocessed data corrected by the instrument sensitivity (m/s$^2$)&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">acce</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;acce&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">der_velo</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;der_velo&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m/s$^2$ Hz&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_104_0.png" src="../_images/L2_Waveforms_104_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>From this last comparison in the frequency domain, we can understand that, even if the response function of the accelerometer has a flat absolute spectral amplitude in the low frequency range, it does not means that the the low frequency components reflect the ground acceleration</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="ground-motion">
+<h3><a class="toc-backref" href="#id7"><span class="section-number">7.2.3. </span>Ground motion</a><a class="headerlink" href="#ground-motion" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Let us now define two functions for removing exactly the response function of each channel in order to retive the ground motion</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################################################</span>
+<span class="k">def</span> <span class="nf">get_inverse_response</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;DEF&quot;</span><span class="p">):</span>
+    
+    <span class="n">response</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">response</span>
+
+    <span class="n">end_stage</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">response_stages</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    
+    <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">npts</span><span class="p">,</span> <span class="n">trace</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">delta</span>    
+    <span class="n">Rs</span><span class="p">,</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get_evalresp_response</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span><span class="n">end_stage</span><span class="o">=</span><span class="n">end_stage</span><span class="p">)</span>
+    <span class="n">Rs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">IRs</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Rs</span>
+    
+    <span class="k">return</span> <span class="n">fs</span><span class="p">,</span><span class="n">IRs</span>
+<span class="c1">###########################################################</span>
+
+
+<span class="c1">###########################################################</span>
+<span class="k">def</span> <span class="nf">remove_response</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;DEF&quot;</span><span class="p">):</span>
+    <span class="n">ground</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">trace</span> <span class="ow">in</span> <span class="n">ground</span><span class="p">:</span>
+        <span class="n">fs</span><span class="p">,</span><span class="n">IRs</span> <span class="o">=</span> <span class="n">get_inverse_response</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">fs</span><span class="p">,</span><span class="n">Zs</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="n">get_fft_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+        <span class="n">trace</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">Zs</span><span class="o">*</span><span class="n">IRs</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">d</span>
+    <span class="k">return</span> <span class="n">ground</span>
+<span class="c1">###########################################################</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and apply them to the preprocessed stream to retive the ground motion</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ground</span> <span class="o">=</span> <span class="n">remove_response</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Comparison between the preproccessed data corrected by the instrument senstivity</span><span class="se">\n</span><span class="s2">and the retrived ground motion (m/s or m/s$^2$)&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream_sens</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">ground</span><span class="p">,</span>      <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;ground&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m/s&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m/s$^2$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_109_0.png" src="../_images/L2_Waveforms_109_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>By the way in which we have defined them, we can also decide the desired output for which the response function has to be calculated, as for instance the velocity</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ground_velo</span> <span class="o">=</span> <span class="n">remove_response</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;VEL&quot;</span><span class="p">)</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Retrived ground velocity (m/s)&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">ground_velo</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m/s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_111_0.png" src="../_images/L2_Waveforms_111_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>or the displacement</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ground_disp</span> <span class="o">=</span> <span class="n">remove_response</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;DISP&quot;</span><span class="p">)</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Retrived ground displacement (m)&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">ground_disp</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_113_0.png" src="../_images/L2_Waveforms_113_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>In order to understand whether the above ground displacements  make sense for an earthquake, let us consider the following plot of their spectra in the frequency domain</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Ground displacement spectra&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">ground_disp</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s2">&quot;HH*&quot;</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">ground_disp</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s2">&quot;HN*&quot;</span><span class="p">),</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mf">1e1</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">5e-3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="mf">2e-4</span><span class="o">/</span><span class="n">fs</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;m Hz&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_115_0.png" src="../_images/L2_Waveforms_115_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>Ground displacement spectra. On the basis of the <span class="math notranslate nohighlight">\(\omega^2\)</span>-model we should expect flat spectral amplitudes in the low frequency range and, indeed, this is the case from 0.006 to 0.2 Hz for the velocimeter (HHZ) and from 0.02 to 0.2 Hz for the accelerometer (HNZ). Nevertheless, at lower frequencies, the spectral amplitudes increase. Also, at high frequency, we shall expect that the spectral amplitudes decrease with increasing frequencies and that this feature should be even more pronunced once scattering and analestic attenuation is considered. This occurs up to about 15 Hz although, at higer frequency, the decreases stop.</p>
+</div>
+</section>
+</section>
+<section id="noise">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">7.3. </span>Noise</a><a class="headerlink" href="#noise" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>In order to understand the physical discrepancies about the spectral amplituded of the ground displacement, let us select a time window where no earthquake occurs by trimming the origial stream up to the origin time and performing the standard preprocessing and, then, retriving the ground displacement</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noise</span> <span class="o">=</span> <span class="n">original_stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">missing</span> <span class="o">=</span> <span class="n">noise</span><span class="o">.</span><span class="n">attach_response</span><span class="p">(</span><span class="n">inventory</span><span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">trim</span><span class="p">(</span><span class="n">endtime</span><span class="o">=</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
+<span class="n">ground_disp_noise</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">remove_response</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;DISP&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Then, we compare the spectral amplitude of the ground displacements in the noisy time window with those including the earthquake</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">ground_disp</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">ground_disp_noise</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;noise&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mf">1e1</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">5e-3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="mf">2e-4</span><span class="o">/</span><span class="n">fs</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_121_0.png" src="../_images/L2_Waveforms_121_0.png" />
+</div>
+</div>
+<section id="filtering">
+<h3><a class="toc-backref" href="#id9"><span class="section-number">7.3.1. </span>Filtering</a><a class="headerlink" href="#filtering" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+
+<span class="n">bands</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5e-3</span><span class="p">,</span><span class="mi">15</span><span class="p">],[</span><span class="mf">2e-2</span><span class="p">,</span><span class="mi">15</span><span class="p">]])</span>
+
+<span class="n">BA_filters</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">:</span>
+    <span class="n">BA_filter</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">band</span><span class="p">,</span> <span class="s2">&quot;bandpass&quot;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">BA_filters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BA_filter</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mf">1e1</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fs</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">axe</span><span class="p">,</span><span class="n">band</span><span class="p">,</span><span class="n">BA_filter</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">bands</span><span class="p">,</span><span class="n">BA_filters</span><span class="p">):</span>
+    <span class="n">ws</span><span class="p">,</span> <span class="n">Hs</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">freqs</span><span class="p">(</span><span class="o">*</span><span class="n">BA_filter</span><span class="p">,</span> <span class="n">ws</span><span class="p">)</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="mf">5e-3</span><span class="o">*</span><span class="n">Hs</span><span class="p">,</span> <span class="n">axe</span><span class="p">,</span> <span class="n">band</span><span class="o">=</span><span class="n">band</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axe</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_123_0.png" src="../_images/L2_Waveforms_123_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filtering</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="n">BA_filters</span><span class="p">):</span>
+    <span class="n">fil_stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">trace</span><span class="p">,</span><span class="n">BA_filter</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">fil_stream</span><span class="p">,</span><span class="n">BA_filters</span><span class="p">):</span>
+        <span class="n">fs</span><span class="p">,</span><span class="n">Zs</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="n">get_fft_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fs</span>
+        <span class="n">ws</span><span class="p">,</span> <span class="n">Hs</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">freqs</span><span class="p">(</span><span class="o">*</span><span class="n">BA_filter</span><span class="p">,</span> <span class="n">ws</span><span class="p">)</span>
+        <span class="n">trace</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">Zs</span><span class="o">*</span><span class="n">Hs</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">d</span>
+    <span class="k">return</span> <span class="n">fil_stream</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_stream</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">filtering</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="n">BA_filters</span><span class="p">)</span>
+<span class="n">filtered_noise</span>  <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">filtering</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span><span class="n">BA_filters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bands</span><span class="o">=</span><span class="n">bands</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span>  <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="n">bands</span><span class="o">=</span><span class="n">bands</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;noise&quot;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">filtered_stream</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;filtered&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_fft</span><span class="p">(</span><span class="n">filtered_noise</span><span class="p">,</span>  <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;filtered&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_126_0.png" src="../_images/L2_Waveforms_126_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">filtered_noise</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span>  <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;filtered&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_127_0.png" src="../_images/L2_Waveforms_127_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">filtered_stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;filtered&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_128_0.png" src="../_images/L2_Waveforms_128_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">trace</span><span class="p">,</span><span class="n">filtered_trace</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span><span class="n">filtered_stream</span><span class="p">):</span>
+    <span class="n">trace</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">filtered_trace</span><span class="o">.</span><span class="n">data</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span>       <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;difference&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_129_0.png" src="../_images/L2_Waveforms_129_0.png" />
+</div>
+</div>
+</section>
+<section id="zero-phase-filtering">
+<h3><a class="toc-backref" href="#id10"><span class="section-number">7.3.2. </span>Zero phase filtering</a><a class="headerlink" href="#zero-phase-filtering" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filtering_zerophase</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="n">BA_filter</span><span class="p">):</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">trace</span> <span class="ow">in</span> <span class="n">new</span><span class="p">:</span>
+        <span class="n">fs</span><span class="p">,</span><span class="n">Zs</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="n">get_fft_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fs</span>
+        <span class="n">ws</span><span class="p">,</span> <span class="n">Hs</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">freqs</span><span class="p">(</span><span class="o">*</span><span class="n">BA_filter</span><span class="p">,</span> <span class="n">ws</span><span class="p">)</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">Zs</span><span class="o">*</span><span class="n">Hs</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+        <span class="n">Zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">Zs</span><span class="o">*</span><span class="n">Hs</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+        <span class="n">trace</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">zs</span>
+    <span class="k">return</span> <span class="n">new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_zerophase_stream</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">filtering_zerophase</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="n">BA_filters</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">filtered_zerophase_stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;filtered</span><span class="se">\n</span><span class="s2">zero phase&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_132_0.png" src="../_images/L2_Waveforms_132_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_zerophase_stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">trace</span><span class="p">,</span><span class="n">filtered_trace</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">diff_zerophase_stream</span><span class="p">,</span><span class="n">filtered_zerophase_stream</span><span class="p">):</span>
+    <span class="n">trace</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="n">filtered_trace</span><span class="o">.</span><span class="n">data</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">diff_zerophase_stream</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">label_id</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="s2">&quot;difference</span><span class="se">\n</span><span class="s2">zero phase&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_133_0.png" src="../_images/L2_Waveforms_133_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ground-motion-and-picking">
+<h2><a class="toc-backref" href="#id11"><span class="section-number">7.4. </span>Ground motion and picking</a><a class="headerlink" href="#ground-motion-and-picking" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>Let us now remove the response function from the zerophase filtered stream and plot the result comparing the ground displacement, velocity and acceleration obtained from the velocimeter and the accelerometer</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">output</span><span class="p">,</span><span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span> <span class="p">[</span><span class="s2">&quot;DISP&quot;</span><span class="p">,</span><span class="s2">&quot;VEL&quot;</span><span class="p">,</span><span class="s2">&quot;ACC&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Displacement [m]&quot;</span><span class="p">,</span> <span class="s2">&quot;Velocity [m/s]&quot;</span><span class="p">,</span> <span class="s2">&quot;Acceleration [m/s$^2$]&quot;</span><span class="p">]</span> <span class="p">):</span>
+    <span class="n">ground</span> <span class="o">=</span> <span class="n">remove_response</span><span class="p">(</span><span class="n">filtered_zerophase_stream</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">ground</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s2">&quot;HH*&quot;</span><span class="p">),</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">plot_time</span><span class="p">(</span><span class="n">ground</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s2">&quot;HN*&quot;</span><span class="p">),</span> <span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L2_Waveforms_135_0.png" src="../_images/L2_Waveforms_135_0.png" />
+<img alt="../_images/L2_Waveforms_135_1.png" src="../_images/L2_Waveforms_135_1.png" />
+<img alt="../_images/L2_Waveforms_135_2.png" src="../_images/L2_Waveforms_135_2.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>As we can see, the ground motions from the two kind of instrument look simila to each other, but for some minor differences mainly conerning the ground displacement.</p>
+</div>
+<p style="page-break-after:always;"></p></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="L1_Seismic_catalogs_and_networks.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Seismic catalogs and networks</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="L3_Local_magnitude.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Local magnitude</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gabriele Cambiotti<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
