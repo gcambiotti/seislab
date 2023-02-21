@@ -1,0 +1,3417 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6. Seismic catalogs and networks &#8212; Seismology and Laboratory</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Waveform processing" href="L2_Waveforms.html" />
+    <link rel="prev" title="5. Discrete Fourier transform" href="T2_Discrete.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/gc_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Seismology and Laboratory</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Seismology and Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Setup
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="S1_Setup.html">
+   1. Working with JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="S2_Tutorial.html">
+   2. Tutorial on Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Theory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="T0_Harmonic.html">
+   3. Harmonic oscillators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="T1_Fourier.html">
+   4. Fourier transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="T2_Discrete.html">
+   5. Discrete Fourier transform
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratory
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. Seismic catalogs and networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2_Waveforms.html">
+   7. Waveform processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L3_Local_magnitude.html">
+   8. Local magnitude
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L4_Earthquake_localization.html">
+   9. Earthquake localization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="A0_Dirac.html">
+   10. Dirac delta function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A1_Geographic_Maps.html">
+   11. Geographic maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A2_Inverse_Theory.html">
+   12. Inverse problem theory
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Libraries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L0_Libraries.html">
+   13. Libraries
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/files/L1_Seismic_catalogs_and_networks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ffiles/L1_Seismic_catalogs_and_networks.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/files/L1_Seismic_catalogs_and_networks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dates">
+   6.1. Dates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#catalogs">
+   6.2. Catalogs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-2016-08-24-m-6-accumuli-earthquake">
+     6.2.1. The 2016-08-24 M=6 Accumuli earthquake
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#event-id-and-additional-information">
+       6.2.1.1. Event id and additional information
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inventory">
+   6.3. Inventory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seismic-stations">
+     6.3.1. Seismic stations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seismic-channels">
+     6.3.2. Seismic channels
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seismometers">
+   6.4. Seismometers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#velocimeters">
+     6.4.1. Velocimeters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#response-function">
+     6.4.2. Response function
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Seismic catalogs and networks</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dates">
+   6.1. Dates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#catalogs">
+   6.2. Catalogs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-2016-08-24-m-6-accumuli-earthquake">
+     6.2.1. The 2016-08-24 M=6 Accumuli earthquake
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#event-id-and-additional-information">
+       6.2.1.1. Event id and additional information
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inventory">
+   6.3. Inventory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seismic-stations">
+     6.3.1. Seismic stations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seismic-channels">
+     6.3.2. Seismic channels
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seismometers">
+   6.4. Seismometers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#velocimeters">
+     6.4.1. Velocimeters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#response-function">
+     6.4.2. Response function
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="seismic-catalogs-and-networks">
+<span id="chap-l1"></span><h1><span class="section-number">6. </span>Seismic catalogs and networks<a class="headerlink" href="#seismic-catalogs-and-networks" title="Permalink to this headline">#</a></h1>
+<div class="contents local topic" id="sections">
+<p class="topic-title">Sections</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#dates" id="id1">Dates</a></p></li>
+<li><p><a class="reference internal" href="#catalogs" id="id2">Catalogs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-2016-08-24-m-6-accumuli-earthquake" id="id3">The 2016-08-24 M=6 Accumuli earthquake</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#inventory" id="id4">Inventory</a></p>
+<ul>
+<li><p><a class="reference internal" href="#seismic-stations" id="id5">Seismic stations</a></p></li>
+<li><p><a class="reference internal" href="#seismic-channels" id="id6">Seismic channels</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#seismometers" id="id7">Seismometers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#velocimeters" id="id8">Velocimeters</a></p></li>
+<li><p><a class="reference internal" href="#response-function" id="id9">Response function</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="full-width docutils">
+<p>With this lecture we will learn how download earthquake catalagos and seismic networks from the main data center of the world. As case study, we will choose the Istituto Nazionale di Geofisica e Vulcanologia (INGV) as provider and we will focus on the 2016-2017 Amatrice-Norcia-Visso seismic sequences and, in particular, on the first main shock: the 24 August 2016 M=6 Accumuli earthquake.</p>
+<p>In this perspective, let us import the main python libraries</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> widget
+<span class="kn">import</span> <span class="nn">lab</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and make the directory  where we will save the data that we are going to download</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">directory</span><span class="o">=</span><span class="s2">&quot;Amatrice-Norcia-Visso/&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="dates">
+<h2><a class="toc-backref" href="#id1"><span class="section-number">6.1. </span>Dates</a><a class="headerlink" href="#dates" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>In order to specify the time periods on which we are interested in and for which we want to download data, we shall use the class <code class="docutils literal notranslate"><span class="pre">UTCDateTime</span></code> from the <code class="docutils literal notranslate"><span class="pre">obspy</span></code> module</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">obspy</span> <span class="kn">import</span> <span class="n">UTCDateTime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Just because the Amatrice-Norcia-Visso seismic sequence spanned almost two years, from August 2016 to January 2017, we define as start time the 1-th January 2016 and end time the 1-th January 2018</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">starttime</span> <span class="o">=</span> <span class="n">UTCDateTime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">endtime</span> <span class="o">=</span> <span class="n">UTCDateTime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;starttime:               &quot;</span><span class="p">,</span><span class="n">starttime</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;endtime:                 &quot;</span><span class="p">,</span><span class="n">endtime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>starttime:                2016-01-01T00:00:00.000000Z
+endtime:                  2018-01-01T00:00:00.000000Z
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>We note that we perform some basic operations with <code class="docutils literal notranslate"><span class="pre">UTCDateTime</span></code> objects, as for instance,</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newtime</span> <span class="o">=</span> <span class="n">starttime</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">3600</span> <span class="o">+</span> <span class="mi">3600</span><span class="o">+</span><span class="mi">120</span> <span class="o">+</span> <span class="mf">5.2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;newtime:           &quot;</span><span class="p">,</span><span class="n">newtime</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;endtime-starttime: &quot;</span><span class="p">,(</span><span class="n">endtime</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span><span class="o">/</span><span class="mi">3600</span><span class="o">/</span><span class="mi">24</span><span class="p">,</span><span class="s2">&quot;days&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>newtime:            2016-01-04T01:02:05.200000Z
+endtime-starttime:  731.0 days
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="catalogs">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">6.2. </span>Catalogs</a><a class="headerlink" href="#catalogs" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>Let us import the class <code class="docutils literal notranslate"><span class="pre">Client</span></code> from <code class="docutils literal notranslate"><span class="pre">obspy</span></code> and set the Istituto Nazionale di Geofisica e Vulcanologia (INGV) as provider</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">obspy.clients.fdsn</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s2">&quot;INGV&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FDSN Webservice Client (base url: http://webservices.ingv.it)
+Available Services: &#39;dataselect&#39; (v1.1.0), &#39;event&#39; (v1.52.9), &#39;station&#39; (v1.1.54), &#39;available_event_catalogs&#39;, &#39;available_event_contributors&#39;, &#39;eida-auth&#39;
+
+Use e.g. client.help(&#39;dataselect&#39;) for the
+parameter description of the individual services
+or client.help() for parameter description of
+all webservices.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Thanks to the method <code class="docutils literal notranslate"><span class="pre">client.get_events</span></code>, we will download  the earthquakes occurred in Central Italy during the 2016 and 2017 of magnitude M<span class="math notranslate nohighlight">\(\ge\)</span>5</p>
+</div>
+<div class="cell tag_full-width tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">get_events</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method get_events in module obspy.clients.fdsn.client:
+
+get_events(starttime=None, endtime=None, minlatitude=None, maxlatitude=None, minlongitude=None, maxlongitude=None, latitude=None, longitude=None, minradius=None, maxradius=None, mindepth=None, maxdepth=None, minmagnitude=None, maxmagnitude=None, magnitudetype=None, eventtype=None, includeallorigins=None, includeallmagnitudes=None, includearrivals=None, eventid=None, limit=None, offset=None, orderby=None, catalog=None, contributor=None, updatedafter=None, filename=None, **kwargs) method of obspy.clients.fdsn.client.Client instance
+    Query the event service of the client.
+    
+    &gt;&gt;&gt; client = Client(&quot;IRIS&quot;)
+    &gt;&gt;&gt; cat = client.get_events(eventid=609301)
+    &gt;&gt;&gt; print(cat)
+    1 Event(s) in Catalog:
+    1997-10-14T09:53:11.070000Z | -22.145, -176.720 | 7.8 ...
+    
+    The return value is a :class:`~obspy.core.event.Catalog` object
+    which can contain any number of events.
+    
+    &gt;&gt;&gt; t1 = UTCDateTime(&quot;2001-01-07T00:00:00&quot;)
+    &gt;&gt;&gt; t2 = UTCDateTime(&quot;2001-01-07T03:00:00&quot;)
+    &gt;&gt;&gt; cat = client.get_events(starttime=t1, endtime=t2, minmagnitude=4,
+    ...                         catalog=&quot;ISC&quot;)
+    &gt;&gt;&gt; print(cat)
+    3 Event(s) in Catalog:
+    2001-01-07T02:55:59.290000Z |  +9.801,  +76.548 | 4.9 ...
+    2001-01-07T02:35:35.170000Z | -21.291,  -68.308 | 4.4 ...
+    2001-01-07T00:09:25.630000Z | +22.946, -107.011 | 4.0 ...
+    
+    :type starttime: :class:`~obspy.core.utcdatetime.UTCDateTime`, optional
+    :param starttime: Limit to events on or after the specified start time.
+    :type endtime: :class:`~obspy.core.utcdatetime.UTCDateTime`, optional
+    :param endtime: Limit to events on or before the specified end time.
+    :type minlatitude: float, optional
+    :param minlatitude: Limit to events with a latitude larger than the
+        specified minimum.
+    :type maxlatitude: float, optional
+    :param maxlatitude: Limit to events with a latitude smaller than the
+        specified maximum.
+    :type minlongitude: float, optional
+    :param minlongitude: Limit to events with a longitude larger than the
+        specified minimum.
+    :type maxlongitude: float, optional
+    :param maxlongitude: Limit to events with a longitude smaller than the
+        specified maximum.
+    :type latitude: float, optional
+    :param latitude: Specify the latitude to be used for a radius search.
+    :type longitude: float, optional
+    :param longitude: Specify the longitude to be used for a radius
+        search.
+    :type minradius: float, optional
+    :param minradius: Limit to events within the specified minimum number
+        of degrees from the geographic point defined by the latitude and
+        longitude parameters.
+    :type maxradius: float, optional
+    :param maxradius: Limit to events within the specified maximum number
+        of degrees from the geographic point defined by the latitude and
+        longitude parameters.
+    :type mindepth: float, optional
+    :param mindepth: Limit to events with depth, in kilometers, larger than
+        the specified minimum.
+    :type maxdepth: float, optional
+    :param maxdepth: Limit to events with depth, in kilometers, smaller
+        than the specified maximum.
+    :type minmagnitude: float, optional
+    :param minmagnitude: Limit to events with a magnitude larger than the
+        specified minimum.
+    :type maxmagnitude: float, optional
+    :param maxmagnitude: Limit to events with a magnitude smaller than the
+        specified maximum.
+    :type magnitudetype: str, optional
+    :param magnitudetype: Specify a magnitude type to use for testing the
+        minimum and maximum limits.
+    :type eventtype: str, optional
+    :param eventtype: Limit to events with a specified event type.
+        Multiple types are comma-separated (e.g.,
+        ``&quot;earthquake,quarry blast&quot;``). Allowed values are from QuakeML.
+        See :const:`obspy.core.event.header.EventType` for a list of
+        allowed event types.
+    :type includeallorigins: bool, optional
+    :param includeallorigins: Specify if all origins for the event should
+        be included, default is data center dependent but is suggested to
+        be the preferred origin only.
+    :type includeallmagnitudes: bool, optional
+    :param includeallmagnitudes: Specify if all magnitudes for the event
+        should be included, default is data center dependent but is
+        suggested to be the preferred magnitude only.
+    :type includearrivals: bool, optional
+    :param includearrivals: Specify if phase arrivals should be included.
+    :type eventid: str or int, optional
+    :param eventid: Select a specific event by ID; event identifiers are
+        data center specific (String or Integer).
+    :type limit: int, optional
+    :param limit: Limit the results to the specified number of events.
+    :type offset: int, optional
+    :param offset: Return results starting at the event count specified,
+        starting at 1.
+    :type orderby: str, optional
+    :param orderby: Order the result by time or magnitude with the
+        following possibilities:
+    
+        * time: order by origin descending time
+        * time-asc: order by origin ascending time
+        * magnitude: order by descending magnitude
+        * magnitude-asc: order by ascending magnitude
+    
+    :type catalog: str, optional
+    :param catalog: Limit to events from a specified catalog
+    :type contributor: str, optional
+    :param contributor: Limit to events contributed by a specified
+        contributor.
+    :type updatedafter: :class:`~obspy.core.utcdatetime.UTCDateTime`,
+        optional
+    :param updatedafter: Limit to events updated after the specified time.
+    :type filename: str or file
+    :param filename: If given, the downloaded data will be saved there
+        instead of being parsed to an ObsPy object. Thus it will contain
+        the raw data from the webservices.
+    
+    
+    Any additional keyword arguments will be passed to the webservice as
+    additional arguments. If you pass one of the default parameters and the
+    webservice does not support it, a warning will be issued. Passing any
+    non-default parameters that the webservice does not support will raise
+    an error.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>In this perspective, let us define the <code class="docutils literal notranslate"><span class="pre">file</span></code> where we will save the downloaded data and define the geographic <code class="docutils literal notranslate"><span class="pre">circle</span></code> in which we are interested in as a dictionary containing the longitude and latitude of its centre (13°,42.5°) and its radius (2°, in degrees)</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">directory</span><span class="o">+</span><span class="s2">&quot;Seismic_Sequence_M5.xml&quot;</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">maxradius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">longitude</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span><span class="n">latitude</span><span class="o">=</span><span class="mf">42.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and use them as arguments of the method <code class="docutils literal notranslate"><span class="pre">client.get_events</span></code> along with the already defined <code class="docutils literal notranslate"><span class="pre">starttime</span></code> and <code class="docutils literal notranslate"><span class="pre">endtime</span></code></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">get_events</span><span class="p">(</span><span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span> <span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">,</span> <span class="n">minmagnitude</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">**</span><span class="n">circle</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Afterwards, we can read the <code class="docutils literal notranslate"><span class="pre">file</span></code> and get the downloaded <code class="docutils literal notranslate"><span class="pre">Catalog</span></code> object as follows</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">obspy.core.event</span> <span class="kn">import</span> <span class="n">read_events</span>
+<span class="n">catalog</span> <span class="o">=</span> <span class="n">read_events</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">catalog</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9 Event(s) in Catalog:
+2017-01-18T13:33:36.740000Z | +42.473,  +13.275 | 5.0  Mw | manual
+2017-01-18T10:25:23.730000Z | +42.503,  +13.277 | 5.4  Mw | manual
+2017-01-18T10:14:09.900000Z | +42.531,  +13.284 | 5.5  Mw | manual
+2017-01-18T09:25:40.390000Z | +42.545,  +13.277 | 5.1  Mw | manual
+2016-10-30T06:40:17.320000Z | +42.830,  +13.109 | 6.5  Mw | manual
+2016-10-26T19:18:07.420000Z | +42.905,  +13.090 | 5.9  Mw | manual
+2016-10-26T17:10:36.980000Z | +42.875,  +13.124 | 5.4  Mw | manual
+2016-08-24T02:33:28.890000Z | +42.792,  +13.151 | 5.4  Mw | manual
+2016-08-24T01:36:32.000000Z | +42.698,  +13.233 | 6.0  Mw | manual
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>As we can notice, the <code class="docutils literal notranslate"><span class="pre">catalog</span></code> contains <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">9</span></code></span> earthquakes ordered by descending dates. In order to have a first understanding of what we have just downloaded, let us plot it using the the method <code class="docutils literal notranslate"><span class="pre">catalog.plot</span></code> along with the function <code class="docutils literal notranslate"><span class="pre">lab.setup_map</span></code> described in <a class="reference internal" href="A1_Geographic_Maps.html#chap-geographic-maps"><span class="std std-numref">Lecture 11 Geographic maps</span></a></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lab</span> 
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;2016-2017 Amatrice-Norcia-Visso seismic sequence (M$\geq$5)&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">setup_map</span><span class="p">(</span><span class="n">circle</span><span class="o">=</span><span class="n">circle</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L1_Seismic_catalogs_and_networks_27_0.png" src="../_images/L1_Seismic_catalogs_and_networks_27_0.png" />
+</div>
+</div>
+<p>Here instead we zoom in the cluster of earthquakes</p>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="mf">12.5</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mf">42.4</span><span class="p">,</span><span class="mi">43</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">setup_map</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L1_Seismic_catalogs_and_networks_29_0.png" src="../_images/L1_Seismic_catalogs_and_networks_29_0.png" />
+</div>
+</div>
+<section id="the-2016-08-24-m-6-accumuli-earthquake">
+<h3><a class="toc-backref" href="#id3"><span class="section-number">6.2.1. </span>The 2016-08-24 M=6 Accumuli earthquake</a><a class="headerlink" href="#the-2016-08-24-m-6-accumuli-earthquake" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>The <code class="docutils literal notranslate"><span class="pre">catalog</span></code> can be seen as a list of events, each of which contains information about an earthquake</p>
+</div>
+<div class="cell tag_full-width tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ke</span><span class="p">,</span><span class="n">event</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">catalog</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="si">{0:4d}</span><span class="s2">-th EVENT:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ke</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   0-th EVENT:
+
+Event:	2016-08-24T01:36:32.000000Z | +42.698,  +13.233 | 6.0  Mw | manual
+
+	                  resource_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?eventId=7073641&quot;)
+	                   event_type: &#39;earthquake&#39;
+	                creation_info: CreationInfo(agency_id=&#39;INGV&#39;, author=&#39;hew1_mole#MOD_EQASSEMBLE&#39;, creation_time=UTCDateTime(2016, 8, 24, 1, 36, 52))
+	          preferred_origin_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?originId=27629391&quot;)
+	       preferred_magnitude_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?magnitudeId=31549261&quot;)
+	 preferred_focal_mechanism_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?focalMechanismId=7631&quot;)
+	                         ---------
+	           event_descriptions: 1 Elements
+	                        picks: 699 Elements
+	             focal_mechanisms: 2 Elements
+	                      origins: 8 Elements
+	                   magnitudes: 8 Elements
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Let us select the last element of this list, which is the <code class="docutils literal notranslate"><span class="pre">Event</span></code> object describing the early earthquake of the seismic sequence</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">event</span> <span class="o">=</span> <span class="n">catalog</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Event:	2016-08-24T01:36:32.000000Z | +42.698,  +13.233 | 6.0  Mw | manual
+
+	                  resource_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?eventId=7073641&quot;)
+	                   event_type: &#39;earthquake&#39;
+	                creation_info: CreationInfo(agency_id=&#39;INGV&#39;, author=&#39;hew1_mole#MOD_EQASSEMBLE&#39;, creation_time=UTCDateTime(2016, 8, 24, 1, 36, 52))
+	          preferred_origin_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?originId=27629391&quot;)
+	       preferred_magnitude_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?magnitudeId=31549261&quot;)
+	 preferred_focal_mechanism_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?focalMechanismId=7631&quot;)
+	                         ---------
+	           event_descriptions: 1 Elements
+	             focal_mechanisms: 2 Elements
+	                      origins: 1 Elements
+	                   magnitudes: 1 Elements
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>From this <code class="docutils literal notranslate"><span class="pre">Event</span></code> object, we can get its description</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">event_description</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">event_descriptions</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">event_description</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 km W Accumoli (RI)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and its preferred origin, magnitude and focal mechanism</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">origin</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_origin</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PREFERRED ORIGIN:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">origin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PREFERRED ORIGIN:
+
+ Origin
+	        resource_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?originId=27629391&quot;)
+	               time: UTCDateTime(2016, 8, 24, 1, 36, 32) [uncertainty=0.03]
+	          longitude: 13.2335 [uncertainty=0.0024]
+	           latitude: 42.6983 [uncertainty=0.0009]
+	              depth: 8100.0 [uncertainty=200.0]
+	         depth_type: &#39;from location&#39;
+	          method_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?methodId=1&quot;)
+	     earth_model_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?earthModelId=1&quot;)
+	            quality: OriginQuality(associated_phase_count=289, used_phase_count=289, associated_station_count=280, used_station_count=280, standard_error=0.11, azimuthal_gap=28.0, minimum_distance=0.10072, maximum_distance=5.38694)
+	        origin_type: &#39;hypocenter&#39;
+	 origin_uncertainty: OriginUncertainty(horizontal_uncertainty=150.0, min_horizontal_uncertainty=132.0, max_horizontal_uncertainty=154.0, azimuth_max_horizontal_uncertainty=76.0, preferred_description=&#39;uncertainty ellipse&#39;, confidence_level=68.0)
+	    evaluation_mode: &#39;manual&#39;
+	  evaluation_status: &#39;reviewed&#39;
+	      creation_info: CreationInfo(agency_id=&#39;INGV&#39;, author=&#39;BULLETIN-INGV&#39;, creation_time=UTCDateTime(2016, 8, 31, 6, 40, 9), version=&#39;1000&#39;)
+	               ---------
+	           arrivals: 289 Elements
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">magnitude</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_magnitude</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PREFERRED MAGNITUDE:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">magnitude</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PREFERRED MAGNITUDE:
+
+ Magnitude
+	    resource_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?magnitudeId=31549261&quot;)
+	            mag: 6.0
+	 magnitude_type: &#39;Mw&#39;
+	      origin_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?originId=29594981&quot;)
+	      method_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?methodId=171&quot;)
+	  creation_info: CreationInfo(agency_id=&#39;INGV&#39;, author=&#39;TDMT-INGV Revised&#39;, creation_time=UTCDateTime(2016, 9, 27, 11, 45, 32))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">focal_mechanism</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_focal_mechanism</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PREFERRED FOCAL MECHANISM:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">focal_mechanism</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PREFERRED FOCAL MECHANISM:
+
+ FocalMechanism
+	          resource_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?focalMechanismId=7631&quot;)
+	 triggering_origin_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?originId=26962871&quot;)
+	         nodal_planes: NodalPlanes(nodal_plane_1=NodalPlane(strike=155.0, dip=49.0, rake=-87.0), nodal_plane_2=NodalPlane(strike=331.0, dip=41.0, rake=-93.0))
+	      evaluation_mode: &#39;manual&#39;
+	    evaluation_status: &#39;reviewed&#39;
+	        moment_tensor: MomentTensor(resource_id=ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?momentTensorId=7631&quot;), derived_origin_id=ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?originId=29420591&quot;), moment_magnitude_id=ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?magnitudeId=31363711&quot;), scalar_moment=1.06622e+18, tensor=Tensor(m_rr=-1.06092883e+18, m_tt=2.2822264e+17, m_pp=8.3270619e+17, m_rt=-3.104816e+16, m_rp=1.4210325999999998e+17, m_tp=-4.2453358e+17), variance_reduction=55.02, double_couple=0.98, clvd=0.02, iso=0.0, creation_info=CreationInfo(agency_id=&#39;INGV&#39;, author=&#39;Laura Scognamiglio (laura.scognamiglio@ingv.it) and Elisa Tinti (elisa.tinti@ingv.it) | Reference: http://terremoti.ingv.it/help#TDMT&#39;, creation_time=UTCDateTime(2016, 9, 23, 11, 19, 11)))
+	        creation_info: CreationInfo(agency_id=&#39;INGV&#39;, author=&#39;Laura Scognamiglio (laura.scognamiglio@ingv.it) and Elisa Tinti (elisa.tinti@ingv.it) | Reference: http://terremoti.ingv.it/help#TDMT&#39;, creation_time=UTCDateTime(2016, 9, 23, 11, 19, 11))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Here a beachball plot of the focal mechanism, which show that we are considering a normal earthquake</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodal_plane_1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">focal_mechanism</span><span class="o">.</span><span class="n">nodal_planes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nodal_plane_1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())[::</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nodal plane 1:&quot;</span><span class="p">,</span><span class="n">nodal_plane_1</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">obspy.imaging.beachball</span> <span class="kn">import</span> <span class="n">beachball</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">beachball</span><span class="p">(</span><span class="n">nodal_plane_1</span><span class="p">,</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nodal plane 1: [155.0, 49.0, -87.0]
+</pre></div>
+</div>
+<img alt="../_images/L1_Seismic_catalogs_and_networks_42_1.png" src="../_images/L1_Seismic_catalogs_and_networks_42_1.png" />
+</div>
+</div>
+<section id="event-id-and-additional-information">
+<h4><span class="section-number">6.2.1.1. </span>Event id and additional information<a class="headerlink" href="#event-id-and-additional-information" title="Permalink to this headline">#</a></h4>
+<div class="full-width docutils">
+<p>Let us now obtain the event id assigned to the M=6 Accumuli earthquake</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eventid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">resource_id</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EVENTID:&quot;</span><span class="p">,</span><span class="n">eventid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EVENTID: 7073641
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and download a catalog with just this earthquake but with more information about it than before</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">directory</span><span class="o">+</span><span class="n">eventid</span><span class="o">+</span><span class="s2">&quot;_Accumuli.xml&quot;</span>
+<span class="n">client</span><span class="o">.</span><span class="n">get_events</span><span class="p">(</span><span class="n">eventid</span><span class="o">=</span><span class="n">eventid</span><span class="p">,</span><span class="n">includeallorigins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">includeallmagnitudes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">includearrivals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+<span class="n">catalog</span> <span class="o">=</span> <span class="n">read_events</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">catalog</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 Event(s) in Catalog:
+2016-08-24T01:36:32.000000Z | +42.698,  +13.233 | 6.0  Mw | manual
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Selecting the only event in the catalog, we can now see that there are <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">8</span></code></span> origins and <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">8</span></code></span> magnitudes (instead of just one) and also a new field named <code class="docutils literal notranslate"><span class="pre">picks</span></code>. We will discuss this latter field in <a class="reference internal" href="L4_Earthquake_localization.html#chap-l3"><span class="std std-numref">Lecture 9</span></a> <a class="reference internal" href="L4_Earthquake_localization.html#chap-l3"><span class="std std-ref">Earthquake localization</span></a></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">event</span> <span class="o">=</span> <span class="n">catalog</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Event:	2016-08-24T01:36:32.000000Z | +42.698,  +13.233 | 6.0  Mw | manual
+
+	                  resource_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?eventId=7073641&quot;)
+	                   event_type: &#39;earthquake&#39;
+	                creation_info: CreationInfo(agency_id=&#39;INGV&#39;, author=&#39;hew1_mole#MOD_EQASSEMBLE&#39;, creation_time=UTCDateTime(2016, 8, 24, 1, 36, 52))
+	          preferred_origin_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?originId=27629391&quot;)
+	       preferred_magnitude_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?magnitudeId=31549261&quot;)
+	 preferred_focal_mechanism_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?focalMechanismId=7631&quot;)
+	                         ---------
+	           event_descriptions: 1 Elements
+	                        picks: 699 Elements
+	             focal_mechanisms: 2 Elements
+	                      origins: 8 Elements
+	                   magnitudes: 8 Elements
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>In particular, we can notice that the <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">8</span></code></span> origins have different authors and values</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:40}</span><span class="s2">  </span><span class="si">{1:&gt;7}</span><span class="s2">  </span><span class="si">{2:&gt;7}</span><span class="s2"> </span><span class="si">{3:&gt;6}</span><span class="s2">  </span><span class="si">{4:&gt;10}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;author&quot;</span><span class="p">,</span><span class="s2">&quot;lon&quot;</span><span class="p">,</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span><span class="s2">&quot;dep&quot;</span><span class="p">,</span><span class="s2">&quot;origin_id&quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">origin</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">origins</span><span class="p">:</span>
+    <span class="n">author</span>    <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">creation_info</span><span class="o">.</span><span class="n">author</span>
+    <span class="n">origin_id</span> <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">resource_id</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span>  <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">latitude</span>
+    <span class="n">dep</span> <span class="o">=</span> <span class="n">origin</span><span class="o">.</span><span class="n">depth</span><span class="o">/</span><span class="mf">1e3</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:40}</span><span class="s2">  </span><span class="si">{1:&gt;7.4f}</span><span class="s2">  </span><span class="si">{2:&gt;7.4f}</span><span class="s2"> </span><span class="si">{3:&gt;6.2f}</span><span class="s2">  </span><span class="si">{4:&gt;10}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">author</span><span class="p">,</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="n">dep</span><span class="p">,</span><span class="n">origin_id</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>author                                        lon      lat    dep   origin_id
+
+tdmt_reviewer                             13.2232  42.7063   5.00    26962871
+BULLETIN-INGV                             13.2335  42.6983   8.10    27629391
+tdmt_reviewer                             13.2232  42.7063   5.00    29420591
+tdmt_reviewer                             13.2232  42.7063   5.00    29594981
+hew1_mole#MOD_EQASSEMBLE                  13.1815  42.6883   1.31    26951261
+SURVEY-INGV                               13.2232  42.7063   4.20    26952071
+hew1_mole#MOD_EQASSEMBLE                  13.2563  42.6943  21.92    26951141
+hew1_mole#MOD_EQASSEMBLE                  13.2190  42.6792  16.17    26951211
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>as well as the  the <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">8</span></code></span> magnitudes</p>
+</div>
+<div class="cell tag_hide-input tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:40}</span><span class="s2">  </span><span class="si">{1:&gt;4}</span><span class="s2">  </span><span class="si">{2:&gt;4}</span><span class="s2">   </span><span class="si">{3:&gt;10}</span><span class="s2">  </span><span class="si">{4:&gt;10}</span><span class="s2"> </span><span class="si">{5:&gt;10}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Author&quot;</span><span class="p">,</span><span class="s2">&quot;mag&quot;</span><span class="p">,</span><span class="s2">&quot;std&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">,</span><span class="s2">&quot;mag_id&quot;</span><span class="p">,</span><span class="s2">&quot;origin_id&quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">magnitude</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">magnitudes</span><span class="p">:</span>
+    
+    <span class="n">author</span>    <span class="o">=</span> <span class="n">magnitude</span><span class="o">.</span><span class="n">creation_info</span><span class="o">.</span><span class="n">author</span>
+    
+    <span class="n">mag_id</span> <span class="o">=</span> <span class="n">magnitude</span><span class="o">.</span><span class="n">resource_id</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">origin_id</span> <span class="o">=</span> <span class="n">magnitude</span><span class="o">.</span><span class="n">origin_id</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">mag</span> <span class="o">=</span> <span class="n">magnitude</span><span class="o">.</span><span class="n">mag</span>
+    <span class="n">mag_type</span> <span class="o">=</span> <span class="n">magnitude</span><span class="o">.</span><span class="n">magnitude_type</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">magnitude</span><span class="o">.</span><span class="n">mag_errors</span><span class="o">.</span><span class="n">uncertainty</span>
+    
+    <span class="k">if</span> <span class="n">std</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">std</span><span class="o">=</span><span class="mi">0</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:40}</span><span class="s2">  </span><span class="si">{1:&gt;4.1f}</span><span class="s2">  </span><span class="si">{2:&gt;4.1f}</span><span class="s2">  </span><span class="si">{3:&gt;5}</span><span class="s2">  </span><span class="si">{4:&gt;5}</span><span class="s2">  </span><span class="si">{5:&gt;10}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">author</span><span class="p">,</span><span class="n">mag</span><span class="p">,</span><span class="n">std</span><span class="p">,</span><span class="n">mag_type</span><span class="p">,</span><span class="n">mag_id</span><span class="p">,</span><span class="n">origin_id</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author                                     mag   std         type      mag_id  origin_id
+
+TDMT-INGV Revised                          6.0   0.0     Mw  31549261    29594981
+TDMT-INGV Revised                          6.0   0.0     Mw  29064551    26962871
+TDMT-INGV Revised                          6.0   0.0     Mw  31363711    29420591
+Sala Sismica INGV-Roma                     6.0   0.3     ML  29053271    26952071
+Bollettino Sismico Italiano INGV           6.0   0.3     ML  29758611    27629391
+Sistema Automatico Earthworm-1             6.0   0.6     ML  29052391    26951261
+Sistema Automatico Earthworm-1             6.1   0.7     ML  29052291    26951211
+Sistema Automatico Earthworm-1             5.8   0.5     ML  29052251    26951141
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>In the following, we will attempt to reproduce the results from the Bollettino Sismico Italiano by the INGV estimating the hypocenter location and origin time, as well as the local magnitude. We thus select the preferred origin that is that of Bollettino Sismico Italiano</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">origin</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">preferred_origin</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">PREFERRED ORIGIN:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">origin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PREFERRED ORIGIN:
+
+ Origin
+	        resource_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?originId=27629391&quot;)
+	               time: UTCDateTime(2016, 8, 24, 1, 36, 32) [uncertainty=0.03]
+	          longitude: 13.2335 [uncertainty=0.0024]
+	           latitude: 42.6983 [uncertainty=0.0009]
+	              depth: 8100.0 [uncertainty=200.0]
+	         depth_type: &#39;from location&#39;
+	          method_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?methodId=1&quot;)
+	     earth_model_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?earthModelId=1&quot;)
+	            quality: OriginQuality(associated_phase_count=289, used_phase_count=289, associated_station_count=280, used_station_count=280, standard_error=0.11, azimuthal_gap=28.0, minimum_distance=0.10072, maximum_distance=5.38694)
+	        origin_type: &#39;hypocenter&#39;
+	 origin_uncertainty: OriginUncertainty(horizontal_uncertainty=150.0, min_horizontal_uncertainty=132.0, max_horizontal_uncertainty=154.0, azimuth_max_horizontal_uncertainty=76.0, preferred_description=&#39;uncertainty ellipse&#39;, confidence_level=68.0)
+	    evaluation_mode: &#39;manual&#39;
+	  evaluation_status: &#39;reviewed&#39;
+	      creation_info: CreationInfo(agency_id=&#39;INGV&#39;, author=&#39;BULLETIN-INGV&#39;, creation_time=UTCDateTime(2016, 8, 31, 6, 40, 9), version=&#39;1000&#39;)
+	               ---------
+	           arrivals: 289 Elements
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and look for the associated magnitude by comparing the origin and magnitude identifiers</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">magnitude</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">magnitudes</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">magnitude</span><span class="o">.</span><span class="n">origin_id</span> <span class="o">==</span> <span class="n">origin</span><span class="o">.</span><span class="n">resource_id</span><span class="p">:</span> <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">ASSOCIATED MAGNITUDE:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">magnitude</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ASSOCIATED MAGNITUDE:
+
+ Magnitude
+	    resource_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?magnitudeId=29758611&quot;)
+	            mag: 6.0 [uncertainty=0.3]
+	 magnitude_type: &#39;ML&#39;
+	      origin_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?originId=27629391&quot;)
+	      method_id: ResourceIdentifier(id=&quot;smi:webservices.ingv.it/fdsnws/event/1/query?methodId=1&quot;)
+	  station_count: 159
+	  creation_info: CreationInfo(agency_id=&#39;INGV&#39;, author=&#39;Bollettino Sismico Italiano INGV&#39;, creation_time=UTCDateTime(2016, 8, 30, 10, 32, 53))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>We note, indeed, that the origin identifier of the selected magnitude is the same identifier of the prefered origin. We also note that, now, the preferred origin has a new field named <code class="docutils literal notranslate"><span class="pre">arrivals</span></code>. As for the field <code class="docutils literal notranslate"><span class="pre">picks</span></code>, we will discuss this latter field in <a class="reference internal" href="L4_Earthquake_localization.html#chap-l3"><span class="std std-numref">Lecture 9</span></a> <a class="reference internal" href="L4_Earthquake_localization.html#chap-l3"><span class="std std-ref">Earthquake localization</span></a></p>
+</div>
+</section>
+</section>
+</section>
+<section id="inventory">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">6.3. </span>Inventory</a><a class="headerlink" href="#inventory" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>Let us now download all the seismic stations from all the networks managed to some extent by the INGV thank to the method <code class="docutils literal notranslate"><span class="pre">client.get_stations</span></code>. In particular, we will query the data center for all the seismic stations that have operated between the 2016 and 2017 and the information about their response functions</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inventory</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_stations</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;response&quot;</span><span class="p">,</span><span class="n">starttime</span><span class="o">=</span><span class="n">starttime</span><span class="p">,</span><span class="n">endtime</span><span class="o">=</span><span class="n">endtime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>All these information are stored in an <code class="docutils literal notranslate"><span class="pre">Inventory</span></code> object.  In order to have a first understanding of what we have just downloaded, let us plot it using the the method <code class="docutils literal notranslate"><span class="pre">inventory.plot</span></code> along with the function <code class="docutils literal notranslate"><span class="pre">lab.setup_map</span></code></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">setup_map</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">inventory</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L1_Seismic_catalogs_and_networks_64_0.png" src="../_images/L1_Seismic_catalogs_and_networks_64_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>Almost all stations are located in Italy, but for a few seismic station in Europe, Turkey and Marocco and one in Antartica. Here, the same plot but zoomed in Italy</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="mf">6.5</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mf">47.5</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">setup_map</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">inventory</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L1_Seismic_catalogs_and_networks_66_0.png" src="../_images/L1_Seismic_catalogs_and_networks_66_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>In order to understand what we have just downloaded, let us print the <code class="docutils literal notranslate"><span class="pre">inventory</span></code></p>
+</div>
+<div class="cell tag_full-width tag_output-scroll tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">inventory</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inventory created at 2023-02-01T20:02:57.494000Z
+	Created by: INGV-ONT WEB SERVICE: fdsnws-station | version: 1.1.54
+		    /exist/apps/fdsn-station/fdsnws/station/1/query?starttime=2016-01-...
+	Sending institution: eXistDB (INGV-ONT)
+	Contains:
+		Networks (18):
+			3A, 5J, 7C, AC, BA, GU, IV, IX, MN, NI, OT, OX, RF, SI, ST, TV, XO
+			Z3
+		Stations (666):
+			3A.MZ01 (Saletta - INGV/IMAA-CNR)
+			3A.MZ02 (Casale - INGV)
+			3A.MZ03 (Collalto - INGV)
+			3A.MZ04 (Cossito - INGV/IMAA-CNR)
+			3A.MZ05 (San Tomasso - INGV)
+			3A.MZ06 (San Lorenzo Flaviano - INGV)
+			3A.MZ07 (Sant`Angelo - INGV)
+			3A.MZ08 (Amatrice/RAN - INGV)
+			3A.MZ09 (Sommati - INGV)
+			3A.MZ095 (Colle Spada - ENEA)
+			3A.MZ096 (Colle Posta - ENEA)
+			3A.MZ097 (Cassino - ENEA)
+			3A.MZ098 (Grisciano 1 - ENEA)
+			3A.MZ099 (Terracino - ENEA)
+			3A.MZ10 (Amatrice/San Cipriano - INGV)
+			3A.MZ100 (Fonte del Campo - ENEA)
+			3A.MZ101 (Illica - ENEA)
+			3A.MZ102 (Accumoli Madonna delle Coste - ENEA)
+			3A.MZ103 (Accumoli campo sportivo - ENEA)
+			3A.MZ104 (Tino - ENEA)
+			3A.MZ105 (San Giovanni - ENEA)
+			3A.MZ11 (bedrock nord Sant`Angelo - INGV)
+			3A.MZ12 (Amatrice giardino - INGV)
+			3A.MZ13 (Cornillo Vecchio - INGV)
+			3A.MZ14 (Capricchia bedrock - INGV)
+			3A.MZ15 (Torrita terrazzo basso - INGV)
+			3A.MZ16 (Torrita terrazzo alto - INGV)
+			3A.MZ17 (Scai Agriturismo Narcisi - INGV)
+			3A.MZ18 (Scai alta - INGV)
+			3A.MZ19 (Pasciano cimitero - INGV)
+			3A.MZ20 (Collemoresco - INGV)
+			3A.MZ21 (Poggio Vitellino - INGV)
+			3A.MZ22 (Petrana - INGV)
+			3A.MZ23 (Faizzone - INGV)
+			3A.MZ24 (Rocchetta - INGV)
+			3A.MZ25 (Retrosi 1 - INGV)
+			3A.MZ26 (Retrosi 2 - INGV)
+			3A.MZ27 (San Lorenzo a Pinaco - INGV)
+			3A.MZ28 (Amatrice agriturismo - INGV)
+			3A.MZ29 (Amatrice Caseificio storico - INGV)
+			3A.MZ30 (Amatrice Alberghiero - INGV)
+			3A.MZ31 (Amatrice Fosso in Flysch - INGV)
+			3A.MZ50 (Pozzo Varoni - IMAA-CNR)
+			3A.MZ51 (Cornillo Vecchio - IMAA-CNR)
+			3A.MZ52 (Cossito - IMAA-CNR)
+			3A.MZ60 (Cascello - IDPA-CNR)
+			3A.MZ61 (Collepagliuca - IDPA-CNR/IMAA-CNR)
+			3A.MZ62 (Voceto - IDPA-CNR)
+			3A.MZ63 (Collecreta - IDPA-CNR/IMAA-CNR)
+			3A.MZ64 (Capricchia - IDPA-CNR)
+			5J.SPX2 (Villanova Monteleone)
+			5J.SPX5 (Torpe)
+			5J.SPX6 (Siligo)
+			5J.SPX7 (Ula Tirso (OR))
+			5J.SPX8 (Bultei)
+			7C.CS2FF (Cosenza_MIN2_Bor_115gN_(N--&gt;SE))
+			AC.BCI (Bajram Curri, Albania)
+			AC.KBN (Korce, Albania)
+			AC.LSK (Leskovik, Albania)
+			AC.PHP (Peshkopi, Albania)
+			AC.PUK (Puke, Albania)
+			AC.SRN (Sarande, Albania)
+			AC.VLO (Vlore, Albania)
+			BA.PZUN (Potenza Universita)
+			GU.BHB (Bricherasio (TO) - Italy)
+			GU.BURY (Villa Hanbury (IM) - Italy)
+			GU.CANO (Canova, Magliolo (SV) - Italy)
+			GU.CARD (Cardoso-Stazzema(LU) - Italy)
+			GU.CIRO (Champorcher (AO) - Italy)
+			GU.ENR (Entracque (CN) - Italy)
+			GU.EQUI (Equi Terme (MS) - Italy)
+			GU.GBOS (Grotte di Bossea (CN) - Italy)
+			GU.GORR (Gorreto (GE) - Italy)
+			GU.GRAM (Graiana (PR) - Italy)
+			GU.GSCL (Gusciola (MO) - Italy)
+			GU.IMI (IMPERIA)
+			GU.LSD (Lago del Serru` (TO) - Italy)
+			GU.MAIM (Mastiano (LU) - Italy)
+			GU.MGRO (Montegrosso Pianlatte)
+			GU.NEGI (Perinaldo)
+			GU.PCP (Piancastagna, Ponzone (AL) - Italy)
+			GU.POPM (Popiglio,Piteglio(PT) - Italy)
+			GU.PZZ (Stroppo (CN) - Italy)
+			GU.REMY (St Remy en Bosses(AO)- Italy)
+			GU.RNCA (Ronca, Sant`Olcese(GE) - Italy)
+			GU.RORO (Castelbianco (SV) - Italy)
+			GU.ROTM (Rocchetta Tanaro (AT) - Italy)
+			GU.RRL (Cesana Torinese (TO) - Italy)
+			GU.RSP (Reno Superiore (TO) - Italy)
+			GU.SARM (Sassorosso (LU) - Italy)
+			GU.SATI (Passo dei Salati (AO) - Italy)
+			GU.STV (Sant`Anna di Valdieri(CN) - Italy)
+			GU.TRAV (Traversella (TO) - Italy)
+			IV.ACER (Acerenza)
+			IV.AGLI (Aglientu)
+			IV.AGST (Augusta)
+			IV.AIO (Antillo, Italy)
+			IV.ALJA (Alia)
+			IV.AMUR (Altamura)
+			IV.AOI (Monte Conero)
+			IV.APEC (Apecchio)
+			IV.APPI (Appiano)
+			IV.APRC (Apricena (FG))
+			IV.AQT1 (Arquata del Tronto)
+			IV.ARCI (Arcidosso)
+			IV.ARRO (Arrone)
+			IV.ARVD (ARCEVIA 2)
+			IV.ASOL (Asolo)
+			IV.ASQU (Asqua)
+			IV.ASSB (Assisi San Benedetto)
+			IV.ATBU (AVT - Serra di Burano)
+			IV.ATCC (AVT - Casa Castalda)
+			IV.ATFO (Monte Foce - Gubbio)
+			IV.ATLO (AVT - Montelovesco)
+			IV.ATMC (Monte Cedrone)
+			IV.ATMI (AVT - Monte Miggiano)
+			IV.ATPC (Poggio Castellaccio)
+			IV.ATPI (Pietralunga - Aviosuperficie)
+			IV.ATSC (Scheggia)
+			IV.ATTE (AVT - Monte Tezio)
+			IV.ATVA (AVT - Monte Valcinella)
+			IV.ATVO (AVT - Monte Valentino)
+			IV.BADI (BADIALI)
+			IV.BAG8 (Bagolino)
+			IV.BDI (BAGNI DI LUCCA)
+			IV.BIOG (Camporeale (Ariano Irpino))
+			IV.BLLA (Bellaria)
+			IV.BOB (BOBBIO)
+			IV.BORM (Bormio)
+			IV.BOTM (Botticino Mattina)
+			IV.BRES (BRESSANONE)
+			IV.BRIS (BRISIGHELLA)
+			IV.BRMO (BORMIO)
+			IV.BRSN (BARISANO)
+			IV.BSSO (Busso)
+			IV.BULG (Bulgheria - Camerota)
+			IV.CAAM (Accademia Aeronautica Pozzuoli)
+			IV.CADA (Capodarco)
+			IV.CAFE (Carife)
+			IV.CAFI (Castiglion Fiorentino)
+			IV.CAFL (Arco Felice)
+			IV.CAFR (Castel Frentano)
+			IV.CAGG (Caggiano (SA))
+			IV.CAGR (Agira)
+			IV.CAMP (CAMPOTOSTO)
+			IV.CAPA (Cerignola FG)
+			IV.CAPR (Capriolo)
+			IV.CAR1 (CAROLEI)
+			IV.CASP (Castiglione della Pescaia)
+			IV.CAVE (CAVE)
+			IV.CAVT (Castelvetrano - Marcita)
+			IV.CDCA (Citta di Castello)
+			IV.CDRU (Civita di Ruta - Ottati)
+			IV.CELB (S.Piero in Campo Elba)
+			IV.CELI (Celico, Cosenza)
+			IV.CERA (Filignano)
+			IV.CERT (CERRETO)
+			IV.CESI (Cesi-Serravalle di Chienti)
+			IV.CESX (Cesi)
+			IV.CET2 (Cetraro)
+			IV.CFMN (Monte Nuovo)
+			IV.CGL (PUNTA SERPEDDI)
+			IV.CIGN (SANT ELIA A PIANISI)
+			IV.CIMA (Civitanova Marche)
+			IV.CING (CINGOLI)
+			IV.CLTA (Licata (Agrigento))
+			IV.CMDO (CMDO)
+			IV.CMIS (Faro di Capo Miseno - Stazione Osservatorio Vesuviano)
+			IV.CMPO (Campotto Po)
+			IV.CMPR (Campora)
+			IV.CMSN (Monte S.Angelo)
+			IV.CNCS (Concesio)
+			IV.COLB (Campi Flegrei, Galleria Monte Olibano, Stazione Osservatorio)
+			IV.COR1 (Corinaldo)
+			IV.CORL (Corleone (Palermo))
+			IV.CPGN (Carpegna)
+			IV.CPIS (Campi Flegrei - Fumarola Pisciarelli)
+			IV.CPOZ (Pozzuoli Darsena -Stazione Osservatorio Vesuviano)
+			IV.CPTP (Pietraperzia)
+			IV.CRAC (Craco)
+			IV.CRE (CAPRESE MICHELANGELO)
+			IV.CRJA (COSTA RAJA)
+			IV.CRM1 (Castelraimondo)
+			IV.CRMI (Carmignano)
+			IV.CRND (Cornuda)
+			IV.CRTO (Vesuvio - Cratere Ovest)
+			IV.CSFT (Campi Flegrei - Cratere Solfatara, Interno)
+			IV.CSLB (CASTELBUONO)
+			IV.CSNT (CASTELLINA IN CHIANTI)
+			IV.CSOB (Solfatara Bordo Cratere - Stazione Osservatorio Vesuviano)
+			IV.CSP1 (Cessapalombo)
+			IV.CTI (CASTELLO TESINO)
+			IV.CTL8 (Castelleone)
+			IV.DGI (DORGALI GROTTA ISPINIGOLI)
+			IV.ECHR (Santa Chiara)
+			IV.ECNV (Catenanuova)
+			IV.ECTS (CASTIGLIONE)
+			IV.EL6 (Elcito)
+			IV.EMCN (Monte Conca)
+			IV.EMSG (EMSG)
+			IV.ENIC (ENIC)
+			IV.EPIT (Pozzo Pitarrone, Linguaglossa, Catania)
+			IV.EPOZ (EPOZ)
+			IV.EPZF (Pizzo Felice)
+			IV.ERBM (EREMO DI BISMANTOVA)
+			IV.ERC (ERICE)
+			IV.ESLN (Serra La Nave)
+			IV.ESML (ESML)
+			IV.EUCT (Pavia)
+			IV.EVRN (Santa Venerina)
+			IV.FAEN (Faenza)
+			IV.FAGN (FAGNANO)
+			IV.FANO (Fano)
+			IV.FAVR (FAVARA 2)
+			IV.FCOR (Fonte Corniale (PU))
+			IV.FDMO (Fiordimonte)
+			IV.FEMA (Monte Fema)
+			IV.FERS (FERS)
+			IV.FIAM (FIAMIGNANO)
+			IV.FIR (Firenze)
+			IV.FIU (FONDO FIUMICELLO (MINERBIO))
+			IV.FIU1 (Fiuminata)
+			IV.FNVD (FONTANA VIDOLA)
+			IV.FOSV (Fossato di Vico)
+			IV.FRE8 (Fregona)
+			IV.FRES (Fresagrandinaria)
+			IV.FRON (Frontone)
+			IV.FROS (Frosini)
+			IV.FSSB (FOSSOMBRONE)
+			IV.FVI (FORNI AVOLTRI)
+			IV.GAG1 (Gagliole)
+			IV.GALF (Gagliano Castelferrato)
+			IV.GATE (Gambatesa)
+			IV.GAVE (Gavelli)
+			IV.GIB (GIBILMANNA)
+			IV.GIGS (GIGS)
+			IV.GIUL (GIULIANO DI ROMA)
+			IV.GMB (GAMBARIE)
+			IV.GRI (GIRIFALCO)
+			IV.GRIS (Grisolia)
+			IV.GROG (Isola di Gorgona)
+			IV.GUAR (GUARCINO)
+			IV.GUMA (Gualdo di Macerata)
+			IV.HAGA (HYBLEAN AUGUSTA)
+			IV.HAVL (Avola)
+			IV.HBSP (Bosco Santo  Pietro (Catania))
+			IV.HCRL (Carlentini)
+			IV.HLNI (Lentini Masseria Cucco)
+			IV.HMDC (Modica)
+			IV.HPAC (HPAC)
+			IV.HVZN (Vizzini)
+			IV.IACL (ALICUDI)
+			IV.IFIL (Filicudi)
+			IV.IFOR (Ischia - Faro Punta Imperatore)
+			IV.ILOS (Lipari Observatory)
+			IV.IMOL (Imola)
+			IV.IMTC (Ischia - Monte Corvo)
+			IV.INTR (INTRODACQUA)
+			IV.IOCA (Ischia - Osservatorio Casamicciola)
+			IV.IST3 (Stromboli-Oss. Fiorentini)
+			IV.ISTR (Ginostra)
+			IV.IVGP (Grotta Palizzi Isola di Vulcano)
+			IV.IVPL (Vulcano Piano)
+			IV.IVUG (Isola Vulcano Grillo)
+			IV.JOPP (Joppolo)
+			IV.LADO (San Nicola dell Alto)
+			IV.LATB (Latina borehole)
+			IV.LATE (Latera)
+			IV.LAV9 (LANUVIO)
+			IV.LEOD (Capriano del Colle)
+			IV.LIK (LIK)
+			IV.LINA (Isola di Linosa)
+			IV.LMD (LMD)
+			IV.LNSS (LEONESSA)
+			IV.LPDG (LPDG)
+			IV.LPEL (Lama dei Peligni)
+			IV.LRP (Arpino)
+			IV.LTRZ (LATERZA)
+			IV.MA9 (MARINO)
+			IV.MABI (MALGA BISSINA)
+			IV.MAGA (Magasa)
+			IV.MAGO (Magona)
+			IV.MAON (MONTE ARGENTARIO)
+			IV.MARS (Marsala)
+			IV.MBAL (Monte Baldo Osservatorio Astronomico Novezzina)
+			IV.MC2 (Monte Cornaccione)
+			IV.MCEL (Monticello)
+			IV.MCI (Montecassino)
+			IV.MCIF (Montecalvo in Foglia)
+			IV.MCIV (Monte Civitella)
+			IV.MCPD (Capo Orlando (Messina))
+			IV.MCRV (Calabritto - Mt. Cervialto)
+			IV.MCSR (Castroreale)
+			IV.MCT (MONTECAMMARATA)
+			IV.MDAR (Monte Daria)
+			IV.MDI (MONTE DI NESE)
+			IV.MELA (Melanico - S. Croce di Magliano)
+			IV.MERA (Merate)
+			IV.MESG (Mesagne)
+			IV.MEU (MONTE LAURO)
+			IV.MF5 (Montefalcone Appennino)
+			IV.MFNL (MONTE FINESTRELLE)
+			IV.MGAB (Montegabbione)
+			IV.MGR (MORIGERATI)
+			IV.MIDA (MIRANDA)
+			IV.MIGL (Miglionico)
+			IV.MILN (Milano)
+			IV.MILZ (Milazzo Faro)
+			IV.MMGO (MONTE MAGAGGIARO)
+			IV.MMN (MORMANNO)
+			IV.MMO1 (Montemonaco)
+			IV.MMUR (Monte Murano)
+			IV.MNO (MONTE SORO)
+			IV.MNTP (Montappone)
+			IV.MNTT (Montottone)
+			IV.MNTV (Mantova)
+			IV.MOCL (Montecuccoli)
+			IV.MOCO (Biccari - Monte Cornacchia)
+			IV.MODE (Modena)
+			IV.MODR (Mondragone)
+			IV.MOMA (Monte Martano)
+			IV.MONC (Moncucco Torinese)
+			IV.MPAG (Monte Paganuccio)
+			IV.MPAZ (Palizzi)
+			IV.MPG (MONTE PELLEGRINO)
+			IV.MPNC (San Pier Niceto, gia PORTELLA MANDANICI)
+			IV.MPPT (Montemurlo)
+			IV.MRB1 (MONTE ROCCHETTA)
+			IV.MRGE (Morge)
+			IV.MRLC (Muro Lucano)
+			IV.MRVN (Minervino Murge)
+			IV.MSAG (Monte S. Angelo)
+			IV.MSCL (SCILLA)
+			IV.MSFR (San Fratello)
+			IV.MSRU (POGGIO SCUDEARU)
+			IV.MSSA (Maissana)
+			IV.MTCE (MONTECELIO)
+			IV.MTCR (MTCR)
+			IV.MTGR (MONTAGNA GRANDE)
+			IV.MTL1 (Matelica)
+			IV.MTMR (Montemarano(AV))
+			IV.MTRA (Matera di Acquasanta Terme (AP))
+			IV.MTRZ (Monterenzio)
+			IV.MTSN (Montesano sulla Marcellana)
+			IV.MTTG (MOTTA SAN GIOVANNI)
+			IV.MUCR (Ucria)
+			IV.MURB (MONTE URBINO)
+			IV.NARO (Abbazia di Naro)
+			IV.NDIM (Novi di Modena)
+			IV.NEVI (Neviano degli Arduini)
+			IV.NOCI (Noci)
+			IV.NOV (Novara di Sicilia)
+			IV.NRCA (NORCIA)
+			IV.OFFI (Offida)
+			IV.OPPE (Oppeano)
+			IV.ORI (ORIOLO CALABRO)
+			IV.ORZI (Orzinuovi)
+			IV.OSSC (OSSC)
+			IV.OVO (OSSERVATORIO VESUVIANO)
+			IV.PALZ (Palazzo San Gervasio)
+			IV.PAOL (Paolisi)
+			IV.PARC (Parchiule)
+			IV.PCRO (Pietralacroce (Ancona))
+			IV.PE3 (Peglio)
+			IV.PESA (PESARO)
+			IV.PETRA (Petralia Soprana)
+			IV.PF6 (Pievefavera)
+			IV.PIEI (PIEIA)
+			IV.PIGN (Pignataro Maggiore (CE))
+			IV.PII (PISA)
+			IV.PIO1 (Pioraco)
+			IV.PIPA (Pietrapaola)
+			IV.PLAC (Placanica)
+			IV.PLLN (POLLINA)
+			IV.PLMA (Palmaria-Portovenere)
+			IV.POFI (Posta Fibreno)
+			IV.PP3 (PP3)
+			IV.PRMA (Parma)
+			IV.PSB1 (PESCO SANNITA)
+			IV.PTCC (PATOCCO)
+			IV.PTMD (Pantelleria - Kuddia Mida)
+			IV.PTQR (PIETRAQUARIA)
+			IV.PTRJ (Pietraroja)
+			IV.PTRP (PIETRAPERTOSA)
+			IV.QLNO (QUILIANO)
+			IV.RAFF (Raffo Rosso)
+			IV.RAVA (RAVARINO)
+			IV.RCAV (Rocca di Cave)
+			IV.RDP (ROCCA DI PAPA)
+			IV.RESU (Resuttano)
+			IV.RIBO (RIBO)
+			IV.RM33 ()
+			IV.RMP (MONTE PORZIO CATONE)
+			IV.RNI2 (RIONERO SANNITICO)
+			IV.ROM9 (ROMA (sede INGV))
+			IV.ROVR (Rovere  Veronese)
+			IV.RSM2 (Repubblica San Marino)
+			IV.RUFI (RUFI)
+			IV.SACR (S. CROCE DEL SANNIO)
+			IV.SACS (San Casciano dei Bagni)
+			IV.SAIV (Sant Angelo in Vado (PU))
+			IV.SALB (San Lorenzo Bellizzi)
+			IV.SALO (Salo)
+			IV.SAMA (S.Maria delle Mole (Ciampino, Roma))
+			IV.SANR (Sandrigo)
+			IV.SAP2 (Sant Angelo in Pontano (MC))
+			IV.SARZ (Sarezzano)
+			IV.SBPO (S.Benedetto Po)
+			IV.SCHR (S. CHIRICO RAPARO)
+			IV.SCTE (Santa Cesarea Terme)
+			IV.SEF1 (Sefro)
+			IV.SEI (SANT AGATA)
+			IV.SENI (Senigallia)
+			IV.SERM (Semide)
+			IV.SERS (Sersale)
+			IV.SFI (SANTA SOFIA)
+			IV.SGG (S.Gregorio Matese)
+			IV.SGRT (San Giovanni Rotondo)
+			IV.SGTA (Sant Agata di Puglia)
+			IV.SIRI (Monte Sirino - Moliterno)
+			IV.SLCN (SALA CONSILINA)
+			IV.SMA1 (San Martino)
+			IV.SNAL (S. Angelo dei Lombardi)
+			IV.SNTG (ESANATOGLIA)
+			IV.SOI (SAMO)
+			IV.SOLUN (SOLUNTO)
+			IV.SPS2 (Spezzano Piccolo)
+			IV.SRES (Monte Soratte)
+			IV.SSFR (Montelago di Sassoferrato)
+			IV.SSM1 (San Severino Marche)
+			IV.SSP9 (Sansepolcro)
+			IV.SSY (SORTINO)
+			IV.STAL (Staligial)
+			IV.STR4 (STROMBOLI 4)
+			IV.STRG (Stromboli-Localit.. Labronzo)
+			IV.T0104 (Madonna delle Grazie (Coppito) - AQ)
+			IV.T0110 (Collepietro - AQ)
+			IV.T0701 (Mormanno)
+			IV.T0702 (Mormanno)
+			IV.T1101 (Campochiaro (CB))
+			IV.T1201 (Domo (RI))
+			IV.T1202 (Villanova (RI))
+			IV.T1204 (Cossito (RI))
+			IV.T1211 (Morro Reatino RI)
+			IV.T1212 (Avendita PG)
+			IV.T1213 (Savelli PG)
+			IV.T1214 (Forca Canapine AP)
+			IV.T1215 (Reggiano PG)
+			IV.T1216 (Castelvecchio PG)
+			IV.T1217 (Poggiodomo PG)
+			IV.T1218 (Civita PG)
+			IV.T1219 (Massaprofoglio MC)
+			IV.T1220 (Baregnano MC)
+			IV.T1221 (Spina Nuova PG)
+			IV.T1222 (Castel Sant Angelo, Loc. Ville (RI))
+			IV.T1241 (Roccafluvione, Frazione Osoli  Ascoli Piceno)
+			IV.T1242 (Castelluccio di Norcia Perugia)
+			IV.T1243 (Rocca Santa Maria, Loc. Ceppo (TE))
+			IV.T1244 (Spelonga)
+			IV.T1245 (Castelsantangelo Sul Nera Macerata)
+			IV.T1246 (Crognaleto)
+			IV.T1247 (Pizzoli)
+			IV.T1256 (Bolognola Macerata)
+			IV.T1299 (T1299)
+			IV.TB01 (Gubbio)
+			IV.TB02 (Pietralunga)
+			IV.TB03 (Pietralunga)
+			IV.TDS (TERRANOVA DA SIBARI)
+			IV.TEOL (Teolo)
+			IV.TERO (TERAMO)
+			IV.TOLF (TOLFA)
+			IV.TRE1 (Treia)
+			IV.TREG (Tregnago)
+			IV.TREM (ISOLE TREMITI - SAN NICOLA)
+			IV.TRIF (Trifonti)
+			IV.TRIV (Trivento)
+			IV.TRTR (Tortoreto Alta)
+			IV.USI (USTICA)
+			IV.VAGA (Valle Agricola)
+			IV.VARE (Varese)
+			IV.VARP (Vesuvio - Array Permanente)
+			IV.VBKN (Vesuvio - Bunker Nord, Stazione Osservatorio Vesuviano)
+			IV.VCEL (VILLA CELIERA)
+			IV.VCNE (Vesuvio Cratere Nord-Est - Stazione Osservatorio Vesuviano)
+			IV.VCRE (Vesuvio - Cratere Est, Stazione Osservatorio Vesuviano)
+			IV.VENL (Venezia Lido)
+			IV.VENT (VENTOTENE)
+			IV.VITU (Vitulano)
+			IV.VIVA (Vivaro)
+			IV.VMG (VILLORE DEL MUGELLO)
+			IV.VOBA (Vobarno)
+			IV.VTIR (Vesuvio - Forestale)
+			IV.VULT (Monte Vulture - Melfi)
+			IV.VVDG (Vesuvio Valle del Gigante)
+			IV.VVLD (VILLAVALLELONGA)
+			IV.ZCCA (ZOCCA)
+			IV.ZEN8 (San Zeno di Montagna)
+			IV.ZONE (ZONE)
+			IV.ZOVE (Zovencedo)
+			IX.AND3 (Station Andretta, Italy)
+			IX.AVG3 (Station Avigliano, Italy)
+			IX.BEL3 (Station Bella, Italy)
+			IX.BENI (Station Universita` Del Sannio, Italy)
+			IX.BSC3 (Station Bisaccia, Italy)
+			IX.CGG3 (Station Caggiano, Italy)
+			IX.CLT3 (Station Calitri, Italy)
+			IX.CMP3 (Station Campagna, Italy)
+			IX.COL3 (Station Colliano, Italy)
+			IX.CSG3 (Station Toppo Di Castelgrande (Osservatorio Astronomico), It)
+			IX.LGS3 (Station Luogosano, Italy)
+			IX.LIO3 (Station Lioni, Italy)
+			IX.MNT3 (Station Montella, Italy)
+			IX.MRN3 (Station Marsico Nuovo (PZ), Italy)
+			IX.NAPI (Station Complesso Universitario Monte Sant`Angelo, Italy)
+			IX.NSC3 (Station Nusco, Italy)
+			IX.PGN3 (Station Pignola, Italy)
+			IX.PST3 (Station Postiglione, Italy)
+			IX.RDM3 (Station Ruvo Del Monte, Italy)
+			IX.RSF3 (Station Rocca San Felice, Italy)
+			IX.SALI (Station CIMA - Sant`Angelo dei Lombardi, Italy)
+			IX.SCL3 (Station Muro Lucano (Serra Campolungo), Italy)
+			IX.SFL3 (Station San Fele, Italy)
+			IX.SNR3 (Station Senerchia, Italy)
+			IX.SRN3 (Station Sant`Arsenio, Italy)
+			IX.SSB3 (Station San Sossio Baronia, Italy)
+			IX.STN3 (Station Satriano, Italy)
+			IX.TEGI (Station Teggiano - Istituto P. Leto, Italy)
+			IX.VDP3 (Station Vietri Di Potenza, Italy)
+			IX.VDS3 (Station Muro Lucano (Varco Staccarino), Italy)
+			IX.VGG3 (Station Viggiano (Prot.Civ.Gr.Lucano), Italy)
+			MN.AQU (L&#39;Aquila, Italy)
+			MN.ARPR (Arapgir, Turkey)
+			MN.BLY (Banja Luka, Bosnia and Herzegovina)
+			MN.BNI (Bardonecchia, Italy)
+			MN.BZS (Buzias, Romania)
+			MN.CEL (Celeste, Italy)
+			MN.CLTB (Caltabellotta, Italy)
+			MN.CUC (Castrocucco, Italy)
+			MN.DIVS (Divcibare, Serbia)
+			MN.DPC (Dobruska/Polom, Czech Republic)
+			MN.IDI (Anogia, Greece)
+			MN.ISP (Isparta, Turkey)
+			MN.KEK (Kerkira Island, Greece)
+			MN.KLV (Kalavryta, Achaia, Greece)
+			MN.PDG (Podgorica, Montenegro)
+			MN.RTC (Rabat, Morocco)
+			MN.THL (Klokotos, Thessalia, Greece)
+			MN.TIP (Timpagrande, Italy)
+			MN.TIR (Tirana, Albania)
+			MN.TNV (Terra Nova Bay, Antarctica)
+			MN.TRI (Trieste, Italy)
+			MN.TUE (Stuetta, Italy)
+			MN.VAE (Valguarnera, Italy)
+			MN.VLC (Villacollemandina, Italy)
+			MN.VSL (Villasalto, Italy)
+			MN.VTS (Vitosha, Bulgary)
+			MN.WDD (Wied Dalam, Malta)
+			NI.DST2 (Trieste Universita DST, Italy)
+			NI.PALA (Monte Pala, Italy)
+			NI.POLC (Polcenigo, Italy)
+			NI.PURA (Passo Pura, Italy)
+			NI.VINO (Villanova, Italy)
+			OT.TAR1 (Taranto)
+			OX.ACOM (Acomizza, Italy)
+			OX.AGOR (Agordo, Italy)
+			OX.BAD (Bernadia, Italy)
+			OX.BALD (Monte Baldo, Italy)
+			OX.BOO (Bordano, Italy)
+			OX.CAE (Caneva, Italy)
+			OX.CGRP (Cima Grappa, Italy)
+			OX.CIMO (Cimolais, Italy)
+			OX.CLUD (Cludinico, Italy)
+			OX.DRE (Drenchia, Italy)
+			OX.FUSE (Fusea, Italy)
+			OX.MARN (Marana, Italy)
+			OX.MLN (Malnisio, Italy)
+			OX.MPRI (Monte Prat, Italy)
+			OX.PLRO (Paularo, Italy)
+			OX.PRED (Cave del Predil, Italy)
+			OX.SABO (Monte Sabotino, Italy)
+			OX.VARN (Col Varnada, Italy)
+			OX.ZOU2 (Zoufplan, Italy)
+			RF.GEPF (Gemona Piazza del Ferro)
+			SI.ABSI (Aberstuckl (Sarntal))
+			SI.BOSI (Bozen/Zivilschutz Zentrale)
+			SI.KOSI (Kohlern/Titschen)
+			SI.LUSI (Lusi)
+			SI.MOSI (Grossmontoni/Vinschgau)
+			SI.RISI (Rein in Taufers/Ahrntal)
+			SI.ROSI (Rosskopf/Sterzing)
+			ST.CARE (Lago Careser)
+			ST.DOSS (DOSS)
+			ST.GAGG (Gaggia)
+			ST.OZOL (Ozolo)
+			ST.PANI (Panarotta)
+			ST.RONC (Roncone)
+			ST.VARA (Varagna)
+			ST.ZIAN (Ziano)
+			TV.AG11 (Viggiano (PZ))
+			TV.AG51 (Grumento Nova (PZ))
+			TV.H2O5 (Montecassino)
+			TV.SF01 (Poggio Pratacci)
+			TV.SF03 (Valle Cupa)
+			TV.SF04 (Casetta)
+			TV.SF11 (Podere del Sole)
+			TV.SF13 (Bagnolo)
+			TV.SF14 (Selvena)
+			TV.SU26 (Carbonia Iglesias, Loc. Su Bruncu (CI))
+			TV.TN05 (Corleto Perticara (PZ))
+			TV.TT08 (Gorgoglione (MT))
+			XO.AM01 (Torre del Podestà, Amandola)
+			XO.AM02 (Istituto Tecnico, Amandola)
+			XO.AM03 (Ospedale, Amandola)
+			XO.AM04 (Base Costone Ospedale, Amandola)
+			XO.AM05 (Amandola (FM) Campo sportivo)
+			XO.CP01 (Capitignano campo calcio)
+			XO.CP02 (Mopolino Via Repubblica Signora Angela)
+			XO.CP04 (Mopolino via del Fosso)
+			XO.CP05 (Capitignano via di Sopra)
+			XO.CP06 (Capitignano Paterno campetto)
+			XO.CP07 (Giardino di un ex asilo a San Giovanni Paganica (AQ))
+			XO.CV01 (Falsabraga in Fortezza, Civitella del Tronto)
+			XO.CV02 (c/o Porta Napoli in L. Vinciguerra, Civitella del Tronto)
+			XO.CV03 (Via Salinello, Civitella del Tronto)
+			XO.CV04 (Edificio privato in via Roma 88, Civitella del Tronto)
+			XO.CV05 (Parte terminale di via del Parnaso, Civitella del Tronto)
+			XO.MB01 (Capitignano)
+			XO.MB02 (Pago - Rovagnano)
+			XO.MB03 (Capitignano - Terreno De Andreis)
+			XO.MB04 (Capitignano)
+			XO.MB05 (Capitignano - Stadio)
+			XO.MB06 (Piedicolle)
+			XO.MB07 (Marignano)
+			XO.MB08 (Capitignano - Piazza V x Cavo)
+			XO.MB09 (Paterno - Campetto)
+			XO.MB10 (Capitignano - Porcareccia)
+			XO.MB12 (Montereale)
+			XO.MN02 (Montereale PiediColle Trocchi)
+			XO.MN03 (Montereale PiediColle Di Loreto)
+			XO.MN04 (Montereale isola ecologica)
+			XO.MN06 (Montereale ex municipio ran)
+			XO.MN08 (Montereale ex prefettura)
+			XO.MN09 (Montereale ex prefettura)
+			XO.SGF1 (San Giovanni - Via della Montagna)
+			XO.SGF2 (San Giovanni)
+			XO.SGF3 (San Giovanni - cava diurna a 40 metri verso nord)
+			XO.SGF5 (San Giovanni - cava dismessa)
+			XO.SGF6 (San Giovanni)
+			XO.SGF7 (San Giovanni - dentro recinto picnic vicino palizzata)
+			XO.SGFR (San Giovanni)
+			Z3.A300A (Muzzana del Turgnano (UD))
+			Z3.A301A (Isiata (VE))
+			Z3.A302A (Resana (TV))
+			Z3.A303A (Lido-Pellestrina (VE))
+			Z3.A304A (Bellombra (RO))
+			Z3.A305A (Porto Tolle (RO), Italy)
+			Z3.A306A (Viano (RE), Italy)
+			Z3.A307A (Bentivoglio (BO), Italy)
+			Z3.A308A (Longastrino (FE), Italy)
+			Z3.A309A (Martorano (FC), Italy)
+			Z3.A312A (Bozzolo (MN))
+			Z3.A313A (Volta Mantovana (MN))
+			Z3.A316A (Montecristo (LI))
+			Z3.A317A (Capraia (LI))
+			Z3.A318A (Donoratico (LI))
+			Z3.A319A (Santa Luce (PI))
+		Channels (2962):
+			3A.MZ01..EHZ, 3A.MZ01..EHN, 3A.MZ01..EHE, 3A.MZ01..HNZ (2x), 
+			3A.MZ01..HNN (2x), 3A.MZ01..HNE (2x), 3A.MZ02..EHZ, 3A.MZ02..EHN, 
+			3A.MZ02..EHE, 3A.MZ02..HNZ, 3A.MZ02..HNN, 3A.MZ02..HNE, 
+			3A.MZ03..EHZ, 3A.MZ03..EHN, 3A.MZ03..EHE, 3A.MZ03..HNZ, 
+			3A.MZ03..HNN, 3A.MZ03..HNE, 3A.MZ04..EHZ, 3A.MZ04..EHN, 
+			3A.MZ04..EHE, 3A.MZ04..HNZ (2x), 3A.MZ04..HNN (2x), 
+			3A.MZ04..HNE (2x), 3A.MZ05..EHZ, 3A.MZ05..EHN, 3A.MZ05..EHE, 
+			3A.MZ05..HNZ, 3A.MZ05..HNN, 3A.MZ05..HNE, 3A.MZ06..EHZ, 
+			3A.MZ06..EHN, 3A.MZ06..EHE, 3A.MZ06..HNZ, 3A.MZ06..HNN, 
+			3A.MZ06..HNE, 3A.MZ07..EHZ, 3A.MZ07..EHN, 3A.MZ07..EHE, 
+			3A.MZ07..HNZ, 3A.MZ07..HNN, 3A.MZ07..HNE, 3A.MZ08..EHZ, 
+			3A.MZ08..EHN, 3A.MZ08..EHE, 3A.MZ08..HNZ, 3A.MZ08..HNN, 
+			3A.MZ08..HNE, 3A.MZ09..EHZ, 3A.MZ09..EHN, 3A.MZ09..EHE, 
+			3A.MZ09..HNZ, 3A.MZ09..HNN, 3A.MZ09..HNE, 3A.MZ095..EHZ, 
+			3A.MZ095..EHN, 3A.MZ095..EHE, 3A.MZ096..EHZ, 3A.MZ096..EHN, 
+			3A.MZ096..EHE, 3A.MZ097..EHZ, 3A.MZ097..EHN, 3A.MZ097..EHE, 
+			3A.MZ098..EHZ, 3A.MZ098..EHN, 3A.MZ098..EHE, 3A.MZ099..EHZ, 
+			3A.MZ099..EHN, 3A.MZ099..EHE, 3A.MZ10..EHZ, 3A.MZ10..EHN, 
+			3A.MZ10..EHE, 3A.MZ10..HNZ (2x), 3A.MZ10..HNN (2x), 
+			3A.MZ10..HNE (2x), 3A.MZ100..EHZ, 3A.MZ100..EHN, 3A.MZ100..EHE, 
+			3A.MZ101..EHZ, 3A.MZ101..EHN, 3A.MZ101..EHE, 3A.MZ102..HNZ, 
+			3A.MZ102..HNN, 3A.MZ102..HNE, 3A.MZ103..EHZ, 3A.MZ103..EHN, 
+			3A.MZ103..EHE, 3A.MZ104..EHZ, 3A.MZ104..EHN, 3A.MZ104..EHE, 
+			3A.MZ105..EHZ, 3A.MZ105..EHN, 3A.MZ105..EHE, 3A.MZ11..EHZ, 
+			3A.MZ11..EHN, 3A.MZ11..EHE, 3A.MZ11..HNZ, 3A.MZ11..HNN, 
+			3A.MZ11..HNE, 3A.MZ12..EHZ, 3A.MZ12..EHN, 3A.MZ12..EHE, 
+			3A.MZ12..HNZ, 3A.MZ12..HNN, 3A.MZ12..HNE, 3A.MZ13..EHZ, 
+			3A.MZ13..EHN, 3A.MZ13..EHE, 3A.MZ13..HNZ, 3A.MZ13..HNN, 
+			3A.MZ13..HNE, 3A.MZ14..EHZ, 3A.MZ14..EHN, 3A.MZ14..EHE, 
+			3A.MZ14..HNZ, 3A.MZ14..HNN, 3A.MZ14..HNE, 3A.MZ15..EHZ, 
+			3A.MZ15..EHN, 3A.MZ15..EHE, 3A.MZ15..HNZ, 3A.MZ15..HNN, 
+			3A.MZ15..HNE, 3A.MZ16..EHZ, 3A.MZ16..EHN, 3A.MZ16..EHE, 
+			3A.MZ16..HNZ, 3A.MZ16..HNN, 3A.MZ16..HNE, 3A.MZ17..EHZ, 
+			3A.MZ17..EHN, 3A.MZ17..EHE, 3A.MZ17..HNZ, 3A.MZ17..HNN, 
+			3A.MZ17..HNE, 3A.MZ18..EHZ, 3A.MZ18..EHN, 3A.MZ18..EHE, 
+			3A.MZ18..HNZ, 3A.MZ18..HNN, 3A.MZ18..HNE, 3A.MZ19..EHZ, 
+			3A.MZ19..EHN, 3A.MZ19..EHE, 3A.MZ19..HNZ, 3A.MZ19..HNN, 
+			3A.MZ19..HNE, 3A.MZ20..EHZ, 3A.MZ20..EHN, 3A.MZ20..EHE, 
+			3A.MZ20..HNZ, 3A.MZ20..HNN, 3A.MZ20..HNE, 3A.MZ21..EHZ, 
+			3A.MZ21..EHN, 3A.MZ21..EHE, 3A.MZ21..HNZ, 3A.MZ21..HNN, 
+			3A.MZ21..HNE, 3A.MZ22..EHZ, 3A.MZ22..EHN, 3A.MZ22..EHE, 
+			3A.MZ22..HNZ, 3A.MZ22..HNN, 3A.MZ22..HNE, 3A.MZ23..EHZ, 
+			3A.MZ23..EHN, 3A.MZ23..EHE, 3A.MZ23..HNZ, 3A.MZ23..HNN, 
+			3A.MZ23..HNE, 3A.MZ24..EHZ, 3A.MZ24..EHN, 3A.MZ24..EHE, 
+			3A.MZ24..HNZ, 3A.MZ24..HNN, 3A.MZ24..HNE, 3A.MZ25..EHZ, 
+			3A.MZ25..EHN, 3A.MZ25..EHE, 3A.MZ26..EHZ, 3A.MZ26..EHN, 
+			3A.MZ26..EHE, 3A.MZ26..HNZ, 3A.MZ26..HNN, 3A.MZ26..HNE, 
+			3A.MZ27..EHZ, 3A.MZ27..EHN, 3A.MZ27..EHE, 3A.MZ27..HNZ, 
+			3A.MZ27..HNN, 3A.MZ27..HNE, 3A.MZ28..EHZ, 3A.MZ28..EHN, 
+			3A.MZ28..EHE, 3A.MZ28..HNZ, 3A.MZ28..HNN, 3A.MZ28..HNE, 
+			3A.MZ29..EHZ, 3A.MZ29..EHN, 3A.MZ29..EHE, 3A.MZ29..HNZ, 
+			3A.MZ29..HNN, 3A.MZ29..HNE, 3A.MZ30..EHZ, 3A.MZ30..EHN, 
+			3A.MZ30..EHE, 3A.MZ30..HNZ, 3A.MZ30..HNN, 3A.MZ30..HNE, 
+			3A.MZ31..EHZ, 3A.MZ31..EHN, 3A.MZ31..EHE, 3A.MZ31..HNZ, 
+			3A.MZ31..HNN, 3A.MZ31..HNE, 3A.MZ50..HNZ, 3A.MZ50..HNN, 
+			3A.MZ50..HNE, 3A.MZ51..HNZ, 3A.MZ51..HNN, 3A.MZ51..HNE, 
+			3A.MZ52..HNZ, 3A.MZ52..HNN, 3A.MZ52..HNE, 3A.MZ60..EHZ, 
+			3A.MZ60..EHN, 3A.MZ60..EHE, 3A.MZ61..EHZ, 3A.MZ61..EHN, 
+			3A.MZ61..EHE, 3A.MZ61..HNZ, 3A.MZ61..HNN, 3A.MZ61..HNE, 
+			3A.MZ62..EHZ, 3A.MZ62..EHN, 3A.MZ62..EHE, 3A.MZ63..EHZ, 
+			3A.MZ63..EHN, 3A.MZ63..EHE, 3A.MZ63..HNZ, 3A.MZ63..HNN, 
+			3A.MZ63..HNE, 3A.MZ64..EHZ, 3A.MZ64..EHN, 3A.MZ64..EHE, 
+			5J.SPX2..EHZ, 5J.SPX2..EHN, 5J.SPX2..EHE, 5J.SPX5..EHZ, 
+			5J.SPX5..EHN, 5J.SPX5..EHE, 5J.SPX6..EHZ, 5J.SPX6..EHN, 
+			5J.SPX6..EHE, 5J.SPX7..EHZ, 5J.SPX7..EHN, 5J.SPX7..EHE, 
+			5J.SPX8..EHZ, 5J.SPX8..EHN, 5J.SPX8..EHE, 7C.CS2FF..HHZ, 
+			7C.CS2FF..HH1, 7C.CS2FF..HH2, 7C.CS2FF..HNZ, 7C.CS2FF..HN1, 
+			7C.CS2FF..HN2, AC.BCI..HHZ, AC.BCI..HHN, AC.BCI..HHE, AC.KBN..HHZ, 
+			AC.KBN..HHN, AC.KBN..HHE, AC.LSK..HHZ, AC.LSK..HHN, AC.LSK..HHE, 
+			AC.PHP..HHZ, AC.PHP..HHN, AC.PHP..HHE, AC.PHP..HNZ, AC.PHP..HNN, 
+			AC.PHP..HNE, AC.PUK..HHZ, AC.PUK..HHN, AC.PUK..HHE, AC.SRN..HHZ, 
+			AC.SRN..HHN, AC.SRN..HHE, AC.VLO..HHZ, AC.VLO..HHN, AC.VLO..HHE, 
+			BA.PZUN..HHZ, BA.PZUN..HHN, BA.PZUN..HHE, BA.PZUN..HNZ, 
+			BA.PZUN..HNN, BA.PZUN..HNE, GU.BHB..HHZ, GU.BHB..HHN, GU.BHB..HHE, 
+			GU.BHB..HNZ, GU.BHB..HNN, GU.BHB..HNE, GU.BURY..HHZ, GU.BURY..HHN, 
+			GU.BURY..HHE, GU.CANO..HHZ, GU.CANO..HHN, GU.CANO..HHE, 
+			GU.CARD..HHZ, GU.CARD..HHN, GU.CARD..HHE, GU.CIRO..HHZ, 
+			GU.CIRO..HHN, GU.CIRO..HHE, GU.ENR..HHZ, GU.ENR..HHN, GU.ENR..HHE, 
+			GU.EQUI..HHZ, GU.EQUI..HHN, GU.EQUI..HHE, GU.GBOS..HHZ, 
+			GU.GBOS..HHN, GU.GBOS..HHE, GU.GORR..HHZ, GU.GORR..HHN, 
+			GU.GORR..HHE, GU.GRAM..HHZ, GU.GRAM..HHN, GU.GRAM..HHE, 
+			GU.GSCL..HHZ, GU.GSCL..HHN, GU.GSCL..HHE, GU.IMI..HHZ, GU.IMI..HHN
+			GU.IMI..HHE, GU.LSD..HHZ, GU.LSD..HHN, GU.LSD..HHE, GU.MAIM..HHZ
+			GU.MAIM..HHN, GU.MAIM..HHE, GU.MGRO..HHZ, GU.MGRO..HHN, 
+			GU.MGRO..HHE, GU.MGRO..HNZ, GU.MGRO..HNN, GU.MGRO..HNE, 
+			GU.NEGI..BHZ, GU.NEGI..BHN, GU.NEGI..BHE, GU.PCP..HHZ, GU.PCP..HHN
+			GU.PCP..HHE, GU.POPM..HHZ, GU.POPM..HHN, GU.POPM..HHE, 
+			GU.PZZ..HHZ, GU.PZZ..HHN, GU.PZZ..HHE, GU.REMY..HHZ, GU.REMY..HHN, 
+			GU.REMY..HHE, GU.REMY..HNZ, GU.REMY..HNN, GU.REMY..HNE, 
+			GU.RNCA..HHZ, GU.RNCA..HHN, GU.RNCA..HHE, GU.RORO..HHZ, 
+			GU.RORO..HHN, GU.RORO..HHE, GU.ROTM..HHZ, GU.ROTM..HHN, 
+			GU.ROTM..HHE, GU.RRL..HHZ, GU.RRL..HHN, GU.RRL..HHE, GU.RSP..HHZ, 
+			GU.RSP..HHN, GU.RSP..HHE, GU.RSP..HNZ, GU.RSP..HNN, GU.RSP..HNE, 
+			GU.SARM..EHZ, GU.SARM..EHN, GU.SARM..EHE, GU.SATI..HHZ, 
+			GU.SATI..HHN, GU.SATI..HHE, GU.SATI..HNZ, GU.SATI..HNN, 
+			GU.SATI..HNE, GU.STV..HHZ, GU.STV..HHN, GU.STV..HHE, GU.TRAV..HHZ, 
+			GU.TRAV..HHN, GU.TRAV..HHE, IV.ACER..HHZ, IV.ACER..HHN, 
+			IV.ACER..HHE, IV.ACER..HNZ, IV.ACER..HNN, IV.ACER..HNE, 
+			IV.AGLI..HHZ, IV.AGLI..HHN, IV.AGLI..HHE, IV.AGST..EHZ, 
+			IV.AGST..EHN, IV.AGST..EHE, IV.AIO..HHZ, IV.AIO..HHN, IV.AIO..HHE, 
+			IV.ALJA..HHZ, IV.ALJA..HHN, IV.ALJA..HHE, IV.AMUR..HHZ, 
+			IV.AMUR..HHN, IV.AMUR..HHE, IV.AOI..HHZ, IV.AOI..HHN, IV.AOI..HHE, 
+			IV.APEC..HHZ, IV.APEC..HHN, IV.APEC..HHE, IV.APEC..HNZ, 
+			IV.APEC..HNN, IV.APEC..HNE, IV.APPI..EHZ, IV.APPI..EHN, 
+			IV.APPI..EHE, IV.APRC..EHZ, IV.APRC..EHN, IV.APRC..EHE, 
+			IV.APRC..HNZ, IV.APRC..HNN, IV.APRC..HNE, IV.AQT1..EHZ, 
+			IV.AQT1..EHN, IV.AQT1..EHE, IV.ARCI..HHZ, IV.ARCI..HHN, 
+			IV.ARCI..HHE, IV.ARRO..EHZ, IV.ARRO..EHN, IV.ARRO..EHE, 
+			IV.ARVD..HHZ, IV.ARVD..HHN, IV.ARVD..HHE, IV.ASOL..HNZ, 
+			IV.ASOL..HNN, IV.ASOL..HNE, IV.ASQU..HHZ, IV.ASQU..HHN, 
+			IV.ASQU..HHE, IV.ASSB..HHZ, IV.ASSB..HHN, IV.ASSB..HHE, 
+			IV.ATBU..EHZ, IV.ATBU..EHN, IV.ATBU..EHE, IV.ATCC..EHZ, 
+			IV.ATCC..EHN, IV.ATCC..EHE, IV.ATCC..HNZ, IV.ATCC..HNN, 
+			IV.ATCC..HNE, IV.ATFO..HHZ, IV.ATFO..HHN, IV.ATFO..HHE, 
+			IV.ATFO..HNZ, IV.ATFO..HNN, IV.ATFO..HNE, IV.ATLO..EHZ, 
+			IV.ATLO..EHN, IV.ATLO..EHE, IV.ATLO..HNZ, IV.ATLO..HNN, 
+			IV.ATLO..HNE, IV.ATMC..EHZ, IV.ATMC..EHN, IV.ATMC..EHE, 
+			IV.ATMI..HHZ, IV.ATMI..HHN, IV.ATMI..HHE, IV.ATPC..HHZ, 
+			IV.ATPC..HHN, IV.ATPC..HHE, IV.ATPC..HNZ, IV.ATPC..HNN, 
+			IV.ATPC..HNE, IV.ATPI..EHZ, IV.ATPI..EHN, IV.ATPI..EHE, 
+			IV.ATSC..EHZ, IV.ATSC..EHN, IV.ATSC..EHE, IV.ATTE..HHZ, 
+			IV.ATTE..HHN, IV.ATTE..HHE, IV.ATTE..HNZ, IV.ATTE..HNN, 
+			IV.ATTE..HNE, IV.ATVA..EHZ, IV.ATVA..EHN, IV.ATVA..EHE, 
+			IV.ATVO..HHZ, IV.ATVO..HHN, IV.ATVO..HHE, IV.ATVO..HNZ, 
+			IV.ATVO..HNN, IV.ATVO..HNE, IV.BADI..EHZ, IV.BADI..EHN, 
+			IV.BADI..EHE, IV.BAG8..HNZ, IV.BAG8..HNN, IV.BAG8..HNE, 
+			IV.BDI..HHZ (2x), IV.BDI..HHN (2x), IV.BDI..HHE (2x), 
+			IV.BDI..HNZ (2x), IV.BDI..HNN (2x), IV.BDI..HNE (2x), IV.BIOG..HHZ
+			IV.BIOG..HHN, IV.BIOG..HHE, IV.BIOG..HNZ, IV.BIOG..HNN, 
+			IV.BIOG..HNE, IV.BLLA..EHZ, IV.BLLA..EHN, IV.BLLA..EHE, 
+			IV.BOB..HHZ (2x), IV.BOB..HHN (2x), IV.BOB..HHE (2x), 
+			IV.BOB..HNZ (2x), IV.BOB..HNN (2x), IV.BOB..HNE (2x), IV.BORM..HNZ
+			IV.BORM..HNN, IV.BORM..HNE, IV.BOTM..HNZ, IV.BOTM..HNN, 
+			IV.BOTM..HNE, IV.BRES..EHZ, IV.BRES..EHN, IV.BRES..EHE, 
+			IV.BRIS..HHZ, IV.BRIS..HHN, IV.BRIS..HHE, IV.BRIS..HNZ, 
+			IV.BRIS..HNN, IV.BRIS..HNE, IV.BRMO..HHZ, IV.BRMO..HHN, 
+			IV.BRMO..HHE, IV.BRSN..EHZ, IV.BRSN..EHN, IV.BRSN..EHE, 
+			IV.BRSN..HNZ, IV.BRSN..HNN, IV.BRSN..HNE, IV.BSSO..HHZ, 
+			IV.BSSO..HHN, IV.BSSO..HHE, IV.BSSO..HNZ, IV.BSSO..HNN, 
+			IV.BSSO..HNE, IV.BULG..HHZ, IV.BULG..HHN, IV.BULG..HHE, 
+			IV.BULG..HNZ, IV.BULG..HNN, IV.BULG..HNE, IV.CAAM..HHZ, 
+			IV.CAAM..HHN, IV.CAAM..HHE, IV.CADA..HNZ, IV.CADA..HNN, 
+			IV.CADA..HNE, IV.CAFE..HHZ, IV.CAFE..HHN, IV.CAFE..HHE, 
+			IV.CAFE..HNZ, IV.CAFE..HNN, IV.CAFE..HNE, IV.CAFI..HHZ, 
+			IV.CAFI..HHN, IV.CAFI..HHE, IV.CAFI..HNZ, IV.CAFI..HNN, 
+			IV.CAFI..HNE, IV.CAFL..HHZ, IV.CAFL..HHN, IV.CAFL..HHE, 
+			IV.CAFR..HHZ, IV.CAFR..HHN, IV.CAFR..HHE, IV.CAGG..EHZ, 
+			IV.CAGG..EHN, IV.CAGG..EHE, IV.CAGR..HHZ, IV.CAGR..HHN, 
+			IV.CAGR..HHE, IV.CAMP..HHZ, IV.CAMP..HHN, IV.CAMP..HHE, 
+			IV.CAPA..HHZ, IV.CAPA..HHN, IV.CAPA..HHE, IV.CAPR..HNZ, 
+			IV.CAPR..HNN, IV.CAPR..HNE, IV.CAR1..HHZ, IV.CAR1..HHN, 
+			IV.CAR1..HHE, IV.CAR1..HNZ, IV.CAR1..HNN, IV.CAR1..HNE, 
+			IV.CASP..HHZ, IV.CASP..HHN, IV.CASP..HHE, IV.CAVE..HHZ, 
+			IV.CAVE..HHN, IV.CAVE..HHE, IV.CAVT..HHZ, IV.CAVT..HHN, 
+			IV.CAVT..HHE, IV.CDCA..HNZ, IV.CDCA..HNN, IV.CDCA..HNE, 
+			IV.CDRU..HHZ, IV.CDRU..HHN, IV.CDRU..HHE, IV.CELB..HHZ, 
+			IV.CELB..HHN, IV.CELB..HHE, IV.CELI..HHZ, IV.CELI..HHN, 
+			IV.CELI..HHE, IV.CELI..HNZ, IV.CELI..HNN, IV.CELI..HNE, 
+			IV.CERA..HHZ, IV.CERA..HHN, IV.CERA..HHE, IV.CERA..HNZ, 
+			IV.CERA..HNN, IV.CERA..HNE, IV.CERT..HHZ, IV.CERT..HHN, 
+			IV.CERT..HHE, IV.CESI..HHZ (2x), IV.CESI..HHN (2x), 
+			IV.CESI..HHE (2x), IV.CESX..HHZ, IV.CESX..HHN, IV.CESX..HHE, 
+			IV.CET2..HHZ, IV.CET2..HHN, IV.CET2..HHE, IV.CFMN..HHZ, 
+			IV.CFMN..HHN, IV.CFMN..HHE, IV.CGL..SHZ, IV.CGL..SHN, IV.CGL..SHE, 
+			IV.CIGN..HHZ, IV.CIGN..HHN, IV.CIGN..HHE, IV.CIMA..HNZ, 
+			IV.CIMA..HNN, IV.CIMA..HNE, IV.CING..HHZ, IV.CING..HHN, 
+			IV.CING..HHE, IV.CLTA..HHZ, IV.CLTA..HHN, IV.CLTA..HHE, 
+			IV.CMDO..HHZ, IV.CMDO..HHN, IV.CMDO..HHE, IV.CMIS..HHZ, 
+			IV.CMIS..HHN, IV.CMIS..HHE, IV.CMPO..HNZ, IV.CMPO..HNN, 
+			IV.CMPO..HNE, IV.CMPR..HHZ, IV.CMPR..HHN, IV.CMPR..HHE, 
+			IV.CMSN..HHZ, IV.CMSN..HHN, IV.CMSN..HHE, IV.CNCS..HNZ, 
+			IV.CNCS..HNN, IV.CNCS..HNE, IV.COLB..HHZ, IV.COLB..HHN, 
+			IV.COLB..HHE, IV.COR1..EHZ, IV.COR1..EHN, IV.COR1..EHE, 
+			IV.COR1..HNZ, IV.COR1..HNN, IV.COR1..HNE, IV.CORL..HHZ, 
+			IV.CORL..HHN, IV.CORL..HHE, IV.CPGN..EHZ, IV.CPGN..EHN, 
+			IV.CPGN..EHE, IV.CPGN..HNZ, IV.CPGN..HNN, IV.CPGN..HNE, 
+			IV.CPIS..HHZ, IV.CPIS..HHN, IV.CPIS..HHE, IV.CPOZ..HHZ, 
+			IV.CPOZ..HHN, IV.CPOZ..HHE, IV.CPTP..HHZ, IV.CPTP..HHN, 
+			IV.CPTP..HHE, IV.CRAC..EHZ, IV.CRAC..EHN, IV.CRAC..EHE, IV.CRE..HHZ
+			IV.CRE..HHN, IV.CRE..HHE, IV.CRJA..HHZ, IV.CRJA..HHN, 
+			IV.CRJA..HHE, IV.CRM1..HNZ, IV.CRM1..HNN, IV.CRM1..HNE, 
+			IV.CRMI..HHZ, IV.CRMI..HHN, IV.CRMI..HHE, IV.CRMI..HNZ, 
+			IV.CRMI..HNN, IV.CRMI..HNE, IV.CRND..HNZ, IV.CRND..HNN, 
+			IV.CRND..HNE, IV.CRTO..HHZ, IV.CRTO..HHN, IV.CRTO..HHE, 
+			IV.CSFT..HHZ, IV.CSFT..HHN, IV.CSFT..HHE, IV.CSLB..HHZ, 
+			IV.CSLB..HHN, IV.CSLB..HHE, IV.CSNT..HHZ, IV.CSNT..HHN, 
+			IV.CSNT..HHE, IV.CSOB..HHZ, IV.CSOB..HHN, IV.CSOB..HHE, 
+			IV.CSOB..HNZ, IV.CSOB..HNN, IV.CSOB..HNE, IV.CSP1..EHZ, 
+			IV.CSP1..EHN, IV.CSP1..EHE, IV.CTI..HHZ, IV.CTI..HHN, IV.CTI..HHE, 
+			IV.CTL8..EHZ, IV.CTL8..EHN, IV.CTL8..EHE, IV.CTL8..HNZ, 
+			IV.CTL8..HNN, IV.CTL8..HNE, IV.DGI..HHZ, IV.DGI..HHN, IV.DGI..HHE, 
+			IV.ECHR..HHZ, IV.ECHR..HHN, IV.ECHR..HHE, IV.ECHR..HNZ, 
+			IV.ECHR..HNN, IV.ECHR..HNE, IV.ECNV..HHZ, IV.ECNV..HHN, 
+			IV.ECNV..HHE, IV.ECTS..EHZ, IV.ECTS..EHN, IV.ECTS..EHE, IV.EL6..EHZ
+			IV.EL6..EHN, IV.EL6..EHE, IV.EMCN..HNZ, IV.EMCN..HNN, 
+			IV.EMCN..HNE, IV.EMSG..HHZ, IV.EMSG..HHN, IV.EMSG..HHE, 
+			IV.ENIC..HHZ, IV.ENIC..HHN, IV.ENIC..HHE, IV.EPIT..HHZ, 
+			IV.EPIT..HHN, IV.EPIT..HHE, IV.EPOZ..HHZ, IV.EPOZ..HHN, 
+			IV.EPOZ..HHE, IV.EPOZ..HNZ, IV.EPOZ..HNN, IV.EPOZ..HNE, 
+			IV.EPZF..HHZ, IV.EPZF..HHN, IV.EPZF..HHE, IV.ERBM..EHZ, 
+			IV.ERBM..EHN, IV.ERBM..EHE, IV.ERC..EHZ (2x), IV.ERC..EHN (2x), 
+			IV.ERC..EHE (2x), IV.ESLN..HHZ, IV.ESLN..HHN, IV.ESLN..HHE, 
+			IV.ESML..HHZ, IV.ESML..HHN, IV.ESML..HHE, IV.EUCT..HNZ, 
+			IV.EUCT..HNN, IV.EUCT..HNE, IV.EVRN..HNZ, IV.EVRN..HNN, 
+			IV.EVRN..HNE, IV.FAEN..HNZ, IV.FAEN..HNN, IV.FAEN..HNE, 
+			IV.FAGN..HHZ, IV.FAGN..HHN, IV.FAGN..HHE, IV.FANO..HNZ, 
+			IV.FANO..HNN, IV.FANO..HNE, IV.FAVR..HHZ, IV.FAVR..HHN, 
+			IV.FAVR..HHE, IV.FCOR..HNZ, IV.FCOR..HNN, IV.FCOR..HNE, 
+			IV.FDMO..HHZ, IV.FDMO..HHN, IV.FDMO..HHE, IV.FEMA..HNZ, 
+			IV.FEMA..HNN, IV.FEMA..HNE, IV.FERS..HNZ, IV.FERS..HNN, 
+			IV.FERS..HNE, IV.FIAM..HHZ, IV.FIAM..HHN, IV.FIAM..HHE, 
+			IV.FIAM..HNZ, IV.FIAM..HNN, IV.FIAM..HNE, IV.FIR..HHZ, IV.FIR..HHN
+			IV.FIR..HHE, IV.FIR..HNZ, IV.FIR..HNN, IV.FIR..HNE, IV.FIU..EHZ, 
+			IV.FIU..EHN, IV.FIU..EHE, IV.FIU1..HNZ, IV.FIU1..HNN, IV.FIU1..HNE
+			IV.FNVD..HHZ (2x), IV.FNVD..HHN (2x), IV.FNVD..HHE (2x), 
+			IV.FOSV..EHZ, IV.FOSV..EHN, IV.FOSV..EHE, IV.FOSV..HNZ, 
+			IV.FOSV..HNN, IV.FOSV..HNE, IV.FRE8..HNZ, IV.FRE8..HNN, 
+			IV.FRE8..HNE, IV.FRES..HHZ, IV.FRES..HHN, IV.FRES..HHE, 
+			IV.FRON..EHZ, IV.FRON..EHN, IV.FRON..EHE, IV.FROS..HHZ, 
+			IV.FROS..HHN, IV.FROS..HHE, IV.FSSB..HHZ (2x), IV.FSSB..HHN (2x), 
+			IV.FSSB..HHE (2x), IV.FVI..HHZ (2x), IV.FVI..HHN (2x), 
+			IV.FVI..HHE (2x), IV.GAG1..HNZ, IV.GAG1..HNN, IV.GAG1..HNE, 
+			IV.GALF..HHZ, IV.GALF..HHN, IV.GALF..HHE, IV.GATE..HHZ, 
+			IV.GATE..HHN, IV.GATE..HHE, IV.GATE..HNZ, IV.GATE..HNN, 
+			IV.GATE..HNE, IV.GAVE..EHZ, IV.GAVE..EHN, IV.GAVE..EHE, 
+			IV.GAVE..HNZ, IV.GAVE..HNN, IV.GAVE..HNE, IV.GIB..HHZ, IV.GIB..HHN
+			IV.GIB..HHE, IV.GIGS..HHZ, IV.GIGS..HH1, IV.GIGS..HH2, 
+			IV.GIUL..HHZ, IV.GIUL..HHN, IV.GIUL..HHE, IV.GMB..BHZ, IV.GMB..BHN
+			IV.GMB..BHE, IV.GRI..EHZ (2x), IV.GRI..EHN (2x), IV.GRI..EHE (2x)
+			IV.GRIS..EHZ, IV.GRIS..EHN, IV.GRIS..EHE, IV.GRIS..HNZ, 
+			IV.GRIS..HNN, IV.GRIS..HNE, IV.GROG..HHZ, IV.GROG..HHN, 
+			IV.GROG..HHE, IV.GUAR..HHZ, IV.GUAR..HHN, IV.GUAR..HHE, 
+			IV.GUMA..HHZ, IV.GUMA..HHN, IV.GUMA..HHE, IV.GUMA..HNZ, 
+			IV.GUMA..HNN, IV.GUMA..HNE, IV.HAGA..HHZ, IV.HAGA..HHN, 
+			IV.HAGA..HHE, IV.HAVL..HHZ, IV.HAVL..HHN, IV.HAVL..HHE, 
+			IV.HBSP..HHZ, IV.HBSP..HHN, IV.HBSP..HHE, IV.HCRL..HHZ, 
+			IV.HCRL..HHN, IV.HCRL..HHE, IV.HLNI..HHZ, IV.HLNI..HHN, 
+			IV.HLNI..HHE, IV.HMDC..HHZ, IV.HMDC..HHN, IV.HMDC..HHE, 
+			IV.HPAC..HHZ, IV.HPAC..HHN, IV.HPAC..HHE, IV.HVZN..HHZ, 
+			IV.HVZN..HHN, IV.HVZN..HHE, IV.IACL..HHZ, IV.IACL..HHN, 
+			IV.IACL..HHE, IV.IFIL..HHZ, IV.IFIL..HHN, IV.IFIL..HHE, 
+			IV.IFOR..HHZ, IV.IFOR..HHN, IV.IFOR..HHE, IV.ILOS..HHZ, 
+			IV.ILOS..HHN, IV.ILOS..HHE, IV.IMOL..EHZ, IV.IMOL..EHN, 
+			IV.IMOL..EHE, IV.IMOL..HNZ, IV.IMOL..HNN, IV.IMOL..HNE, 
+			IV.IMTC..HHZ, IV.IMTC..HHN, IV.IMTC..HHE, IV.INTR..HHZ (2x), 
+			IV.INTR..HHN (2x), IV.INTR..HHE (2x), IV.INTR..HNZ (2x), 
+			IV.INTR..HNN (2x), IV.INTR..HNE (2x), IV.IOCA..HHZ, IV.IOCA..HHN, 
+			IV.IOCA..HHE, IV.IOCA..HNZ, IV.IOCA..HNN, IV.IOCA..HNE, 
+			IV.IST3..HHZ, IV.IST3..HHN, IV.IST3..HHE, IV.ISTR..HHZ, 
+			IV.ISTR..HHN, IV.ISTR..HHE, IV.IVGP..HHZ, IV.IVGP..HHN, 
+			IV.IVGP..HHE, IV.IVPL..HHZ, IV.IVPL..HHN, IV.IVPL..HHE, 
+			IV.IVUG..HHZ, IV.IVUG..HHN, IV.IVUG..HHE, IV.JOPP..HHZ, 
+			IV.JOPP..HHN, IV.JOPP..HHE, IV.JOPP..HNZ, IV.JOPP..HNN, 
+			IV.JOPP..HNE, IV.LADO..EHZ, IV.LADO..EHN, IV.LADO..EHE, 
+			IV.LATB..EHZ, IV.LATB..EHN, IV.LATB..EHE, IV.LATE..HHZ (2x), 
+			IV.LATE..HHN (2x), IV.LATE..HHE (2x), IV.LAV9..HHZ, IV.LAV9..HHN, 
+			IV.LAV9..HHE, IV.LAV9..HNZ, IV.LAV9..HNN, IV.LAV9..HNE, 
+			IV.LEOD..HNZ, IV.LEOD..HNN, IV.LEOD..HNE, IV.LIK.01.EHZ, 
+			IV.LIK.01.EHN, IV.LIK.01.EHE, IV.LINA..HHZ, IV.LINA..HHN, 
+			IV.LINA..HHE, IV.LMD..HHZ, IV.LMD..HHN, IV.LMD..HHE, IV.LNSS..HHZ, 
+			IV.LNSS..HHN, IV.LNSS..HHE, IV.LPDG..HHZ, IV.LPDG..HHN, 
+			IV.LPDG..HHE, IV.LPEL..HHZ, IV.LPEL..HHN, IV.LPEL..HHE, IV.LRP..EHZ
+			IV.LRP..EHN, IV.LRP..EHE, IV.LTRZ..EHZ, IV.LTRZ..EHN, 
+			IV.LTRZ..EHE, IV.LTRZ..HNZ, IV.LTRZ..HNN, IV.LTRZ..HNE, IV.MA9..HHZ
+			IV.MA9..HHN, IV.MA9..HHE, IV.MABI..HHZ (2x), IV.MABI..HHN (2x), 
+			IV.MABI..HHE (2x), IV.MAGA..HHZ, IV.MAGA..HHN, IV.MAGA..HHE, 
+			IV.MAGO..HHZ, IV.MAGO..HHN, IV.MAGO..HHE, IV.MAON..HHZ, 
+			IV.MAON..HHN, IV.MAON..HHE, IV.MARS..EHZ, IV.MARS..EHN, 
+			IV.MARS..EHE, IV.MBAL..EHZ, IV.MBAL..EHN, IV.MBAL..EHE, 
+			IV.MC2..EHZ (2x), IV.MC2..EHN (2x), IV.MC2..EHE (2x), IV.MCEL..HHZ
+			IV.MCEL..HHN, IV.MCEL..HHE, IV.MCEL..HNZ, IV.MCEL..HNN, 
+			IV.MCEL..HNE, IV.MCI..EHZ, IV.MCI..EHN, IV.MCI..EHE, IV.MCIF..HNZ, 
+			IV.MCIF..HNN, IV.MCIF..HNE, IV.MCIV..HHZ, IV.MCIV..HHN, 
+			IV.MCIV..HHE, IV.MCPD..HHZ, IV.MCPD..HHN, IV.MCPD..HHE, 
+			IV.MCRV..HHZ, IV.MCRV..HHN, IV.MCRV..HHE, IV.MCSR..HHZ, 
+			IV.MCSR..HHN, IV.MCSR..HHE, IV.MCT..BHZ, IV.MCT..BHN, IV.MCT..BHE, 
+			IV.MDAR..HNZ, IV.MDAR..HNN, IV.MDAR..HNE, IV.MDI..HHZ, IV.MDI..HHN
+			IV.MDI..HHE, IV.MDI..HNZ, IV.MDI..HNN, IV.MDI..HNE, IV.MELA..HHZ
+			IV.MELA..HHN, IV.MELA..HHE, IV.MELA..HNZ, IV.MELA..HNN, 
+			IV.MELA..HNE, IV.MERA..HNZ, IV.MERA..HNN, IV.MERA..HNE, 
+			IV.MESG..HHZ, IV.MESG..HHN, IV.MESG..HHE, IV.MESG..HNZ, 
+			IV.MESG..HNN, IV.MESG..HNE, IV.MEU..SHZ, IV.MEU..SHN, IV.MEU..SHE, 
+			IV.MF5..EHZ, IV.MF5..EHN, IV.MF5..EHE, IV.MFNL..HHZ, IV.MFNL..HHN, 
+			IV.MFNL..HHE, IV.MGAB..HHZ, IV.MGAB..HHN, IV.MGAB..HHE, 
+			IV.MGAB..HNZ, IV.MGAB..HNN, IV.MGAB..HNE, IV.MGR..HHZ, IV.MGR..HHN
+			IV.MGR..HHE, IV.MGR..HNZ, IV.MGR..HNN, IV.MGR..HNE, IV.MIDA..HHZ
+			IV.MIDA..HHN, IV.MIDA..HHE, IV.MIDA..HNZ, IV.MIDA..HNN, 
+			IV.MIDA..HNE, IV.MIGL..HHZ, IV.MIGL..HHN, IV.MIGL..HHE, 
+			IV.MILN..HHZ, IV.MILN..HHN, IV.MILN..HHE, IV.MILN..HNZ, 
+			IV.MILN..HNN, IV.MILN..HNE, IV.MILZ..HHZ, IV.MILZ..HHN, 
+			IV.MILZ..HHE, IV.MMGO..HHZ, IV.MMGO..HHN, IV.MMGO..HHE, IV.MMN..HHZ
+			IV.MMN..HHN, IV.MMN..HHE, IV.MMO1..EHZ (2x), IV.MMO1..EHN (2x), 
+			IV.MMO1..EHE (2x), IV.MMO1..HNZ (2x), IV.MMO1..HNN (2x), 
+			IV.MMO1..HNE (2x), IV.MMUR..HNZ, IV.MMUR..HNN, IV.MMUR..HNE, 
+			IV.MNO..SHZ, IV.MNO..SHN, IV.MNO..SHE, IV.MNTP..HNZ, IV.MNTP..HNN, 
+			IV.MNTP..HNE, IV.MNTT..EHZ, IV.MNTT..EHN, IV.MNTT..EHE, 
+			IV.MNTV..HNZ, IV.MNTV..HNN, IV.MNTV..HNE, IV.MOCL..EHZ, 
+			IV.MOCL..EHN, IV.MOCL..EHE, IV.MOCO..HHZ, IV.MOCO..HHN, 
+			IV.MOCO..HHE, IV.MOCO..HNZ, IV.MOCO..HNN, IV.MOCO..HNE, 
+			IV.MODE..HNZ, IV.MODE..HNN, IV.MODE..HNE, IV.MODR..HHZ, 
+			IV.MODR..HHN, IV.MODR..HHE, IV.MOMA..HHZ, IV.MOMA..HHN, 
+			IV.MOMA..HHE, IV.MOMA..HNZ, IV.MOMA..HNN, IV.MOMA..HNE, 
+			IV.MONC..HHZ, IV.MONC..HHN, IV.MONC..HHE, IV.MPAG..EHZ, 
+			IV.MPAG..EHN, IV.MPAG..EHE, IV.MPAG..HNZ, IV.MPAG..HNN, 
+			IV.MPAG..HNE, IV.MPAZ..HHZ, IV.MPAZ..HHN, IV.MPAZ..HHE, 
+			IV.MPG..SHZ (2x), IV.MPG..SHN (2x), IV.MPG..SHE (2x), 
+			IV.MPNC..HHZ (2x), IV.MPNC..HHN (2x), IV.MPNC..HHE (2x), 
+			IV.MPPT..EHZ, IV.MPPT..EHN, IV.MPPT..EHE, IV.MRB1..HHZ, 
+			IV.MRB1..HHN, IV.MRB1..HHE, IV.MRB1..HNZ, IV.MRB1..HNN, 
+			IV.MRB1..HNE, IV.MRGE..HHZ, IV.MRGE..HHN, IV.MRGE..HHE, 
+			IV.MRLC..HHZ, IV.MRLC..HHN, IV.MRLC..HHE, IV.MRLC..HNZ (2x), 
+			IV.MRLC..HNN (2x), IV.MRLC..HNE (2x), IV.MRVN..HHZ, IV.MRVN..HHN, 
+			IV.MRVN..HHE, IV.MSAG..HHZ, IV.MSAG..HHN, IV.MSAG..HHE, 
+			IV.MSAG..HNZ, IV.MSAG..HNN, IV.MSAG..HNE, IV.MSCL..HHZ, 
+			IV.MSCL..HHN, IV.MSCL..HHE, IV.MSFR..HHZ, IV.MSFR..HHN, 
+			IV.MSFR..HHE, IV.MSRU..HHZ, IV.MSRU..HHN, IV.MSRU..HHE, 
+			IV.MSSA..HHZ, IV.MSSA..HHN, IV.MSSA..HHE, IV.MTCE..HHZ, 
+			IV.MTCE..HHN, IV.MTCE..HHE, IV.MTCR..EHZ, IV.MTCR..EHN, 
+			IV.MTCR..EHE, IV.MTGR..SHZ, IV.MTL1..HNZ, IV.MTL1..HNN, 
+			IV.MTL1..HNE, IV.MTMR..EHZ, IV.MTMR..EHN, IV.MTMR..EHE, 
+			IV.MTMR..HNZ, IV.MTMR..HNN, IV.MTMR..HNE, IV.MTRA..EHZ, 
+			IV.MTRA..EHN, IV.MTRA..EHE, IV.MTRA..HNZ, IV.MTRA..HNN, 
+			IV.MTRA..HNE, IV.MTRZ..HHZ, IV.MTRZ..HHN, IV.MTRZ..HHE, 
+			IV.MTRZ..HNZ, IV.MTRZ..HNN, IV.MTRZ..HNE, IV.MTSN..HHZ, 
+			IV.MTSN..HHN, IV.MTSN..HHE, IV.MTTG..HHZ, IV.MTTG..HHN, 
+			IV.MTTG..HHE, IV.MUCR..HHZ, IV.MUCR..HHN, IV.MUCR..HHE, 
+			IV.MURB..HHZ, IV.MURB..HHN, IV.MURB..HHE, IV.MURB..HNZ, 
+			IV.MURB..HNN, IV.MURB..HNE, IV.NARO..HHZ, IV.NARO..HHN, 
+			IV.NARO..HHE, IV.NDIM..HHZ, IV.NDIM..HHN, IV.NDIM..HHE, 
+			IV.NDIM..HNZ, IV.NDIM..HNN, IV.NDIM..HNE, IV.NEVI..HNZ, 
+			IV.NEVI..HNN, IV.NEVI..HNE, IV.NOCI..HHZ, IV.NOCI..HHN, 
+			IV.NOCI..HHE, IV.NOV..HHZ, IV.NOV..HHN, IV.NOV..HHE, IV.NOV..HNZ, 
+			IV.NOV..HNN, IV.NOV..HNE, IV.NRCA..HHZ, IV.NRCA..HHN, IV.NRCA..HHE
+			IV.NRCA..HNZ, IV.NRCA..HNN, IV.NRCA..HNE, IV.OFFI..HHZ, 
+			IV.OFFI..HHN, IV.OFFI..HHE, IV.OPPE..HHZ, IV.OPPE..HHN, 
+			IV.OPPE..HHE, IV.OPPE..HNZ, IV.OPPE..HNN, IV.OPPE..HNE, IV.ORI..HHZ
+			IV.ORI..HHN, IV.ORI..HHE, IV.ORZI..HHZ, IV.ORZI..HHN, 
+			IV.ORZI..HHE, IV.ORZI..HNZ, IV.ORZI..HNN, IV.ORZI..HNE, 
+			IV.OSSC..HHZ, IV.OSSC..HHN, IV.OSSC..HHE, IV.OSSC..HNZ, 
+			IV.OSSC..HNN, IV.OSSC..HNE, IV.OVO..HHZ, IV.OVO..HHN, IV.OVO..HHE, 
+			IV.PALZ..HHZ, IV.PALZ..HHN, IV.PALZ..HHE, IV.PAOL..HHZ, 
+			IV.PAOL..HHN, IV.PAOL..HHE, IV.PAOL..HNZ, IV.PAOL..HNN, 
+			IV.PAOL..HNE, IV.PARC..HHZ, IV.PARC..HHN, IV.PARC..HHE, 
+			IV.PCRO..HNZ, IV.PCRO..HNN, IV.PCRO..HNE, IV.PE3..EHZ, IV.PE3..EHN
+			IV.PE3..EHE, IV.PESA..HHZ, IV.PESA..HHN, IV.PESA..HHE, 
+			IV.PETRA..HHZ, IV.PETRA..HHN, IV.PETRA..HHE, IV.PF6..EHZ, 
+			IV.PF6..EHN, IV.PF6..EHE, IV.PIEI..HHZ, IV.PIEI..HHN, IV.PIEI..HHE
+			IV.PIEI..HNZ, IV.PIEI..HNN, IV.PIEI..HNE, IV.PIGN..HHZ, 
+			IV.PIGN..HHN, IV.PIGN..HHE, IV.PIGN..HNZ, IV.PIGN..HNN, 
+			IV.PIGN..HNE, IV.PII..HHZ, IV.PII..HHN, IV.PII..HHE, IV.PIO1..HNZ, 
+			IV.PIO1..HNN, IV.PIO1..HNE, IV.PIPA..HHZ, IV.PIPA..HHN, 
+			IV.PIPA..HHE, IV.PIPA..HNZ, IV.PIPA..HNN, IV.PIPA..HNE, 
+			IV.PLAC..HHZ, IV.PLAC..HHN, IV.PLAC..HHE, IV.PLAC..HNZ, 
+			IV.PLAC..HNN, IV.PLAC..HNE, IV.PLLN..EHZ, IV.PLLN..EHN, 
+			IV.PLLN..EHE, IV.PLMA..HHZ, IV.PLMA..HHN, IV.PLMA..HHE, 
+			IV.POFI..HHZ, IV.POFI..HHN, IV.POFI..HHE, IV.POFI..HNZ, 
+			IV.POFI..HNN, IV.POFI..HNE, IV.PP3..EHZ, IV.PP3..EHN, IV.PP3..EHE, 
+			IV.PP3..HNZ, IV.PP3..HNN, IV.PP3..HNE, IV.PRMA..HHZ, IV.PRMA..HHN, 
+			IV.PRMA..HHE, IV.PSB1..HHZ, IV.PSB1..HHN, IV.PSB1..HHE, 
+			IV.PSB1..HNZ (2x), IV.PSB1..HNN (2x), IV.PSB1..HNE (2x), 
+			IV.PTCC..HHZ, IV.PTCC..HHN, IV.PTCC..HHE, IV.PTMD..HHZ, 
+			IV.PTMD..HHN, IV.PTMD..HHE, IV.PTQR..HHZ, IV.PTQR..HHN, 
+			IV.PTQR..HHE, IV.PTRJ..HHZ, IV.PTRJ..HHN, IV.PTRJ..HHE, 
+			IV.PTRJ..HNZ, IV.PTRJ..HNN, IV.PTRJ..HNE, IV.PTRP..EHZ, 
+			IV.PTRP..EHN, IV.PTRP..EHE, IV.QLNO..HHZ, IV.QLNO..HHN, 
+			IV.QLNO..HHE, IV.RAFF..HHZ, IV.RAFF..HHN, IV.RAFF..HHE, 
+			IV.RAVA..EHZ, IV.RAVA..EHN, IV.RAVA..EHE, IV.RCAV..EHZ (2x), 
+			IV.RCAV..EHN (2x), IV.RCAV..EHE (2x), IV.RDP..HHZ, IV.RDP..HHN, 
+			IV.RDP..HHE, IV.RESU..HHZ, IV.RESU..HHN, IV.RESU..HHE, IV.RIBO..EHZ
+			IV.RIBO..EHN, IV.RIBO..EHE, IV.RIBO.01.EHZ, IV.RIBO.01.EHN, 
+			IV.RIBO.01.EHE, IV.RM33..EHZ, IV.RM33..EHN, IV.RM33..EHE, 
+			IV.RM33..HNZ, IV.RM33..HNN, IV.RM33..HNE, IV.RMP..HHZ, IV.RMP..HHN
+			IV.RMP..HHE, IV.RNI2..HHZ, IV.RNI2..HHN, IV.RNI2..HHE, 
+			IV.RNI2..HNZ, IV.RNI2..HNN, IV.RNI2..HNE, IV.ROM9..HNZ, 
+			IV.ROM9..HNN, IV.ROM9..HNE, IV.ROVR..HHZ, IV.ROVR..HHN, 
+			IV.ROVR..HHE, IV.ROVR..HNZ, IV.ROVR..HNN, IV.ROVR..HNE, 
+			IV.RSM2..HHZ, IV.RSM2..HHN, IV.RSM2..HHE, IV.RUFI..EHZ, 
+			IV.RUFI..EHN, IV.RUFI..EHE, IV.SACR..HHZ, IV.SACR..HHN, 
+			IV.SACR..HHE, IV.SACR..HNZ, IV.SACR..HNN, IV.SACR..HNE, 
+			IV.SACS..HHZ, IV.SACS..HHN, IV.SACS..HHE, IV.SACS..HNZ, 
+			IV.SACS..HNN, IV.SACS..HNE, IV.SAIV..HNZ, IV.SAIV..HNN, 
+			IV.SAIV..HNE, IV.SALB..HHZ, IV.SALB..HHN, IV.SALB..HHE, 
+			IV.SALB..HNZ, IV.SALB..HNN, IV.SALB..HNE, IV.SALO..HHZ, 
+			IV.SALO..HHN, IV.SALO..HHE, IV.SALO..HNZ, IV.SALO..HNN, 
+			IV.SALO..HNE, IV.SAMA..EHZ, IV.SAMA..EHN, IV.SAMA..EHE, 
+			IV.SANR..HNZ, IV.SANR..HNN, IV.SANR..HNE, IV.SAP2..EHZ, 
+			IV.SAP2..EHN, IV.SAP2..EHE, IV.SARZ..HHZ, IV.SARZ..HHN, 
+			IV.SARZ..HHE, IV.SARZ..HNZ, IV.SARZ..HNN, IV.SARZ..HNE, 
+			IV.SBPO..HNZ, IV.SBPO..HNN, IV.SBPO..HNE, IV.SCHR..EHZ, 
+			IV.SCHR..EHN, IV.SCHR..EHE, IV.SCTE..HHZ, IV.SCTE..HHN, 
+			IV.SCTE..HHE, IV.SEF1..HNZ, IV.SEF1..HNN, IV.SEF1..HNE, IV.SEI..HHZ
+			IV.SEI..HHN, IV.SEI..HHE, IV.SENI..EHZ, IV.SENI..EHN, 
+			IV.SENI..EHE, IV.SENI..HNZ, IV.SENI..HNN, IV.SENI..HNE, 
+			IV.SERM..EHZ, IV.SERM..EHN, IV.SERM..EHE, IV.SERM..HNZ, 
+			IV.SERM..HNN, IV.SERM..HNE, IV.SERS..HHZ, IV.SERS..HHN, 
+			IV.SERS..HHE, IV.SERS..HNZ, IV.SERS..HNN, IV.SERS..HNE, IV.SFI..EHZ
+			IV.SFI..EHN, IV.SFI..EHE, IV.SFI..HNZ, IV.SFI..HNN, IV.SFI..HNE, 
+			IV.SGG..HHZ, IV.SGG..HHN, IV.SGG..HHE, IV.SGG..HNZ, IV.SGG..HNN, 
+			IV.SGG..HNE, IV.SGRT..HHZ, IV.SGRT..HHN, IV.SGRT..HHE, IV.SGTA..HHZ
+			IV.SGTA..HHN, IV.SGTA..HHE, IV.SGTA..HNZ, IV.SGTA..HNN, 
+			IV.SGTA..HNE, IV.SIRI..HHZ, IV.SIRI..HHN, IV.SIRI..HHE, 
+			IV.SIRI..HNZ, IV.SIRI..HNN, IV.SIRI..HNE, IV.SLCN..HHZ, 
+			IV.SLCN..HHN, IV.SLCN..HHE, IV.SLCN..HNZ, IV.SLCN..HNN, 
+			IV.SLCN..HNE, IV.SMA1..EHZ, IV.SMA1..EHN, IV.SMA1..EHE, 
+			IV.SNAL..HHZ, IV.SNAL..HHN, IV.SNAL..HHE, IV.SNAL..HNZ, 
+			IV.SNAL..HNN, IV.SNAL..HNE, IV.SNTG..HHZ, IV.SNTG..HHN, 
+			IV.SNTG..HHE, IV.SNTG..HNZ, IV.SNTG..HNN, IV.SNTG..HNE, IV.SOI..EHZ
+			IV.SOI..EHN, IV.SOI..EHE, IV.SOLUN..HHZ (2x), IV.SOLUN..HHN (2x)
+			IV.SOLUN..HHE (2x), IV.SPS2..HHZ, IV.SPS2..HHN, IV.SPS2..HHE, 
+			IV.SRES..HHZ, IV.SRES..HHN, IV.SRES..HHE, IV.SSFR..HHZ, 
+			IV.SSFR..HHN, IV.SSFR..HHE, IV.SSFR..HNZ, IV.SSFR..HNN, 
+			IV.SSFR..HNE, IV.SSM1..HNZ, IV.SSM1..HNN, IV.SSM1..HNE, 
+			IV.SSP9..EHZ, IV.SSP9..EHN, IV.SSP9..EHE, IV.SSY..HHZ, IV.SSY..HHN
+			IV.SSY..HHE, IV.STAL..HHZ, IV.STAL..HHN, IV.STAL..HHE, 
+			IV.STAL..HNZ, IV.STAL..HNN, IV.STAL..HNE, IV.STR4..BHZ, 
+			IV.STR4..BHN, IV.STR4..BHE, IV.STRG..BHZ, IV.STRG..BHN, 
+			IV.STRG..BHE, IV.T0104..HHZ, IV.T0104..HHN, IV.T0104..HHE, 
+			IV.T0104..HNZ, IV.T0104..HNN, IV.T0104..HNE, IV.T0110..HHZ, 
+			IV.T0110..HHN, IV.T0110..HHE, IV.T0701..HNZ, IV.T0701..HNN, 
+			IV.T0701..HNE, IV.T0702..EHZ, IV.T0702..EHN, IV.T0702..EHE, 
+			IV.T1101..EHZ (2x), IV.T1101..EHN (2x), IV.T1101..EHE (2x), 
+			IV.T1101..HNZ (2x), IV.T1101..HNN (2x), IV.T1101..HNE (2x), 
+			IV.T1201..HNZ (2x), IV.T1201..HNN (2x), IV.T1201..HNE (2x), 
+			IV.T1202..EHZ, IV.T1202..EHN, IV.T1202..EHE, IV.T1204..EHZ, 
+			IV.T1204..EHN, IV.T1204..EHE, IV.T1211..EHZ, IV.T1211..EHN, 
+			IV.T1211..EHE, IV.T1211..HNZ, IV.T1211..HNN, IV.T1211..HNE, 
+			IV.T1212..EHZ, IV.T1212..EHN, IV.T1212..EHE, IV.T1212..HNZ, 
+			IV.T1212..HNN, IV.T1212..HNE, IV.T1213..EHZ, IV.T1213..EHN, 
+			IV.T1213..EHE, IV.T1213..HNZ, IV.T1213..HNN, IV.T1213..HNE, 
+			IV.T1214..EHZ, IV.T1214..EHN, IV.T1214..EHE, IV.T1214..HNZ, 
+			IV.T1214..HNN, IV.T1214..HNE, IV.T1215..EHZ, IV.T1215..EHN, 
+			IV.T1215..EHE, IV.T1215..HNZ, IV.T1215..HNN, IV.T1215..HNE, 
+			IV.T1216..EHZ, IV.T1216..EHN, IV.T1216..EHE, IV.T1216..HNZ (2x), 
+			IV.T1216..HNN (2x), IV.T1216..HNE (2x), IV.T1217..EHZ, 
+			IV.T1217..EHN, IV.T1217..EHE, IV.T1217..HNZ, IV.T1217..HNN, 
+			IV.T1217..HNE, IV.T1218..EHZ, IV.T1218..EHN, IV.T1218..EHE, 
+			IV.T1218..HNZ, IV.T1218..HNN, IV.T1218..HNE, IV.T1219..EHZ, 
+			IV.T1219..EHN, IV.T1219..EHE, IV.T1219..HNZ, IV.T1219..HNN, 
+			IV.T1219..HNE, IV.T1220..EHZ, IV.T1220..EHN, IV.T1220..EHE, 
+			IV.T1220..HNZ, IV.T1220..HNN, IV.T1220..HNE, IV.T1221..EHZ, 
+			IV.T1221..EHN, IV.T1221..EHE, IV.T1221..HNZ, IV.T1221..HNN, 
+			IV.T1221..HNE, IV.T1222..EHZ, IV.T1222..EHN, IV.T1222..EHE, 
+			IV.T1222..HNZ, IV.T1222..HNN, IV.T1222..HNE, IV.T1241..EHZ, 
+			IV.T1241..EHN, IV.T1241..EHE, IV.T1241..HNZ, IV.T1241..HNN, 
+			IV.T1241..HNE, IV.T1242..HHZ, IV.T1242..HHN, IV.T1242..HHE, 
+			IV.T1242..HNZ, IV.T1242..HNN, IV.T1242..HNE, IV.T1243..HHZ, 
+			IV.T1243..HHN, IV.T1243..HHE, IV.T1243..HNZ, IV.T1243..HNN, 
+			IV.T1243..HNE, IV.T1244..EHZ, IV.T1244..EHN, IV.T1244..EHE, 
+			IV.T1244..HNZ, IV.T1244..HNN, IV.T1244..HNE, IV.T1245..HHZ, 
+			IV.T1245..HHN, IV.T1245..HHE, IV.T1245..HNZ, IV.T1245..HNN, 
+			IV.T1245..HNE, IV.T1246..HHZ, IV.T1246..HHN, IV.T1246..HHE, 
+			IV.T1247..HHZ (2x), IV.T1247..HHN (2x), IV.T1247..HHE (2x), 
+			IV.T1256..HHZ, IV.T1256..HHN, IV.T1256..HHE, IV.T1256..HNZ, 
+			IV.T1256..HNN, IV.T1256..HNE, IV.T1299..EHZ (2x), 
+			IV.T1299..EHN (2x), IV.T1299..EHE (2x), IV.T1299..HNZ, 
+			IV.T1299..HNN (3x), IV.T1299..HNE, IV.TB01.01.DHZ, IV.TB01.01.DHN, 
+			IV.TB01.01.DHE, IV.TB01.18.DHZ, IV.TB01.18.DH1, IV.TB01.18.DH2, 
+			IV.TB02.01.DHZ, IV.TB02.01.DHN, IV.TB02.01.DHE, IV.TB02.21.DHZ, 
+			IV.TB02.21.DH1, IV.TB02.21.DH2, IV.TB03.01.DHZ, IV.TB03.01.DH1, 
+			IV.TB03.01.DH2, IV.TB03.05.DHZ, IV.TB03.05.DH1, IV.TB03.05.DH2, 
+			IV.TB03.15.DHZ, IV.TB03.15.DH1, IV.TB03.15.DH2, IV.TB03.25.DHZ, 
+			IV.TB03.25.DH1, IV.TB03.25.DH2, IV.TDS..HHZ, IV.TDS..HHN, 
+			IV.TDS..HHE, IV.TEOL..HHZ, IV.TEOL..HHN, IV.TEOL..HHE, 
+			IV.TERO..HHZ (2x), IV.TERO..HHN (2x), IV.TERO..HHE (2x), 
+			IV.TERO..HNZ (2x), IV.TERO..HNN (2x), IV.TERO..HNE (2x), 
+			IV.TOLF..HHZ, IV.TOLF..HHN, IV.TOLF..HHE, IV.TRE1..HNZ, 
+			IV.TRE1..HNN, IV.TRE1..HNE, IV.TREG..HNZ, IV.TREG..HNN, 
+			IV.TREG..HNE, IV.TREM..HHZ, IV.TREM..HHN, IV.TREM..HHE, 
+			IV.TRIF..HHZ, IV.TRIF..HHN, IV.TRIF..HHE, IV.TRIV..HHZ, 
+			IV.TRIV..HHN, IV.TRIV..HHE, IV.TRIV..HNZ, IV.TRIV..HNN, 
+			IV.TRIV..HNE, IV.TRTR..HHZ, IV.TRTR..HHN, IV.TRTR..HHE, IV.USI..HHZ
+			IV.USI..HHN, IV.USI..HHE, IV.VAGA..HHZ, IV.VAGA..HHN, 
+			IV.VAGA..HHE, IV.VAGA..HNZ, IV.VAGA..HNN, IV.VAGA..HNE, 
+			IV.VARE..HHZ, IV.VARE..HHN, IV.VARE..HHE, IV.VARP..HHZ, 
+			IV.VARP..HHN, IV.VARP..HHE, IV.VBKN..HHZ, IV.VBKN..HHN, 
+			IV.VBKN..HHE, IV.VCEL..EHZ, IV.VCEL..EHN, IV.VCEL..EHE, 
+			IV.VCNE..EHZ, IV.VCNE..EH2, IV.VCNE..EH3, IV.VCRE..HHZ, 
+			IV.VCRE..HHN, IV.VCRE..HHE, IV.VENL..HNZ, IV.VENL..HNN, 
+			IV.VENL..HNE, IV.VENT..EHZ, IV.VENT..EHN, IV.VENT..EHE, 
+			IV.VITU..HHZ, IV.VITU..HHN, IV.VITU..HHE, IV.VITU..HNZ, 
+			IV.VITU..HNN, IV.VITU..HNE, IV.VIVA..HHZ, IV.VIVA..HHN, 
+			IV.VIVA..HHE, IV.VMG..SHZ, IV.VOBA..HNZ, IV.VOBA..HNN, IV.VOBA..HNE
+			IV.VTIR..HHZ, IV.VTIR..HHN, IV.VTIR..HHE, IV.VULT..HHZ, 
+			IV.VULT..HHN, IV.VULT..HHE, IV.VULT..HNZ, IV.VULT..HNN, 
+			IV.VULT..HNE, IV.VVDG..HHZ, IV.VVDG..HHN, IV.VVDG..HHE, 
+			IV.VVLD..HHZ, IV.VVLD..HHN, IV.VVLD..HHE, IV.ZCCA..HHZ, 
+			IV.ZCCA..HHN, IV.ZCCA..HHE, IV.ZCCA..HNZ, IV.ZCCA..HNN, 
+			IV.ZCCA..HNE, IV.ZEN8..HNZ, IV.ZEN8..HNN, IV.ZEN8..HNE, 
+			IV.ZONE..HHZ, IV.ZONE..HHN, IV.ZONE..HHE, IV.ZONE..HNZ, 
+			IV.ZONE..HNN, IV.ZONE..HNE, IV.ZOVE..HNZ, IV.ZOVE..HNN, 
+			IV.ZOVE..HNE, IX.AND3.01.HNZ, IX.AND3.01.HNN, IX.AND3.01.HNE, 
+			IX.AND3.02.HHZ, IX.AND3.02.HHN, IX.AND3.02.HHE, IX.AVG3.01.HNZ, 
+			IX.AVG3.01.HNN, IX.AVG3.01.HNE, IX.BEL3.01.HNZ, IX.BEL3.01.HNN, 
+			IX.BEL3.01.HNE, IX.BEL3.02.HNZ, IX.BEL3.02.HNN, IX.BEL3.02.HNE, 
+			IX.BENI.01.HNZ, IX.BENI.01.HNN, IX.BENI.01.HNE, IX.BSC3.01.HNZ, 
+			IX.BSC3.01.HNN, IX.BSC3.01.HNE, IX.CGG3.01.HNZ, IX.CGG3.01.HNN, 
+			IX.CGG3.01.HNE, IX.CGG3.02.HNZ, IX.CGG3.02.HNN, IX.CGG3.02.HNE, 
+			IX.CLT3.01.HNZ, IX.CLT3.01.HNN, IX.CLT3.01.HNE, IX.CLT3.02.EHZ, 
+			IX.CLT3.02.EHN, IX.CLT3.02.EHE, IX.CMP3.01.HNZ, IX.CMP3.01.HNN, 
+			IX.CMP3.01.HNE, IX.CMP3.02.EHZ, IX.CMP3.02.EHN, IX.CMP3.02.EHE, 
+			IX.COL3.01.HNZ, IX.COL3.01.HNN, IX.COL3.01.HNE, IX.COL3.02.HHZ, 
+			IX.COL3.02.HHN, IX.COL3.02.HHE, IX.CSG3.01.HNZ, IX.CSG3.01.HNN, 
+			IX.CSG3.01.HNE, IX.LGS3.01.HNZ, IX.LGS3.01.HNN, IX.LGS3.01.HNE, 
+			IX.LIO3.01.HNZ, IX.LIO3.01.HNN, IX.LIO3.01.HNE, IX.LIO3.02.HHZ, 
+			IX.LIO3.02.HHN, IX.LIO3.02.HHE, IX.MNT3.01.HNZ, IX.MNT3.01.HNN, 
+			IX.MNT3.01.HNE, IX.MNT3.02.EHZ, IX.MNT3.02.EHN, IX.MNT3.02.EHE, 
+			IX.MRN3.01.HNZ, IX.MRN3.01.HNN, IX.MRN3.01.HNE, IX.NAPI.01.HNZ, 
+			IX.NAPI.01.HNN, IX.NAPI.01.HNE, IX.NSC3.01.HNZ, IX.NSC3.01.HNN, 
+			IX.NSC3.01.HNE, IX.NSC3.02.EHZ, IX.NSC3.02.EHN, IX.NSC3.02.EHE, 
+			IX.PGN3.01.HNZ, IX.PGN3.01.HNN, IX.PGN3.01.HNE, IX.PGN3.02.HHZ, 
+			IX.PGN3.02.HHN, IX.PGN3.02.HHE, IX.PST3.01.HNZ, IX.PST3.01.HNN, 
+			IX.PST3.01.HNE, IX.PST3.02.EHZ, IX.PST3.02.EHN, IX.PST3.02.EHE, 
+			IX.RDM3.01.HNZ, IX.RDM3.01.HNN, IX.RDM3.01.HNE, IX.RDM3.02.HHZ, 
+			IX.RDM3.02.HHN, IX.RDM3.02.HHE, IX.RSF3.01.HNZ, IX.RSF3.01.HNN, 
+			IX.RSF3.01.HNE, IX.RSF3.02.HHZ, IX.RSF3.02.HHN, IX.RSF3.02.HHE, 
+			IX.SALI.01.HNZ, IX.SALI.01.HNN, IX.SALI.01.HNE, IX.SCL3.01.HNZ, 
+			IX.SCL3.01.HNN, IX.SCL3.01.HNE, IX.SCL3.02.EHZ, IX.SCL3.02.EHN, 
+			IX.SCL3.02.EHE, IX.SFL3.01.HNZ, IX.SFL3.01.HNN, IX.SFL3.01.HNE, 
+			IX.SFL3.02.HNZ, IX.SFL3.02.HNN, IX.SFL3.02.HNE, IX.SNR3.01.HNZ, 
+			IX.SNR3.01.HNN, IX.SNR3.01.HNE, IX.SNR3.02.EHZ, IX.SNR3.02.EHN, 
+			IX.SNR3.02.EHE, IX.SRN3.01.HNZ, IX.SRN3.01.HNN, IX.SRN3.01.HNE, 
+			IX.SRN3.02.HHZ, IX.SRN3.02.HHN, IX.SRN3.02.HHE, IX.SSB3.01.HNZ, 
+			IX.SSB3.01.HNN, IX.SSB3.01.HNE, IX.SSB3.02.HHZ, IX.SSB3.02.HHN, 
+			IX.SSB3.02.HHE, IX.STN3.01.HNZ, IX.STN3.01.HNN, IX.STN3.01.HNE, 
+			IX.STN3.02.HHZ, IX.STN3.02.HHN, IX.STN3.02.HHE, IX.TEGI.01.HNZ, 
+			IX.TEGI.01.HNN, IX.TEGI.01.HNE, IX.VDP3.01.HNZ, IX.VDP3.01.HNN, 
+			IX.VDP3.01.HNE, IX.VDS3.01.HNZ, IX.VDS3.01.HNN, IX.VDS3.01.HNE, 
+			IX.VDS3.02.HNZ, IX.VDS3.02.HNN, IX.VDS3.02.HNE, IX.VGG3.01.HNZ, 
+			IX.VGG3.01.HNN, IX.VGG3.01.HNE, MN.AQU..HHZ, MN.AQU..HHN, 
+			MN.AQU..HHE, MN.AQU..HLZ, MN.AQU..HLN, MN.AQU..HLE, MN.ARPR..BHZ, 
+			MN.ARPR..BHN, MN.ARPR..BHE, MN.BLY..HHZ (2x), MN.BLY..HHN (2x), 
+			MN.BLY..HHE (2x), MN.BLY..HLZ, MN.BLY..HLN, MN.BLY..HLE, 
+			MN.BLY..HNZ, MN.BLY..HNN, MN.BLY..HNE, MN.BNI..HHZ (2x), 
+			MN.BNI..HHN (2x), MN.BNI..HHE (2x), MN.BNI..HNZ (2x), 
+			MN.BNI..HNN (2x), MN.BNI..HNE (2x), MN.BZS..HHZ, MN.BZS..HHN, 
+			MN.BZS..HHE, MN.CEL..HHZ (2x), MN.CEL..HHN (2x), MN.CEL..HHE (2x), 
+			MN.CEL..HNZ (2x), MN.CEL..HNN (2x), MN.CEL..HNE (2x), MN.CLTB..HHZ
+			MN.CLTB..HHN, MN.CLTB..HHE, MN.CUC..HHZ (2x), MN.CUC..HHN (2x), 
+			MN.CUC..HHE (2x), MN.CUC..HNZ (2x), MN.CUC..HNN (2x), 
+			MN.CUC..HNE (2x), MN.DIVS..BHZ, MN.DIVS..BHN, MN.DIVS..BHE, 
+			MN.DPC..HHZ, MN.DPC..HHN, MN.DPC..HHE, MN.IDI..HHZ (2x), 
+			MN.IDI..HHN (2x), MN.IDI..HHE (2x), MN.ISP.00.BHZ, MN.ISP.00.BHN, 
+			MN.ISP.00.BHE, MN.KEK..HHZ, MN.KEK..HHN, MN.KEK..HHE, MN.KLV..HHZ, 
+			MN.KLV..HHN, MN.KLV..HHE, MN.PDG..HHZ, MN.PDG..HHN, MN.PDG..HHE, 
+			MN.PDG..HLZ, MN.PDG..HLN, MN.PDG..HLE, MN.RTC..HHZ, MN.RTC..HHN, 
+			MN.RTC..HHE, MN.THL..HHZ, MN.THL..HHN, MN.THL..HHE, 
+			MN.TIP..HHZ (2x), MN.TIP..HHN (2x), MN.TIP..HHE (2x), 
+			MN.TIP..HNZ (2x), MN.TIP..HNN (2x), MN.TIP..HNE (2x), MN.TIR..HHZ, 
+			MN.TIR..HHN, MN.TIR..HHE, MN.TNV.01.HHZ, MN.TNV.01.HHN, 
+			MN.TNV.01.HHE, MN.TNV.02.HHZ, MN.TNV.02.HHN, MN.TNV.02.HHE, 
+			MN.TRI..HHZ (2x), MN.TRI..HHN (2x), MN.TRI..HHE (2x), 
+			MN.TUE..HHZ (2x), MN.TUE..HHN (2x), MN.TUE..HHE (2x), 
+			MN.TUE..HNZ (2x), MN.TUE..HNN (2x), MN.TUE..HNE (2x), MN.VAE..HHZ, 
+			MN.VAE..HHN, MN.VAE..HHE, MN.VLC..HHZ (2x), MN.VLC..HHN (2x), 
+			MN.VLC..HHE (2x), MN.VLC..HNZ (2x), MN.VLC..HNN (2x), 
+			MN.VLC..HNE (2x), MN.VSL..HHZ (2x), MN.VSL..HHN (2x), 
+			MN.VSL..HHE (2x), MN.VTS..BHZ, MN.VTS..BHN, MN.VTS..BHE, 
+			MN.WDD..HHZ (2x), MN.WDD..HHN (2x), MN.WDD..HHE (2x), 
+			MN.WDD..HNZ (2x), MN.WDD..HNN (2x), MN.WDD..HNE (2x), NI.DST2..HHZ
+			NI.DST2..HHN, NI.DST2..HHE, NI.DST2..HNZ, NI.DST2..HNN, 
+			NI.DST2..HNE, NI.PALA..HHZ, NI.PALA..HHN, NI.PALA..HHE, 
+			NI.POLC..HHZ, NI.POLC..HHN, NI.POLC..HHE, NI.PURA..HHZ, 
+			NI.PURA..HHN, NI.PURA..HHE, NI.VINO..HHZ (2x), NI.VINO..HHN (2x), 
+			NI.VINO..HHE (2x), NI.VINO..HLZ, NI.VINO..HLN, NI.VINO..HLE, 
+			NI.VINO..HNZ, NI.VINO..HNN, NI.VINO..HNE, OT.TAR1..HHZ, 
+			OT.TAR1..HHN, OT.TAR1..HHE, OX.ACOM..HHZ, OX.ACOM..HHN, 
+			OX.ACOM..HHE, OX.ACOM..HNZ, OX.ACOM..HNN, OX.ACOM..HNE, 
+			OX.AGOR..HHZ, OX.AGOR..HHN, OX.AGOR..HHE, OX.AGOR..HNZ, 
+			OX.AGOR..HNN, OX.AGOR..HNE, OX.BAD..HHZ, OX.BAD..HHN, OX.BAD..HHE, 
+			OX.BAD..HNZ, OX.BAD..HNN, OX.BAD..HNE, OX.BALD..HHZ, OX.BALD..HHN, 
+			OX.BALD..HHE, OX.BALD..HNZ, OX.BALD..HNN, OX.BALD..HNE, OX.BOO..HHZ
+			OX.BOO..HHN, OX.BOO..HHE, OX.BOO..HNZ, OX.BOO..HNN, OX.BOO..HNE, 
+			OX.CAE..HHZ, OX.CAE..HHN, OX.CAE..HHE, OX.CGRP..HHZ, OX.CGRP..HHN, 
+			OX.CGRP..HHE, OX.CGRP..HNZ, OX.CGRP..HNN, OX.CGRP..HNE, 
+			OX.CIMO..HHZ (2x), OX.CIMO..HHN (2x), OX.CIMO..HHE (2x), 
+			OX.CIMO..HNZ (2x), OX.CIMO..HNN (2x), OX.CIMO..HNE (2x), 
+			OX.CLUD..HHZ, OX.CLUD..HHN, OX.CLUD..HHE, OX.CLUD..HNZ, 
+			OX.CLUD..HNN, OX.CLUD..HNE, OX.DRE..HHZ, OX.DRE..HHN, OX.DRE..HHE, 
+			OX.DRE..HNZ, OX.DRE..HNN, OX.DRE..HNE, OX.FUSE..HHZ, OX.FUSE..HHN, 
+			OX.FUSE..HHE, OX.FUSE..HNZ, OX.FUSE..HNN, OX.FUSE..HNE, 
+			OX.MARN..HHZ, OX.MARN..HHN, OX.MARN..HHE, OX.MARN..HNZ, 
+			OX.MARN..HNN, OX.MARN..HNE, OX.MLN..HHZ, OX.MLN..HHN, OX.MLN..HHE, 
+			OX.MLN..HNZ, OX.MLN..HNN, OX.MLN..HNE, OX.MPRI..HHZ, OX.MPRI..HHN, 
+			OX.MPRI..HHE, OX.MPRI..HNZ, OX.MPRI..HNN, OX.MPRI..HNE, 
+			OX.PLRO..HHZ, OX.PLRO..HHN, OX.PLRO..HHE, OX.PLRO..HNZ, 
+			OX.PLRO..HNN, OX.PLRO..HNE, OX.PRED..HHZ, OX.PRED..HHN, 
+			OX.PRED..HHE, OX.PRED..HNZ, OX.PRED..HNN, OX.PRED..HNE, 
+			OX.SABO..HHZ, OX.SABO..HHN, OX.SABO..HHE, OX.SABO..HNZ, 
+			OX.SABO..HNN, OX.SABO..HNE, OX.VARN..HHZ, OX.VARN..HHN, 
+			OX.VARN..HHE, OX.VARN..HNZ, OX.VARN..HNN, OX.VARN..HNE, 
+			OX.ZOU2..HHZ, OX.ZOU2..HHN, OX.ZOU2..HHE, OX.ZOU2..HNZ, 
+			OX.ZOU2..HNN, OX.ZOU2..HNE, RF.GEPF..HHZ, RF.GEPF..HHN, 
+			RF.GEPF..HHE, SI.ABSI..HHZ, SI.ABSI..HHN, SI.ABSI..HHE, 
+			SI.BOSI..HHZ, SI.BOSI..HHN, SI.BOSI..HHE, SI.KOSI..HHZ, 
+			SI.KOSI..HHN, SI.KOSI..HHE, SI.LUSI..HHZ, SI.LUSI..HHN, 
+			SI.LUSI..HHE, SI.MOSI..HHZ, SI.MOSI..HHN, SI.MOSI..HHE, 
+			SI.RISI..HHZ, SI.RISI..HHN, SI.RISI..HHE, SI.ROSI..HHZ, 
+			SI.ROSI..HHN, SI.ROSI..HHE, ST.CARE..EHZ, ST.CARE..EHN, 
+			ST.CARE..EHE, ST.CARE..HNZ, ST.CARE..HNN, ST.CARE..HNE, 
+			ST.DOSS..HHZ, ST.DOSS..HHN, ST.DOSS..HHE, ST.DOSS..HNZ, 
+			ST.DOSS..HNN, ST.DOSS..HNE, ST.GAGG..HHZ, ST.GAGG..HHN, 
+			ST.GAGG..HHE, ST.GAGG..HNZ, ST.GAGG..HNN, ST.GAGG..HNE, 
+			ST.OZOL..EHZ, ST.OZOL..EHN, ST.OZOL..EHE, ST.OZOL..HNZ, 
+			ST.OZOL..HNN, ST.OZOL..HNE, ST.PANI..EHZ, ST.PANI..EHN, 
+			ST.PANI..EHE, ST.PANI..HNZ, ST.PANI..HNN, ST.PANI..HNE, 
+			ST.RONC..EHZ, ST.RONC..EHN, ST.RONC..EHE, ST.RONC..HNZ, 
+			ST.RONC..HNN, ST.RONC..HNE, ST.VARA..EHZ, ST.VARA..EHN, 
+			ST.VARA..EHE, ST.VARA..HNZ, ST.VARA..HNN, ST.VARA..HNE, 
+			ST.ZIAN..EHZ, ST.ZIAN..EHN, ST.ZIAN..EHE, ST.ZIAN..HNZ, 
+			ST.ZIAN..HNN, ST.ZIAN..HNE, TV.AG11..EHZ, TV.AG11..EHN, 
+			TV.AG11..EHE, TV.AG51..EHZ, TV.AG51..EHN, TV.AG51..EHE, 
+			TV.H2O5..DHZ, TV.H2O5..DHN, TV.H2O5..DHE, TV.SF01..EHZ, 
+			TV.SF01..EHN, TV.SF01..EHE, TV.SF03..EHZ, TV.SF03..EHN, 
+			TV.SF03..EHE, TV.SF04..EHZ, TV.SF04..EHN, TV.SF04..EHE, 
+			TV.SF11..HHZ, TV.SF11..HHN, TV.SF11..HHE, TV.SF13..HHZ, 
+			TV.SF13..HHN, TV.SF13..HHE, TV.SF14..HHZ, TV.SF14..HHN, 
+			TV.SF14..HHE, TV.SU26..HHZ, TV.SU26..HHN, TV.SU26..HHE, 
+			TV.TN05..EHZ, TV.TN05..EHN, TV.TN05..EHE, TV.TT08..EHZ, 
+			TV.TT08..EHN, TV.TT08..EHE, XO.AM01..EHZ, XO.AM01..EHN, 
+			XO.AM01..EHE, XO.AM01..HNZ, XO.AM01..HNN, XO.AM01..HNE, 
+			XO.AM02..EHZ, XO.AM02..EHN, XO.AM02..EHE, XO.AM02..HNZ (3x), 
+			XO.AM02..HNN (3x), XO.AM02..HNE (3x), XO.AM03..EHZ, XO.AM03..EHN, 
+			XO.AM03..EHE, XO.AM03..HNZ, XO.AM03..HNN, XO.AM03..HNE, 
+			XO.AM04..EHZ, XO.AM04..EHN, XO.AM04..EHE, XO.AM04..HNZ, 
+			XO.AM04..HNN, XO.AM04..HNE, XO.AM05..EHZ, XO.AM05..EHN, 
+			XO.AM05..EHE, XO.AM05..HNZ, XO.AM05..HNN, XO.AM05..HNE, 
+			XO.CP01..EHZ, XO.CP01..EHN, XO.CP01..EHE, XO.CP01..HNZ, 
+			XO.CP01..HNN, XO.CP01..HNE, XO.CP02..EHZ, XO.CP02..EHN, 
+			XO.CP02..EHE, XO.CP02..HNZ, XO.CP02..HNN, XO.CP02..HNE, 
+			XO.CP04..EHZ, XO.CP04..EHN, XO.CP04..EHE, XO.CP05..EHZ, 
+			XO.CP05..EHN, XO.CP05..EHE, XO.CP05..HNZ, XO.CP05..HNN, 
+			XO.CP05..HNE, XO.CP06..EHZ, XO.CP06..EHN, XO.CP06..EHE, 
+			XO.CP06..HNZ, XO.CP06..HNN, XO.CP06..HNE, XO.CP07..EHZ, 
+			XO.CP07..EHN, XO.CP07..EHE, XO.CP07..HNZ, XO.CP07..HNN, 
+			XO.CP07..HNE, XO.CV01..EHZ, XO.CV01..EHN, XO.CV01..EHE, 
+			XO.CV01..HNZ, XO.CV01..HNN, XO.CV01..HNE, XO.CV02..EHZ, 
+			XO.CV02..EHN, XO.CV02..EHE, XO.CV02..HNZ, XO.CV02..HNN, 
+			XO.CV02..HNE, XO.CV03..EHZ, XO.CV03..EHN, XO.CV03..EHE, 
+			XO.CV03..HNZ, XO.CV03..HNN, XO.CV03..HNE, XO.CV04..EHZ, 
+			XO.CV04..EHN, XO.CV04..EHE, XO.CV04..HNZ, XO.CV04..HNN, 
+			XO.CV04..HNE, XO.CV05..EHZ, XO.CV05..EHN, XO.CV05..EHE, 
+			XO.CV05..HNZ, XO.CV05..HNN, XO.CV05..HNE, XO.MB01..EHZ, 
+			XO.MB01..EHN, XO.MB01..EHE, XO.MB01..HNZ, XO.MB01..HNN, 
+			XO.MB01..HNE, XO.MB02..EHZ, XO.MB02..EHN, XO.MB02..EHE, 
+			XO.MB02..HNZ, XO.MB02..HNN, XO.MB02..HNE, XO.MB03..EHZ, 
+			XO.MB03..EHN, XO.MB03..EHE, XO.MB04..EHZ, XO.MB04..EHN, 
+			XO.MB04..EHE, XO.MB05..EHZ, XO.MB05..EHN, XO.MB05..EHE, 
+			XO.MB05..HNZ, XO.MB05..HNN, XO.MB05..HNE, XO.MB06..EHZ, 
+			XO.MB06..EHN, XO.MB06..EHE, XO.MB06..HNZ, XO.MB06..HNN, 
+			XO.MB06..HNE, XO.MB07..EHZ, XO.MB07..EHN, XO.MB07..EHE, 
+			XO.MB07..HNZ, XO.MB07..HNN, XO.MB07..HNE, XO.MB08..EHZ, 
+			XO.MB08..EHN, XO.MB08..EHE, XO.MB09..EHZ, XO.MB09..EHN, 
+			XO.MB09..EHE, XO.MB09..HNZ, XO.MB09..HNN, XO.MB09..HNE, 
+			XO.MB10..EHZ, XO.MB10..EHN, XO.MB10..EHE, XO.MB10..HNZ, 
+			XO.MB10..HNN, XO.MB10..HNE, XO.MB12..EHZ, XO.MB12..EHN, 
+			XO.MB12..EHE, XO.MB12..HNZ, XO.MB12..HNN, XO.MB12..HNE, 
+			XO.MN02..EHZ (2x), XO.MN02..EHN (2x), XO.MN02..EHE (2x), 
+			XO.MN02..HNZ (2x), XO.MN02..HNN (2x), XO.MN02..HNE (2x), 
+			XO.MN03..EHZ (2x), XO.MN03..EHN (2x), XO.MN03..EHE (2x), 
+			XO.MN03..HNZ, XO.MN03..HNN, XO.MN03..HNE, XO.MN04..EHZ, 
+			XO.MN04..EHN, XO.MN04..EHE, XO.MN04..HNZ, XO.MN04..HNN, 
+			XO.MN04..HNE, XO.MN06..EHZ (2x), XO.MN06..EHN (2x), 
+			XO.MN06..EHE (2x), XO.MN06..HNZ (2x), XO.MN06..HNN (2x), 
+			XO.MN06..HNE (2x), XO.MN08..EHZ, XO.MN08..EHN, XO.MN08..EHE, 
+			XO.MN08..HNZ, XO.MN08..HNN, XO.MN08..HNE, XO.MN09..EHZ, 
+			XO.MN09..EHN, XO.MN09..EHE, XO.MN09..HNZ, XO.MN09..HNN, 
+			XO.MN09..HNE, XO.SGF1..EHZ, XO.SGF1..EHN, XO.SGF1..EHE, 
+			XO.SGF2..EHZ, XO.SGF2..EHN, XO.SGF2..EHE, XO.SGF3..EHZ, 
+			XO.SGF3..EHN, XO.SGF3..EHE, XO.SGF3..HNZ, XO.SGF3..HNN, 
+			XO.SGF3..HNE, XO.SGF5..EHZ, XO.SGF5..EHN, XO.SGF5..EHE, 
+			XO.SGF6..EHZ, XO.SGF6..EHN, XO.SGF6..EHE, XO.SGF7..EHZ, 
+			XO.SGF7..EHN, XO.SGF7..EHE, XO.SGFR..EHZ, XO.SGFR..EHN, 
+			XO.SGFR..EHE, Z3.A300A..HHZ, Z3.A300A..HHN, Z3.A300A..HHE, 
+			Z3.A301A..HHZ, Z3.A301A..HHN, Z3.A301A..HHE, Z3.A302A..HHZ, 
+			Z3.A302A..HHN, Z3.A302A..HHE, Z3.A303A..HHZ, Z3.A303A..HHN, 
+			Z3.A303A..HHE, Z3.A304A..HHZ, Z3.A304A..HHN, Z3.A304A..HHE, 
+			Z3.A305A..HHZ, Z3.A305A..HHN, Z3.A305A..HHE, Z3.A306A..HHZ, 
+			Z3.A306A..HHN, Z3.A306A..HHE, Z3.A307A..HHZ, Z3.A307A..HHN, 
+			Z3.A307A..HHE, Z3.A308A..HHZ, Z3.A308A..HHN, Z3.A308A..HHE, 
+			Z3.A309A..HHZ, Z3.A309A..HHN, Z3.A309A..HHE, Z3.A312A..HHZ, 
+			Z3.A312A..HHN, Z3.A312A..HHE, Z3.A313A..HHZ, Z3.A313A..HHN, 
+			Z3.A313A..HHE, Z3.A316A..HHZ, Z3.A316A..HHN, Z3.A316A..HHE, 
+			Z3.A317A..HHZ, Z3.A317A..HHN, Z3.A317A..HHE, Z3.A318A..HHZ, 
+			Z3.A318A..HHN, Z3.A318A..HHE, Z3.A319A..HHZ, Z3.A319A..HHN, 
+			Z3.A319A..HHE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Here, we print a summary of the main information of each seismic network, as the description and the starting and ending dates</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">inventory</span><span class="p">:</span>
+    
+    <span class="n">start</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">network</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;present&quot;</span> 
+    <span class="k">else</span><span class="p">:</span> <span class="n">end</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">end_date</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Network code: </span><span class="si">{0:2}</span><span class="s2">   Period: </span><span class="si">{1:10}</span><span class="s2"> to </span><span class="si">{2:10}</span><span class="s2">   Description: </span><span class="si">{3:60}</span><span class="s2">   &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">code</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">network</span><span class="o">.</span><span class="n">description</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Network code: 3A   Period: 2016-09-19 to 2016-11-30   Description: Seismic Microzonation Network, 2016 Central Italy              
+Network code: 5J   Period: 2014-07-16 to 2016-09-27   Description: The Sardinia Passive Array experiment                          
+Network code: 7C   Period: 2021-01-01 to 2031-12-31   Description: Urban Seismic Network (RUSN-CAL-INGV)                          
+Network code: AC   Period: 2002-01-01 to present      Description: Albanian Seismic Network                                       
+Network code: BA   Period: 2005-01-01 to present      Description: Universita della Basilicata Seismic Network                    
+Network code: GU   Period: 1980-01-01 to present      Description: Regional Seismic Network of North Western Italy                
+Network code: IV   Period: 1988-01-01 to present      Description: Italian Seismic Network                                        
+Network code: IX   Period: 2005-01-01 to present      Description: Irpinia Seismic Network, Italy                                 
+Network code: MN   Period: 1988-01-01 to present      Description: Mediterranean Very Broadband Seismographic Network             
+Network code: NI   Period: 2002-01-01 to present      Description: North-East Italy Broadband Network                             
+Network code: OT   Period: 2013-04-01 to present      Description: OTRIONS Local Seismic Network, Apulia, Italy                   
+Network code: OX   Period: 2016-01-01 to present      Description: North-East Italy Seismic Network                               
+Network code: RF   Period: 1993-01-01 to present      Description: Friuli Venezia Giulia Accelerometric Network, Italy            
+Network code: SI   Period: 2006-01-01 to present      Description: Sudtirol Network, Italy                                        
+Network code: ST   Period: 1981-01-01 to present      Description: Trentino Seismic Network, Italy                                
+Network code: TV   Period: 2008-01-01 to present      Description: INGV Experiments Network                                       
+Network code: XO   Period: 2016-08-24 to 2017-11-07   Description: EMERSITO Seismic Network, 2016 Central Italy                   
+Network code: Z3   Period: 2015-01-01 to 2022-12-31   Description: AlpArray Seismic Network (AASN) temporary component            
+</pre></div>
+</div>
+</div>
+</div>
+<section id="seismic-stations">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">6.3.1. </span>Seismic stations</a><a class="headerlink" href="#seismic-stations" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Let us define the network and station codes of the seismic station <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'IV.MRLC'</span></code></span> that we will use as case study in this lecture</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">network_code</span><span class="p">,</span> <span class="n">station_code</span> <span class="o">=</span> <span class="s2">&quot;IV&quot;</span><span class="p">,</span> <span class="s2">&quot;MRLC&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and select it from the <code class="docutils literal notranslate"><span class="pre">inventory</span></code></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inv</span> <span class="o">=</span> <span class="n">inventory</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network_code</span><span class="p">,</span> <span class="n">station_code</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;INVENTORY:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">inv</span><span class="p">)</span>
+
+<span class="n">station</span> <span class="o">=</span> <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">STATION:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">station</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INVENTORY:
+
+ Inventory created at 2023-02-01T20:02:57.494000Z
+	Created by: INGV-ONT WEB SERVICE: fdsnws-station | version: 1.1.54
+		    /exist/apps/fdsn-station/fdsnws/station/1/query?starttime=2016-01-...
+	Sending institution: eXistDB (INGV-ONT)
+	Contains:
+		Networks (1):
+			IV
+		Stations (1):
+			IV.MRLC (Muro Lucano)
+		Channels (6):
+			IV.MRLC..HHZ, IV.MRLC..HHN, IV.MRLC..HHE, IV.MRLC..HNZ, 
+			IV.MRLC..HNN, IV.MRLC..HNE
+
+STATION:
+
+ Station MRLC (Muro Lucano)
+	Station Code: MRLC
+	Channel Count: 18/24 (Selected/Total)
+	2003-03-01T00:00:00.000000Z - 
+	Access: open 
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m
+	Available Channels:
+	    ..HN[ZNE]   100.0 Hz  2011-08-08 to 2017-04-10
+	    ..HH[ZNE]   100.0 Hz  2005-03-23 to None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>As we can see, the seismic station hosts 5 different kinds of channels: HN*, HH*, BN*, LH* and VH*. The first and second letters indicates the band and instrument codes, while third letter indicates the orientation code that, in the present case, can be vertical (Z), north (N) and east (E). We can visit the web page  <a class="reference external" href="https://ds.iris.edu/ds/nodes/dmc/data/formats/seed-channel-naming/">SEED Channel Naming</a> for a detailed description of the different band, instrument and orientation codes.</p>
+<p>For now, let us give a look to all the channels of the seismic station</p>
+</div>
+<div class="cell tag_full-width tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">station</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">CHANNEL</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">channel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CHANNEL
+
+ Channel &#39;BHE&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 90.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 20.00 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;BHN&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 20.00 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;BHZ&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: -90.00 degrees down from horizontal
+	Sampling Rate: 20.00 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;HHE&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 90.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 100.00 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;HHN&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 100.00 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;HHZ&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: -90.00 degrees down from horizontal
+	Sampling Rate: 100.00 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;HNE&#39;, Location &#39;&#39; 
+	Time range: 2011-08-08T17:54:00.000000Z - 2017-04-10T17:54:00.000000Z
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 90.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 100.00 Hz
+	Sensor (Description): None (KINEMETRICS EPISENSOR-FBA-ES-T-CL-1G-FS-40-VPP)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;HNN&#39;, Location &#39;&#39; 
+	Time range: 2011-08-08T17:54:00.000000Z - 2017-04-10T17:54:00.000000Z
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 100.00 Hz
+	Sensor (Description): None (KINEMETRICS EPISENSOR-FBA-ES-T-CL-1G-FS-40-VPP)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;HNZ&#39;, Location &#39;&#39; 
+	Time range: 2011-08-08T17:54:00.000000Z - 2017-04-10T17:54:00.000000Z
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: -90.00 degrees down from horizontal
+	Sampling Rate: 100.00 Hz
+	Sensor (Description): None (KINEMETRICS EPISENSOR-FBA-ES-T-CL-1G-FS-40-VPP)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;LHE&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 90.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 1.00 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;LHN&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 1.00 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;LHZ&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: -90.00 degrees down from horizontal
+	Sampling Rate: 1.00 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;VHE&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 90.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 0.10 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;VHN&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: 0.00 degrees down from horizontal
+	Sampling Rate: 0.10 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+
+CHANNEL
+
+ Channel &#39;VHZ&#39;, Location &#39;&#39; 
+	Time range: 2005-03-23T17:54:00.000000Z - --
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m, Local Depth: 0.0 m
+	Azimuth: 0.00 degrees from north, clockwise
+	Dip: -90.00 degrees down from horizontal
+	Sampling Rate: 0.10 Hz
+	Sensor (Description): None (NANOMETRICS TRILLIUM-40S)
+	Response information available
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and select some relevant information, like the sampling rate, the input and output units, and the kind of sensor associated to each channel</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">station</span><span class="p">:</span>
+    
+    <span class="n">code</span>          <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">code</span>
+    <span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">sample_rate</span>
+    <span class="n">sensor</span>        <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">description</span>
+    
+    <span class="n">response</span> <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">response</span>
+    
+    <span class="n">input_units</span>  <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">instrument_sensitivity</span><span class="o">.</span><span class="n">input_units</span>
+    <span class="n">output_units</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">instrument_sensitivity</span><span class="o">.</span><span class="n">output_units</span>
+    
+    <span class="n">text</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;</span><span class="si">{0:5}</span><span class="s1">   sampling rate = </span><span class="si">{1:5.1f}</span><span class="s1"> [Hz]   input = </span><span class="si">{2:7}</span><span class="s1">   output = </span><span class="si">{3:7}</span><span class="s1">  </span><span class="si">{4:25}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="n">sampling_rate</span><span class="p">,</span><span class="n">input_units</span><span class="p">,</span><span class="n">output_units</span><span class="p">,</span><span class="n">sensor</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BHE     sampling rate =  20.0 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+BHN     sampling rate =  20.0 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+BHZ     sampling rate =  20.0 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+HHE     sampling rate = 100.0 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+HHN     sampling rate = 100.0 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+HHZ     sampling rate = 100.0 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+HNE     sampling rate = 100.0 [Hz]   input = M/S**2    output = COUNTS   KINEMETRICS EPISENSOR-FBA-ES-T-CL-1G-FS-40-VPP
+HNN     sampling rate = 100.0 [Hz]   input = M/S**2    output = COUNTS   KINEMETRICS EPISENSOR-FBA-ES-T-CL-1G-FS-40-VPP
+HNZ     sampling rate = 100.0 [Hz]   input = M/S**2    output = COUNTS   KINEMETRICS EPISENSOR-FBA-ES-T-CL-1G-FS-40-VPP
+LHE     sampling rate =   1.0 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+LHN     sampling rate =   1.0 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+LHZ     sampling rate =   1.0 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+VHE     sampling rate =   0.1 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+VHN     sampling rate =   0.1 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+VHZ     sampling rate =   0.1 [Hz]   input = M/S       output = COUNTS   NANOMETRICS TRILLIUM-40S 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>From this list, we can learn that all the channels convert the ground velocity (m/s) into integers (counts), but for the channels HN* which instead convert the ground acceleration (m/s<span class="math notranslate nohighlight">\(^2\)</span>) into integers (counts). We thus understand that the instrument codes H and N (the second letter) stand for velocimeters (or high gain seismometer, NANOMETRICS TRILLIUM-40S) and accelerometers (KINEMETRICS EPISENSOR-FBA-ES-T-CL-1G-FS-40-VPP), respectively.</p>
+<p>As it concerns the channels of the velocimeters, we can see that they are characterized by different band codes (B,H,L,V), each of which with different sampling rates. These channels comes from the same sensor (NANOMETRICS TRILLIUM-40S) and they are provided for different purposes, depending on the frequency range on which we are interested. For seismological applications, we shall select the chahnels with the highest sampling rate that, for this velocimeters, are the channels HH*.</p>
+<p>In <a class="reference internal" href="#sec-seismometer"><span class="std std-numref">Section 6.4 - Seismometers</span></a> we will better discuss how modern seismometers work and why they record <em>counts</em> rather than the relative motion as discussed in <a class="reference internal" href="T0_Harmonic.html#chap-h"><span class="std std-numref">Lecture 3 - Harmonic oscillator</span></a>.</p>
+</div>
+</section>
+<section id="seismic-channels">
+<h3><a class="toc-backref" href="#id6"><span class="section-number">6.3.2. </span>Seismic channels</a><a class="headerlink" href="#seismic-channels" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>In order to dispose of an <code class="docutils literal notranslate"><span class="pre">inventory</span></code> with only the channels with the highest sampling rates, we make use of the function <code class="docutils literal notranslate"><span class="pre">lab.keep_seismic_channels</span></code> which, for each instrument codes, select the band code with the highest sampling rate</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lab</span>
+
+<span class="n">inventory</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">keep_seismic_channels</span><span class="p">(</span><span class="n">inventory</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n">directory</span><span class="o">+</span><span class="s2">&quot;Seismic_Inventory.xml&quot;</span>
+<span class="n">inventory</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;STATIONXML&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>As you can see now, the seismic station <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'IV.MRLC'</span></code></span> only contains the HH* and HN* channels</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inv</span> <span class="o">=</span> <span class="n">inventory</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">network_code</span><span class="p">,</span> <span class="n">station_code</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">origin</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+<span class="n">station</span> <span class="o">=</span> <span class="n">inv</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;STATION:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">station</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>STATION:
+
+ Station MRLC (Muro Lucano)
+	Station Code: MRLC
+	Channel Count: 18/24 (Selected/Total)
+	2003-03-01T00:00:00.000000Z - 
+	Access: open 
+	Latitude: 40.7564, Longitude: 15.4889, Elevation: 605.0 m
+	Available Channels:
+	    ..HN[ZNE]   100.0 Hz  2011-08-08 to 2017-04-10
+	    ..HH[ZNE]   100.0 Hz  2005-03-23 to None
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="seismometers">
+<span id="sec-seismometer"></span><h2><a class="toc-backref" href="#id7"><span class="section-number">6.4. </span>Seismometers</a><a class="headerlink" href="#seismometers" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>A seismic station (or seismograph) consists of a sensor (seismometer),
+an analog to digital converter (digitizer) and the recorder. The
+seismometer converts the ground motion (input) into another continuous
+physical signal, like a voltage (or the motion of the stylos drawing on
+a sheet of paper). The digitizer converts the output signal from the
+sensor into a number called <em>count</em>, just like we do with a digital voltmeter.
+The digitizer is characterized by the resolution (how we discretize the
+continuous voltage into <em>counts</em>) and the sampling rate
+(how many <em>counts</em> per second). In the end, the recorder stores the
+<em>counts</em> from the ditigitizer into flash memories or hard disks.</p>
+<p>Sensors are divided into passive and active sensors. A (modern) passive
+seismometer mainly consists of a spring-mass system and a coil embedded
+into a magnetic field that both damps the motion of the mass with
+respect to the seismometer and outputs a voltage which is nearly
+proportional to the ground velocity above the natural frequency of the
+spring-mass system (typically of the order of 1 Hz, although it
+can be as low as 0.03 Hz). It thus can be seen as a velocity
+transducer. Older passive seismometers, instead, simply consist of a
+spring-mass system in series with a dash pot (usually filled with oil)
+and measure the displacement of the mass through a stylus drawing on a
+sheet of paper or some other optical devices. An active seismometer, like the
+force balanced accelerometers (FBA), adds a displacement transducer
+(i.e., a capacitor whose capacitance varies with the displacement of the
+mass) that sends, in a negative feedback loop, a current to the coil
+which exerts a force equal and opposite to the inertia force in order to
+prevent the mass from moving at all with respect to the seismometer.
+This current, being proportional to the ground acceleration in a large
+frequency band, gives a direct measure of it.</p>
+<p>Passive seismometers, although less accurate than the active ones, are
+cheaper and simpler to be installed into the field.</p>
+</div>
+<section id="velocimeters">
+<h3><a class="toc-backref" href="#id8"><span class="section-number">6.4.1. </span>Velocimeters</a><a class="headerlink" href="#velocimeters" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>A modern passive seismometer (or digital velocimeter) can be obtained using a mechanical seismometer and converting
+the relative motion of the mass into a current through a magnetic field and a coil.
+This current can also be used to damp the relative motion of the mass. In this case, the output
+of the seismometer is a voltage, <span class="math notranslate nohighlight">\(V\)</span>, proportional to the relative velocity
+of the mass with respect to the seismometer, <span class="math notranslate nohighlight">\(\dot{z}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+&amp;V(t) = G\,\dot{z}(t)
+\end{align}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(G\)</span> being the generator constant.
+The voltage is then converted into <span class="math notranslate nohighlight">\(n\)</span> bits (typically 24), or counts, by the
+digitizer and stored into the recorder</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+&amp; c(t) = C\,V(t)  
+\end{align}
+\]</div>
+<p>The digitizer has <span class="math notranslate nohighlight">\(2^n\)</span> (<span class="math notranslate nohighlight">\(\approx 1.7\times10^{7}\)</span>) levels that, once
+subdivided into positive and negatives levels, correspond to a dynamic
+range from <span class="math notranslate nohighlight">\(-2^{n-1}\)</span> to <span class="math notranslate nohighlight">\(2^{n-1}-1\)</span>
+(<span class="math notranslate nohighlight">\(\approx \pm 8.4\times10^{6}\)</span>). In this respect, assuming a voltage range <span class="math notranslate nohighlight">\([-V_\mathrm{max},V_\mathrm{max}]\)</span>, the constant <span class="math notranslate nohighlight">\(C\)</span> reads</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+&amp; C = \frac{2^{n-1}}{V_\mathrm{max}}
+\end{align}
+\]</div>
+<p>Depending on the generatot constant and on the voltage range of the voltmeter, a modern passive seismometer can be subdivides into high and low gain seismometers. High gain seismometers finely discretize a small voltage ranges, thus being accurate but prone to saturation. Low-gain seismometers, instead, are set in such a way that the voltage ranges is wide and, so, they hardly reach the saturation but they are less accurate than high-gain seismometers. The latter are use for strong ground motion applications, i.e., for studying seismic waves in proximity of the epicenter. High-gain seismometers, instead, can be used to studying teleseismic waves, far from the epicenter.</p>
+<p>By considering the response function, as defined in  <a class="reference internal" href="T0_Harmonic.html#chap-h"><span class="std std-numref">Lecture 3</span></a> - <a class="reference internal" href="T0_Harmonic.html#chap-h"><span class="std std-ref">Harmonic oscillators</span></a> and  <a class="reference internal" href="T1_Fourier.html#chap-f"><span class="std std-numref">Lecture 4</span></a> - <a class="reference internal" href="T1_Fourier.html#chap-f"><span class="std std-ref">Fourier transform</span></a>, and the fact that the output of the velocimeters is in counts, we can write the following relation between the Fourier transform of the counts and the ground velocity</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\tilde{c}(\omega) = C\,G\,\big(i\,\omega\,\tilde{z}(\omega)\big) = C\,G\,\tilde{R}(\omega)\,(i\,\omega\,\tilde{u}_g(\omega)\big)
+\end{align}
+\]</div>
+<p>In this respect, the response function of seismometers differs by that of an harmonic oscillator only by the factor <span class="math notranslate nohighlight">\(C\,G\)</span>, that is the so called <em>instrument sensitivity</em>.</p>
+</div>
+</section>
+<section id="response-function">
+<h3><a class="toc-backref" href="#id9"><span class="section-number">6.4.2. </span>Response function</a><a class="headerlink" href="#response-function" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Let us consider the east channel of the velocimeter (HHE) of the seismic station <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'IV.MRLC'</span></code></span></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">channel</span> <span class="o">=</span> <span class="n">station</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s2">&quot;HHE&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and investigate its field <code class="docutils literal notranslate"><span class="pre">response</span></code></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">channel</span><span class="o">.</span><span class="n">response</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Channel Response
+	From M/S () to COUNTS ()
+	Overall Sensitivity: 1.5e+09 defined at 0.200 Hz
+	5 stages:
+		Stage 1: PolesZerosResponseStage from M/S to V, gain: 1500
+		Stage 2: CoefficientsTypeResponseStage from V to COUNTS, gain: 1e+06
+		Stage 3: CoefficientsTypeResponseStage from COUNTS to COUNTS, gain: 1
+		Stage 4: CoefficientsTypeResponseStage from COUNTS to COUNTS, gain: 1
+		Stage 5: CoefficientsTypeResponseStage from COUNTS to COUNTS, gain: 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>As we can see, the <code class="docutils literal notranslate"><span class="pre">response</span></code> consists of <span class="math notranslate nohighlight">\(5\)</span> stages. The first and second stages describe the actual sensor which converts the ground velocity into a voltage and the digitizer which converts the voltage into counts. The following stages, instead, are digital processings by means of which the counts are organized to be properly recorded</p>
+</div>
+<div class="cell tag_full-width tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">response_stage</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">response_stages</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">RESPONSE STAGE:</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">response_stage</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RESPONSE STAGE:
+
+ Response type: PolesZerosResponseStage, Stage Sequence Number: 1
+	From M/S to V
+	Stage gain: 1500.0, defined at 0.20 Hz
+	Transfer function type: LAPLACE (RADIANS/SECOND)
+	Normalization factor: 98696, Normalization frequency: 0.20 Hz
+	Poles: (-0.1111+0.1111j), (-0.1111-0.1111j), (-172.79+262.37j), (-172.79-262.37j)
+	Zeros: 0j, 0j
+
+RESPONSE STAGE:
+
+ Response type: CoefficientsTypeResponseStage, Stage Sequence Number: 2
+	From V to COUNTS
+	Stage gain: 1000000.0, defined at 0.00 Hz
+	Decimation:
+		Input Sample Rate: 30000.00 Hz
+		Decimation Factor: 1
+		Decimation Offset: 0
+		Decimation Delay: 0.00
+		Decimation Correction: 0.00
+	Transfer function type: DIGITAL
+	Contains 0 numerators and 0 denominators
+
+RESPONSE STAGE:
+
+ Response type: CoefficientsTypeResponseStage, Stage Sequence Number: 3
+	From COUNTS to COUNTS
+	Stage gain: 1.0, defined at 1.00 Hz
+	Decimation:
+		Input Sample Rate: 30000.00 Hz
+		Decimation Factor: 15
+		Decimation Offset: 0
+		Decimation Delay: 0.00
+		Decimation Correction: -0.00
+	Transfer function type: DIGITAL
+	Contains 165 numerators and 0 denominators
+
+RESPONSE STAGE:
+
+ Response type: CoefficientsTypeResponseStage, Stage Sequence Number: 4
+	From COUNTS to COUNTS
+	Stage gain: 1.0, defined at 1.00 Hz
+	Decimation:
+		Input Sample Rate: 2000.00 Hz
+		Decimation Factor: 10
+		Decimation Offset: 0
+		Decimation Delay: 0.00
+		Decimation Correction: -0.05
+	Transfer function type: DIGITAL
+	Contains 187 numerators and 0 denominators
+
+RESPONSE STAGE:
+
+ Response type: CoefficientsTypeResponseStage, Stage Sequence Number: 5
+	From COUNTS to COUNTS
+	Stage gain: 1.0, defined at 1.00 Hz
+	Decimation:
+		Input Sample Rate: 200.00 Hz
+		Decimation Factor: 2
+		Decimation Offset: 0
+		Decimation Delay: 0.00
+		Decimation Correction: -0.56
+	Transfer function type: DIGITAL
+	Contains 223 numerators and 0 denominators
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>By using the method <code class="docutils literal notranslate"><span class="pre">response.plot</span></code> we can give a first look to the Fourier transform of the response function</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;DEF&quot;</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">axes</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L1_Seismic_catalogs_and_networks_95_0.png" src="../_images/L1_Seismic_catalogs_and_networks_95_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>By using the method <code class="docutils literal notranslate"><span class="pre">response.get_evalresp_response</span></code>, instead, we can evaluate the Fourier transform of the response function at the discrete frequency corresponding to a sampling time interval <span class="math notranslate nohighlight">\([0,T)\)</span> and step <span class="math notranslate nohighlight">\(d\)</span></p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mf">1e-2</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">d</span><span class="p">)</span>
+
+<span class="n">Rs</span><span class="p">,</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get_evalresp_response</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;DEF&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Frequencies:&quot;</span><span class="p">,</span><span class="n">fs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Responses: &quot;</span><span class="p">,</span><span class="n">Rs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Frequencies: [0.e+00 1.e-03 2.e-03 ... 5.e+01 5.e+01 5.e+01]
+Responses:  [ 0.000e+00+0.000e+00j -2.395e+06+1.357e+05j -9.534e+06+1.086e+06j ...
+  5.720e-02-7.478e+01j  5.456e-02-7.489e+01j  5.192e-02-7.501e+01j]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and plot it by ourselves</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">lab</span><span class="o">.</span><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">Rs</span><span class="p">,</span> <span class="n">axes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L1_Seismic_catalogs_and_networks_99_0.png" src="../_images/L1_Seismic_catalogs_and_networks_99_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>Here below we show the response functions relating the counts to the ground displacement, velocity and acceleration</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">axe</span><span class="p">,</span><span class="n">output</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">T</span><span class="p">,[</span><span class="s2">&quot;DISP&quot;</span><span class="p">,</span><span class="s2">&quot;VEL&quot;</span><span class="p">,</span><span class="s2">&quot;ACC&quot;</span><span class="p">]):</span>
+    <span class="n">Rs</span><span class="p">,</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get_evalresp_response</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+    <span class="n">ylabel</span> <span class="o">=</span> <span class="n">output</span><span class="o">==</span><span class="s2">&quot;DISP&quot;</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">Rs</span><span class="p">,</span> <span class="n">axe</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">axe</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L1_Seismic_catalogs_and_networks_101_0.png" src="../_images/L1_Seismic_catalogs_and_networks_101_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>We can also remove the last stage to the response function for understaning the impact of it</p>
+</div>
+<div class="cell tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end_stage</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">response_stages</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">axe</span><span class="p">,</span><span class="n">output</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">T</span><span class="p">,[</span><span class="s2">&quot;DISP&quot;</span><span class="p">,</span><span class="s2">&quot;VEL&quot;</span><span class="p">,</span><span class="s2">&quot;ACC&quot;</span><span class="p">]):</span>
+    <span class="n">Rs</span><span class="p">,</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get_evalresp_response</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span><span class="n">end_stage</span><span class="o">=</span><span class="n">end_stage</span><span class="p">)</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="n">Rs</span><span class="p">,</span><span class="n">axe</span><span class="p">)</span>
+    <span class="n">axe</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/L1_Seismic_catalogs_and_networks_103_0.png" src="../_images/L1_Seismic_catalogs_and_networks_103_0.png" />
+</div>
+</div>
+<p style="page-break-after:always;"></p></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="T2_Discrete.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Discrete Fourier transform</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="L2_Waveforms.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Waveform processing</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gabriele Cambiotti<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

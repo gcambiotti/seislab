@@ -1,0 +1,2195 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Discrete Fourier transform &#8212; Seismology and Laboratory</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Seismic catalogs and networks" href="L1_Seismic_catalogs_and_networks.html" />
+    <link rel="prev" title="4. Fourier transform" href="T1_Fourier.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/gc_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Seismology and Laboratory</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Seismology and Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Setup
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="S1_Setup.html">
+   1. Working with JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="S2_Tutorial.html">
+   2. Tutorial on Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Theory
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="T0_Harmonic.html">
+   3. Harmonic oscillators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="T1_Fourier.html">
+   4. Fourier transform
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Discrete Fourier transform
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Laboratory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L1_Seismic_catalogs_and_networks.html">
+   6. Seismic catalogs and networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2_Waveforms.html">
+   7. Waveform processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L3_Local_magnitude.html">
+   8. Local magnitude
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L4_Earthquake_localization.html">
+   9. Earthquake localization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="A0_Dirac.html">
+   10. Dirac delta function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A1_Geographic_Maps.html">
+   11. Geographic maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A2_Inverse_Theory.html">
+   12. Inverse problem theory
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Libraries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L0_Libraries.html">
+   13. Libraries
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/files/T2_Discrete.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ffiles/T2_Discrete.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/files/T2_Discrete.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-time-interval-and-sampling-rate">
+   5.1. Finite time interval and sampling rate
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finite-time-interval">
+     5.1.1. Finite time interval
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finite-sampling-rate">
+     5.1.2. Finite sampling rate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-dft">
+     5.1.3. Real DFT
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preliminary-considerations">
+   5.2. Preliminary considerations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#box-function">
+     5.2.1. Box function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-ground-displacement">
+     5.2.2. Test ground displacement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convolution">
+   5.3. Convolution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fourier-series-of-the-convolution">
+     5.3.1. Fourier series of the convolution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circular-convolution">
+     5.3.2. Circular convolution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#box-functions">
+     5.3.3. Box functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relative-motion-from-driven-harmonic-oscillators">
+     5.3.4. Relative motion from driven harmonic oscillators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering">
+     5.3.5. Filtering
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Discrete Fourier transform</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-time-interval-and-sampling-rate">
+   5.1. Finite time interval and sampling rate
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finite-time-interval">
+     5.1.1. Finite time interval
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finite-sampling-rate">
+     5.1.2. Finite sampling rate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-dft">
+     5.1.3. Real DFT
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preliminary-considerations">
+   5.2. Preliminary considerations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#box-function">
+     5.2.1. Box function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-ground-displacement">
+     5.2.2. Test ground displacement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convolution">
+   5.3. Convolution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fourier-series-of-the-convolution">
+     5.3.1. Fourier series of the convolution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circular-convolution">
+     5.3.2. Circular convolution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#box-functions">
+     5.3.3. Box functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relative-motion-from-driven-harmonic-oscillators">
+     5.3.4. Relative motion from driven harmonic oscillators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering">
+     5.3.5. Filtering
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="discrete-fourier-transform">
+<span id="chap-d"></span><h1><span class="section-number">5. </span>Discrete Fourier transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this headline">#</a></h1>
+<div class="contents local topic" id="sections">
+<p class="topic-title">Sections</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#finite-time-interval-and-sampling-rate" id="id1">Finite time interval and sampling rate</a></p>
+<ul>
+<li><p><a class="reference internal" href="#finite-time-interval" id="id2">Finite time interval</a></p></li>
+<li><p><a class="reference internal" href="#finite-sampling-rate" id="id3">Finite sampling rate</a></p></li>
+<li><p><a class="reference internal" href="#real-dft" id="id4">Real DFT</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#preliminary-considerations" id="id5">Preliminary considerations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#box-function" id="id6">Box function</a></p></li>
+<li><p><a class="reference internal" href="#test-ground-displacement" id="id7">Test ground displacement</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#convolution" id="id8">Convolution</a></p>
+<ul>
+<li><p><a class="reference internal" href="#fourier-series-of-the-convolution" id="id9">Fourier series of the convolution</a></p></li>
+<li><p><a class="reference internal" href="#circular-convolution" id="id10">Circular convolution</a></p></li>
+<li><p><a class="reference internal" href="#box-functions" id="id11">Box functions</a></p></li>
+<li><p><a class="reference internal" href="#relative-motion-from-driven-harmonic-oscillators" id="id12">Relative motion from driven harmonic oscillators</a></p></li>
+<li><p><a class="reference internal" href="#filtering" id="id13">Filtering</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="finite-time-interval-and-sampling-rate">
+<h2><a class="toc-backref" href="#id1"><span class="section-number">5.1. </span>Finite time interval and sampling rate</a><a class="headerlink" href="#finite-time-interval-and-sampling-rate" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>In practise, when we observe a time-dependent signal <span class="math notranslate nohighlight">\(f(t)\)</span>, we can only get its value over a finite time interval and sampling rate. Within the assumpution that we sample the signal over a regular grid <span class="math notranslate nohighlight">\([0,T)\)</span> with time step <span class="math notranslate nohighlight">\(\delta t\)</span>, we can write</p>
+<div class="math notranslate nohighlight" id="equation-l2-1">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-l2-1" title="Permalink to this equation">#</a></span>\[
+t_j = j\,\delta t \qquad j=0,\cdots,n-1 
+\]</div>
+<p>and so we observe the function from <span class="math notranslate nohighlight">\(0\)</span> up to <span class="math notranslate nohighlight">\(T-\delta t\)</span> with</p>
+<div class="math notranslate nohighlight" id="equation-l2-2">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-l2-2" title="Permalink to this equation">#</a></span>\[
+T=n\,\delta T
+\]</div>
+</div>
+<section id="finite-time-interval">
+<h3><a class="toc-backref" href="#id2"><span class="section-number">5.1.1. </span>Finite time interval</a><a class="headerlink" href="#finite-time-interval" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Let us forget for a while the problem issue concerning the finiteness of the sampling rate and focus only on the continuous signal defined over <span class="math notranslate nohighlight">\([0,T)\)</span> and consider the following signal with compact support over the same interval</p>
+<div class="math notranslate nohighlight" id="equation-l2-3">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-l2-3" title="Permalink to this equation">#</a></span>\[
+f_c(t) = f(t)\,B_T(t)
+\]</div>
+<p>This means that we are neglecting the signal outise the sampling time interval <span class="math notranslate nohighlight">\([0,T)\)</span> assuming that it is zero.</p>
+<p>Also, let us consider the periodic function which repeat this signal over all the time interavls <span class="math notranslate nohighlight">\(\big[k\,T,(k+1)\,T\big)\)</span></p>
+<div class="math notranslate nohighlight" id="equation-l2-4">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-l2-4" title="Permalink to this equation">#</a></span>\[
+f_p(t+k\,T) = f(t)  \qquad \forall t\in[0,T)\quad \forall k\in\mathbb{N}
+\]</div>
+<p>By definition, we have</p>
+<div class="math notranslate nohighlight" id="equation-l2-5">
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-l2-5" title="Permalink to this equation">#</a></span>\[
+f(t) = f_p(t) = f_c(t)\qquad \forall \,t\in[0,T)
+\]</div>
+<p>The periodi function admit the Fourier series representation</p>
+<div class="math notranslate nohighlight" id="equation-l2-6">
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-l2-6" title="Permalink to this equation">#</a></span>\[
+f_p(t) = \frac{1}{T}\,\sum_{k=-\infty}^\infty F_k\,e^{i\,\omega_k\,t} \qquad \omega_k = k\,\delta\omega \qquad \delta\omega = \frac{2\,\pi}{T}
+\]</div>
+<p>where the Fourier coefficients <span class="math notranslate nohighlight">\(F_k\)</span> can be computed as</p>
+<div class="math notranslate nohighlight" id="equation-l2-7">
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-l2-7" title="Permalink to this equation">#</a></span>\[
+F_k = \int_0^T f_p(t)\,e^{-i\,\omega_k\,t}\,dt 
+\]</div>
+<p>We note that the integral in eq. <a class="reference internal" href="#equation-l2-7">(5.7)</a> can be seen as the Fourier transform (evaluated at the discretized frequency <span class="math notranslate nohighlight">\(\omega_k\)</span>) of signal with compact support</p>
+<div class="math notranslate nohighlight" id="equation-l2-8">
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-l2-8" title="Permalink to this equation">#</a></span>\[
+\tilde{f}_c(\omega_k) = \int_0^T f(t)\,e^{-i\,\omega_k\,t}\,dt = \int_0^T f_p(t)\,e^{-i\,\omega_k\,t}\,dt = F_k
+\]</div>
+<p>Also, we note that the Fourier transform of the signal with compact support takes the following form</p>
+<div class="math notranslate nohighlight" id="equation-l2-9">
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-l2-9" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+\tilde{f}_c(\omega) &amp;= \int_0^T f_p(t)\, e^{-i\,\omega_\,t}\,dt = \frac{1}{T}\,\sum_{k=-\infty}^\infty F_k\,\int_0^T e^{i\,(\omega_k-\omega)\,t}\,dt =  \frac{1}{T}\,\sum_{k=-\infty}^\infty F_k\,\frac{e^{i\,(\omega_k-\omega)\,T}-1}{i\,(\omega_k-\omega)} 
+\end{align}
+\]</div>
+</div>
+<div class="note full-width admonition">
+<p class="admonition-title">Singularities at the discrete frequencies?</p>
+<p>Despite the denomitator of the addends in eq. <a class="reference internal" href="#equation-l2-9">(5.9)</a>, <span class="math notranslate nohighlight">\(\tilde{f}_c(\omega)\)</span> is not singular at the discrete frequencies <span class="math notranslate nohighlight">\(\omega_k\)</span>. This can be proved by rewriting eq. <a class="reference internal" href="#equation-l2-9">(5.9)</a> in terms of the spherical bessel function of order <span class="math notranslate nohighlight">\(0\)</span>, similar to what already done in the <a class="reference internal" href="T1_Fourier.html#chap-f"><span class="std std-numref">Lecture 4</span></a> <a class="reference internal" href="T1_Fourier.html#chap-f"><span class="std std-ref">Fourier transform</span></a>, eqs. <a class="reference internal" href="T1_Fourier.html#equation-t1-10">(4.11)</a> and <a class="reference internal" href="T1_Fourier.html#equation-t1-11">(4.12)</a></p>
+<div class="math notranslate nohighlight" id="equation-l2-10">
+<span class="eqno">(5.10)<a class="headerlink" href="#equation-l2-10" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+\tilde{f}_c(\omega) &amp;= \frac{1}{T}\,\sum_{k=-\infty}^\infty F_k\,e^{i\,x_k(\omega)}\,J(x_k(\omega)) \qquad\mathrm{with}\qquad x_k(\omega) = \frac{\omega_k-\omega}{2}\,T
+\end{align}
+\]</div>
+<p>Then, by considering that</p>
+<div class="math notranslate nohighlight" id="equation-l2-11">
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-l2-11" title="Permalink to this equation">#</a></span>\[
+x_k(\omega_h) = \pi\,(k-h) \qquad\mathrm{and}\qquad J(\pi\,k) = \delta_{k0}
+\]</div>
+<p>it is straightforward to show that</p>
+<div class="math notranslate nohighlight" id="equation-l2-12">
+<span class="eqno">(5.12)<a class="headerlink" href="#equation-l2-12" title="Permalink to this equation">#</a></span>\[
+\tilde{f}_c(\omega_k) = F_k
+\]</div>
+</div>
+<div class="note full-width admonition">
+<p class="admonition-title">Test ground displacement</p>
+<p>Let us now considering the test ground displacement discussed in  <a class="reference internal" href="T0_Harmonic.html#chap-h"><span class="std std-numref">Lecture 3</span></a> <a class="reference internal" href="T0_Harmonic.html#chap-h"><span class="std std-ref">Harmonic oscillators</span></a> and defined in eq. <a class="reference internal" href="T0_Harmonic.html#equation-h0-62">(3.63)</a> that we rewrite here for the convenience of the reader as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-13b">
+<span class="eqno">(5.13)<a class="headerlink" href="#equation-l2-13b" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; u_g(t) = f_p(t)\,B_{T_g}(t)
+\end{align}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(f_p\)</span> being the following periodic function over the time interval <span class="math notranslate nohighlight">\([0,T_g)\)</span></p>
+<div class="math notranslate nohighlight" id="equation-l2-14bis">
+<span class="eqno">(5.14)<a class="headerlink" href="#equation-l2-14bis" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; f_p(t) = \frac{A_g}{\omega_g^2}\,\big[\tfrac{1}{4}\,\cos(2\,\omega_g\,t)-\cos(\omega_g\,t) + \tfrac{3}{4}\big]  \qquad\mathrm{with}\qquad \omega_g = \frac{2\,\pi}{T_g}
+\end{align}
+\]</div>
+<p>We note that the test ground displacement is alreay a function with compact support on the time interval <span class="math notranslate nohighlight">\([0,T)\)</span> with <span class="math notranslate nohighlight">\(T\geq T_g\)</span>. Let us now choose the sampling time interval with the periodic one, i.e., <span class="math notranslate nohighlight">\(T=T_g\)</span>, and represent eq. <a class="reference internal" href="#equation-l2-14bis">(5.14)</a> with its  Taylor series</p>
+<div class="math notranslate nohighlight" id="equation-l2-15bis">
+<span class="eqno">(5.15)<a class="headerlink" href="#equation-l2-15bis" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; f_p(t) = \frac{1}{T_g}\,\sum_{k=-2}^2\,F_k\,e^{i\,\omega_k\,t} \qquad\mathrm{with}\qquad \omega_k = k\,\omega_g 
+\end{align} 
+\]</div>
+<p>where the non-zero Fourier coefficients <span class="math notranslate nohighlight">\(F_k\)</span> are given by</p>
+<div class="math notranslate nohighlight" id="equation-l2-16bis">
+<span class="eqno">(5.16)<a class="headerlink" href="#equation-l2-16bis" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; F_0 = \frac{3}{4}\,\frac{A_g\,T_g}{\omega_g^2} \qquad F_{\pm 1} = \mp \frac{1}{2}\,\frac{A_g\,T_g}{\omega_g^2} \qquad F_{\pm 2} = \pm \frac{1}{8}\,\frac{A_g\,T_g}{\omega_g^2}
+\end{align}
+\]</div>
+<p>In light of this and making use of eg. <a class="reference internal" href="#equation-l2-10">(5.10)</a>, we thus obtain the Fourier transform of test ground displacement</p>
+<div class="math notranslate nohighlight" id="equation-l2-17bis">
+<span class="eqno">(5.17)<a class="headerlink" href="#equation-l2-17bis" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+\tilde{u}_g(\omega) = \frac{1}{T_g}\,\sum_k F_k\,e^{i\,x_k(\omega)}\,J(x_k(\omega)) \qquad\mathrm{with}\qquad x_k(\omega) = \frac{k\,\omega_g-\omega}{2}\,T 
+\end{align}
+\]</div>
+</div>
+</section>
+<section id="finite-sampling-rate">
+<h3><a class="toc-backref" href="#id3"><span class="section-number">5.1.2. </span>Finite sampling rate</a><a class="headerlink" href="#finite-sampling-rate" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Let us now use the Fourier series representation of the periodic function <span class="math notranslate nohighlight">\(f_p\)</span> and the fact that</p>
+<div class="math notranslate nohighlight" id="equation-l2-18bis">
+<span class="eqno">(5.18)<a class="headerlink" href="#equation-l2-18bis" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+f(t)=f_p(t)\qquad\forall t\in[0,T)
+\end{align}
+\]</div>
+<p>to obtain the signal evaluated at the discretized times <span class="math notranslate nohighlight">\(t_j\)</span></p>
+<div class="math notranslate nohighlight" id="equation-l2-13">
+<span class="eqno">(5.19)<a class="headerlink" href="#equation-l2-13" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+f_j = f(t_j) = \frac{1}{T}\,\sum_{k=-\infty}^\infty F_k\,e^{i\,\omega_k\,t_j}
+\end{align}
+\]</div>
+<p>By noting that</p>
+<div class="math notranslate nohighlight" id="equation-l2-14">
+<span class="eqno">(5.20)<a class="headerlink" href="#equation-l2-14" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+e^{\omega_{k+p\,n}\,t_j} = e^{\omega_k\,t_j + 2\,\pi\,p} = e^{\omega_k\,t_j}  \qquad \forall\,k\in[0,\cdots,n-1]
+\end{align}
+\]</div>
+<p>and making the substitution <span class="math notranslate nohighlight">\(k\rightarrow k+p\,n\)</span>, we can recast eq. <a class="reference internal" href="#equation-l2-13">(5.19)</a> as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-15">
+<span class="eqno">(5.21)<a class="headerlink" href="#equation-l2-15" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+f_j = \frac{1}{\delta t}\,\frac{1}{n}\,\sum_{k=0}^{n-1}\sum_{p=-\infty}^\infty F_{k+p\,n}\,e^{i\,\omega_{k+p\,n}\,t_j} =\frac{1}{\delta t}\,\frac{1}{n}\,\sum_{k=0}^{n-1} \bar{F}_k\,e^{i\,\omega_k\,t_j}
+\qquad
+\bar{F}_k = \sum_p F_{k+p\,n}
+\end{align}
+\]</div>
+<p>This result shows how the sampled signal can be seen as characterized by a finite number of discrete frequencies <span class="math notranslate nohighlight">\([\omega_0,\cdots,\omega_{n-1}\)</span> and that it can be built using a finite number of combinations of Fourier coefficients <span class="math notranslate nohighlight">\([\bar{F}_0,\cdots,\bar{F}_{n-1}]\)</span>.</p>
+<p>Also, it can be shown that these combinations can be obtained from the sampled signal as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-16">
+<span class="eqno">(5.22)<a class="headerlink" href="#equation-l2-16" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+\bar{F}_k = \delta t\,\sum_{j=0}^{n-1} f_j\,e^{-i\,\omega_k\,t_j}
+\end{align}
+\]</div>
+</div>
+<div class="tip full-width admonition">
+<p class="admonition-title">Proof</p>
+<p>Eq. <a class="reference internal" href="#equation-l2-16">(5.22)</a> can be proved by making use of the summation of geometric series</p>
+<div class="math notranslate nohighlight" id="equation-l2-17">
+<span class="eqno">(5.23)<a class="headerlink" href="#equation-l2-17" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+\sum_{j=0}^{n-1} \alpha^j = \begin{cases}
+\frac{1-\alpha^n}{1-\alpha} &amp; \alpha\neq 1
+\\
+n &amp; \alpha=1
+\end{cases}
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="full-width docutils">
+<p>Eq. <a class="reference internal" href="#equation-l2-16">(5.22)</a> is the discrete Fourier transform (DFT) of the sampled value, but for the factor <span class="math notranslate nohighlight">\(\delta t\)</span>, and it is implemented by the function <code class="docutils literal notranslate"><span class="pre">fft</span></code> of the <code class="docutils literal notranslate"><span class="pre">np.fft</span></code> module. Eq. <a class="reference internal" href="#equation-l2-15">(5.21)</a>, instead, is the inverse discrete Fourier transform (IDFT), but for the factor <span class="math notranslate nohighlight">\(1/\delta t\)</span>, and it is implemented by the function <code class="docutils literal notranslate"><span class="pre">ifft</span></code> of the same module.</p>
+</div>
+</section>
+<section id="real-dft">
+<h3><a class="toc-backref" href="#id4"><span class="section-number">5.1.3. </span>Real DFT</a><a class="headerlink" href="#real-dft" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>For real-valued functions, we have</p>
+<div class="math notranslate nohighlight" id="equation-l2-18">
+<span class="eqno">(5.24)<a class="headerlink" href="#equation-l2-18" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; F_{-k} = F_k^*
+\end{align}
+\]</div>
+<p>with the asterisc <span class="math notranslate nohighlight">\(*\)</span> denoting the complex conjugate. In  light of this, the linear combinations <span class="math notranslate nohighlight">\(\bar{F}_k\)</span> satisfy a similar identity</p>
+<div class="math notranslate nohighlight" id="equation-l2-19">
+<span class="eqno">(5.25)<a class="headerlink" href="#equation-l2-19" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+&amp; \bar{F}_{n-k} = \sum_{p=-\infty}^\infty F_{n-k+n\,p} = \sum_{p=-\infty}^\infty F_{-k+n\,p} = \sum_{p=-\infty}^\infty F_{k-n\,p}^* 
+\\
+&amp;= \bar{F}_k^*
+\end{align}
+\end{split}\]</div>
+<p>In the case of real-valued functions, rather than using the DFT, it is convinient to use of the real DFT to take advantage of the avove identity. The real DFT, nevertheless, requires to distinguish between the cases in which the number of samplings is odd or even. In this perspective, let us assume that</p>
+<div class="math notranslate nohighlight" id="equation-l2-20">
+<span class="eqno">(5.26)<a class="headerlink" href="#equation-l2-20" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; n = 2\,m+q 
+\end{align} 
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(q\)</span> being <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(0\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is odd or even, respectively. Then, let us also write eq. <a class="reference internal" href="#equation-l2-15">(5.21)</a> by spltting the summation over the index <span class="math notranslate nohighlight">\(k\)</span> into two parts and making the subsititution <span class="math notranslate nohighlight">\(k\rightarrow n-k\)</span> in the second summation</p>
+<div class="math notranslate nohighlight" id="equation-l2-21">
+<span class="eqno">(5.27)<a class="headerlink" href="#equation-l2-21" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+f(t_j) &amp;= \frac{1}{\delta t}\,\frac{1}{n}\left(\sum_{k=0}^{m} \bar{F}_k\,e^{i\,\omega_k\,t_j} + \sum_{k=m+1}^{n-1} \bar{F}_k\,e^{i\,\omega_k\,t_j}\right) = \frac{1}{T}\,\left( \sum_{k=0}^{m} \bar{F}_k\,e^{i\,\omega_k\,t_j} + \sum_{k=1}^{m-1+q} \bar{F}_{n-k}\,e^{-i\,\omega_{k}\,t_j} \right) &amp;
+\\
+&amp;=  \frac{1}{T}\,\left(\sum_{k=0}^{m} \bar{F}_k\,e^{i\,\omega_k\,t_j} + \sum_{k=1}^{m-1+q} \bar{F}_{k}^*\,e^{-i\,\omega_{k}\,t_j}\right) 
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="note full-width admonition">
+<p class="admonition-title">Odd and even cases</p>
+<p>In particular, when <span class="math notranslate nohighlight">\(n\)</span> is odd, eq. <a class="reference internal" href="#equation-l2-21">(5.27)</a> becomes</p>
+<div class="math notranslate nohighlight" id="equation-l2-22">
+<span class="eqno">(5.28)<a class="headerlink" href="#equation-l2-22" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+f(t_j) &amp;= \frac{1}{T}\,\left(\bar{F}_0 + \sum_{k=0}^{m} \left[\bar{F}_k\,e^{i\,\omega_k\,t_j}+\bar{F}_k^*\,e^{-i\,\omega_k\,t_j}\right] \right)
+\\
+&amp;= \frac{1}{T}\,\left(\bar{F}_0 +2\, \sum_{k=0}^{m} \big[\Re[\bar{F}_k]\,\cos(\omega_k\,t_j)-\Im[\bar{F}_k]\,\sin(\omega_k\,t_j)\big] \right)
+\end{align}
+\end{split}\]</div>
+<p>while, when <span class="math notranslate nohighlight">\(n\)</span> is even, it becomes</p>
+<div class="math notranslate nohighlight" id="equation-l2-23">
+<span class="eqno">(5.29)<a class="headerlink" href="#equation-l2-23" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+f(t_j) &amp;= \frac{1}{T}\,\left(\bar{F}_0 + \sum_{k=0}^{m-1} \left[\bar{F}_k\,e^{i\,\omega_k\,t_j}+\bar{F}_k^*\,e^{-i\,\omega_k\,t_j}\right] + \bar{F}_{m}\,e^{i\,\omega_m\,t_j}\right)
+\\
+&amp;= \frac{1}{T}\,\left(\bar{F}_0 +2\, \sum_{k=0}^{m-1} \big[\Re[\bar{F}_k]\,\cos(\omega_k\,t_j)-\Im[\bar{F}_k]\,\sin(\omega_k\,t_j)\big] + \bar{F}_{m}\,\cos(\omega_m\,t_j)\right)
+\end{align}
+\end{split}\]</div>
+<p>We note that, when <span class="math notranslate nohighlight">\(n\)</span> is even, <span class="math notranslate nohighlight">\(\bar{F}_0\)</span> and  <span class="math notranslate nohighlight">\(\bar{F}_m\)</span> are real, and <span class="math notranslate nohighlight">\(\cos(\omega_m\,t_j) = (-1)^j\)</span>. Different, when <span class="math notranslate nohighlight">\(n\)</span> is odd, only <span class="math notranslate nohighlight">\(\bar{F}_0\)</span> is real.</p>
+</div>
+<div class="full-width docutils">
+<p>It is also usefull to rewrite eq.  <a class="reference internal" href="#equation-l2-21">(5.27)</a> as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-24">
+<span class="eqno">(5.30)<a class="headerlink" href="#equation-l2-24" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+f_j &amp;= \frac{1}{T} \sum_{k=0}^{m} c_{k}\,\left[\bar{F}_k\,e^{i\,\omega_k\,t_j}+\bar{F}_k^*\,e^{-i\,\omega_k\,t_j}\right] = \frac{2}{T}\,\Re\left[\sum_{k=0}^{m} c_k\,F_k\,e^{i\,\omega_k\,t_j}\right]
+\end{align}
+\]</div>
+<p>where the factors <span class="math notranslate nohighlight">\(c_k\)</span> take into account the distinction between the odd and evan cases and are defined as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-25">
+<span class="eqno">(5.31)<a class="headerlink" href="#equation-l2-25" title="Permalink to this equation">#</a></span>\[
+c_0 = \tfrac{1}{2} \qquad c_{k} =  1 \qquad c_m = \tfrac{1+q}{2}
+\]</div>
+<p>In light of eq. <a class="reference internal" href="#equation-l2-24">(5.30)</a>, real-valued signals require only the first <span class="math notranslate nohighlight">\(m+1\)</span> coefficients <span class="math notranslate nohighlight">\([\bar{F}_0,\cdots,\bar{F}_{m}]\)</span> and are characterized by the <span class="math notranslate nohighlight">\(2\,m+1\)</span> discrete frequencies <span class="math notranslate nohighlight">\([-\omega_{m},\cdots,0,\cdots,\omega_m]\)</span> . The coefficients and the non-negative discrete frequencies <span class="math notranslate nohighlight">\([\bar{F}_0,\cdots,\bar{F}_{m}]\)</span> and <span class="math notranslate nohighlight">\([0,\cdots,\omega_m]\)</span> are returned by the functions <code class="docutils literal notranslate"><span class="pre">rfft</span></code> and <code class="docutils literal notranslate"><span class="pre">rfftfreq</span></code> of the <code class="docutils literal notranslate"><span class="pre">np.fft</span></code> module. The inverse real DFT, instead, is implemented by the function <code class="docutils literal notranslate"><span class="pre">irfft</span></code> of the same module. The latter, by default, assume that <span class="math notranslate nohighlight">\(n\)</span> is even. If this is not the case, it must be specified the odd number of samplings <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div>
+<div class="cell tag_full-width tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function rfft in module numpy.fft:
+
+rfft(a, n=None, axis=-1, norm=None)
+    Compute the one-dimensional discrete Fourier Transform for real input.
+    
+    This function computes the one-dimensional *n*-point discrete Fourier
+    Transform (DFT) of a real-valued array by means of an efficient algorithm
+    called the Fast Fourier Transform (FFT).
+    
+    Parameters
+    ----------
+    a : array_like
+        Input array
+    n : int, optional
+        Number of points along transformation axis in the input to use.
+        If `n` is smaller than the length of the input, the input is cropped.
+        If it is larger, the input is padded with zeros. If `n` is not given,
+        the length of the input along the axis specified by `axis` is used.
+    axis : int, optional
+        Axis over which to compute the FFT. If not given, the last axis is
+        used.
+    norm : {&quot;backward&quot;, &quot;ortho&quot;, &quot;forward&quot;}, optional
+        .. versionadded:: 1.10.0
+    
+        Normalization mode (see `numpy.fft`). Default is &quot;backward&quot;.
+        Indicates which direction of the forward/backward pair of transforms
+        is scaled and with what normalization factor.
+    
+        .. versionadded:: 1.20.0
+    
+            The &quot;backward&quot;, &quot;forward&quot; values were added.
+    
+    Returns
+    -------
+    out : complex ndarray
+        The truncated or zero-padded input, transformed along the axis
+        indicated by `axis`, or the last one if `axis` is not specified.
+        If `n` is even, the length of the transformed axis is ``(n/2)+1``.
+        If `n` is odd, the length is ``(n+1)/2``.
+    
+    Raises
+    ------
+    IndexError
+        If `axis` is not a valid axis of `a`.
+    
+    See Also
+    --------
+    numpy.fft : For definition of the DFT and conventions used.
+    irfft : The inverse of `rfft`.
+    fft : The one-dimensional FFT of general (complex) input.
+    fftn : The *n*-dimensional FFT.
+    rfftn : The *n*-dimensional FFT of real input.
+    
+    Notes
+    -----
+    When the DFT is computed for purely real input, the output is
+    Hermitian-symmetric, i.e. the negative frequency terms are just the complex
+    conjugates of the corresponding positive-frequency terms, and the
+    negative-frequency terms are therefore redundant.  This function does not
+    compute the negative frequency terms, and the length of the transformed
+    axis of the output is therefore ``n//2 + 1``.
+    
+    When ``A = rfft(a)`` and fs is the sampling frequency, ``A[0]`` contains
+    the zero-frequency term 0*fs, which is real due to Hermitian symmetry.
+    
+    If `n` is even, ``A[-1]`` contains the term representing both positive
+    and negative Nyquist frequency (+fs/2 and -fs/2), and must also be purely
+    real. If `n` is odd, there is no term at fs/2; ``A[-1]`` contains
+    the largest positive frequency (fs/2*(n-1)/n), and is complex in the
+    general case.
+    
+    If the input `a` contains an imaginary part, it is silently discarded.
+    
+    Examples
+    --------
+    &gt;&gt;&gt; np.fft.fft([0, 1, 0, 0])
+    array([ 1.+0.j,  0.-1.j, -1.+0.j,  0.+1.j]) # may vary
+    &gt;&gt;&gt; np.fft.rfft([0, 1, 0, 0])
+    array([ 1.+0.j,  0.-1.j, -1.+0.j]) # may vary
+    
+    Notice how the final element of the `fft` output is the complex conjugate
+    of the second element, for real input. For `rfft`, this symmetry is
+    exploited to compute only the non-negative frequency terms.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function rfftfreq in module numpy.fft:
+
+rfftfreq(n, d=1.0)
+    Return the Discrete Fourier Transform sample frequencies
+    (for usage with rfft, irfft).
+    
+    The returned float array `f` contains the frequency bin centers in cycles
+    per unit of the sample spacing (with zero at the start).  For instance, if
+    the sample spacing is in seconds, then the frequency unit is cycles/second.
+    
+    Given a window length `n` and a sample spacing `d`::
+    
+      f = [0, 1, ...,     n/2-1,     n/2] / (d*n)   if n is even
+      f = [0, 1, ..., (n-1)/2-1, (n-1)/2] / (d*n)   if n is odd
+    
+    Unlike `fftfreq` (but like `scipy.fftpack.rfftfreq`)
+    the Nyquist frequency component is considered to be positive.
+    
+    Parameters
+    ----------
+    n : int
+        Window length.
+    d : scalar, optional
+        Sample spacing (inverse of the sampling rate). Defaults to 1.
+    
+    Returns
+    -------
+    f : ndarray
+        Array of length ``n//2 + 1`` containing the sample frequencies.
+    
+    Examples
+    --------
+    &gt;&gt;&gt; signal = np.array([-2, 8, 6, 4, 1, 0, 3, 5, -3, 4], dtype=float)
+    &gt;&gt;&gt; fourier = np.fft.rfft(signal)
+    &gt;&gt;&gt; n = signal.size
+    &gt;&gt;&gt; sample_rate = 100
+    &gt;&gt;&gt; freq = np.fft.fftfreq(n, d=1./sample_rate)
+    &gt;&gt;&gt; freq
+    array([  0.,  10.,  20., ..., -30., -20., -10.])
+    &gt;&gt;&gt; freq = np.fft.rfftfreq(n, d=1./sample_rate)
+    &gt;&gt;&gt; freq
+    array([  0.,  10.,  20.,  30.,  40.,  50.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function irfft in module numpy.fft:
+
+irfft(a, n=None, axis=-1, norm=None)
+    Computes the inverse of `rfft`.
+    
+    This function computes the inverse of the one-dimensional *n*-point
+    discrete Fourier Transform of real input computed by `rfft`.
+    In other words, ``irfft(rfft(a), len(a)) == a`` to within numerical
+    accuracy. (See Notes below for why ``len(a)`` is necessary here.)
+    
+    The input is expected to be in the form returned by `rfft`, i.e. the
+    real zero-frequency term followed by the complex positive frequency terms
+    in order of increasing frequency.  Since the discrete Fourier Transform of
+    real input is Hermitian-symmetric, the negative frequency terms are taken
+    to be the complex conjugates of the corresponding positive frequency terms.
+    
+    Parameters
+    ----------
+    a : array_like
+        The input array.
+    n : int, optional
+        Length of the transformed axis of the output.
+        For `n` output points, ``n//2+1`` input points are necessary.  If the
+        input is longer than this, it is cropped.  If it is shorter than this,
+        it is padded with zeros.  If `n` is not given, it is taken to be
+        ``2*(m-1)`` where ``m`` is the length of the input along the axis
+        specified by `axis`.
+    axis : int, optional
+        Axis over which to compute the inverse FFT. If not given, the last
+        axis is used.
+    norm : {&quot;backward&quot;, &quot;ortho&quot;, &quot;forward&quot;}, optional
+        .. versionadded:: 1.10.0
+    
+        Normalization mode (see `numpy.fft`). Default is &quot;backward&quot;.
+        Indicates which direction of the forward/backward pair of transforms
+        is scaled and with what normalization factor.
+    
+        .. versionadded:: 1.20.0
+    
+            The &quot;backward&quot;, &quot;forward&quot; values were added.
+    
+    Returns
+    -------
+    out : ndarray
+        The truncated or zero-padded input, transformed along the axis
+        indicated by `axis`, or the last one if `axis` is not specified.
+        The length of the transformed axis is `n`, or, if `n` is not given,
+        ``2*(m-1)`` where ``m`` is the length of the transformed axis of the
+        input. To get an odd number of output points, `n` must be specified.
+    
+    Raises
+    ------
+    IndexError
+        If `axis` is not a valid axis of `a`.
+    
+    See Also
+    --------
+    numpy.fft : For definition of the DFT and conventions used.
+    rfft : The one-dimensional FFT of real input, of which `irfft` is inverse.
+    fft : The one-dimensional FFT.
+    irfft2 : The inverse of the two-dimensional FFT of real input.
+    irfftn : The inverse of the *n*-dimensional FFT of real input.
+    
+    Notes
+    -----
+    Returns the real valued `n`-point inverse discrete Fourier transform
+    of `a`, where `a` contains the non-negative frequency terms of a
+    Hermitian-symmetric sequence. `n` is the length of the result, not the
+    input.
+    
+    If you specify an `n` such that `a` must be zero-padded or truncated, the
+    extra/removed values will be added/removed at high frequencies. One can
+    thus resample a series to `m` points via Fourier interpolation by:
+    ``a_resamp = irfft(rfft(a), m)``.
+    
+    The correct interpretation of the hermitian input depends on the length of
+    the original data, as given by `n`. This is because each input shape could
+    correspond to either an odd or even length signal. By default, `irfft`
+    assumes an even output length which puts the last entry at the Nyquist
+    frequency; aliasing with its symmetric counterpart. By Hermitian symmetry,
+    the value is thus treated as purely real. To avoid losing information, the
+    correct length of the real input **must** be given.
+    
+    Examples
+    --------
+    &gt;&gt;&gt; np.fft.ifft([1, -1j, -1, 1j])
+    array([0.+0.j,  1.+0.j,  0.+0.j,  0.+0.j]) # may vary
+    &gt;&gt;&gt; np.fft.irfft([1, -1j, -1])
+    array([0.,  1.,  0.,  0.])
+    
+    Notice how the last term in the input to the ordinary `ifft` is the
+    complex conjugate of the second term, and the output has zero imaginary
+    part everywhere.  When calling `irfft`, the negative frequencies are not
+    specified, and the output array is purely real.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note full-width admonition">
+<p class="admonition-title">Approximating function of the original signal</p>
+<p>In order to clarify the physical meaning of the above discussion, let us generalize eq. <a class="reference internal" href="#equation-l2-24">(5.30)</a> to be evaluated at any times. We thus define the approximating periodic function</p>
+<div class="math notranslate nohighlight" id="equation-l2-26">
+<span class="eqno">(5.32)<a class="headerlink" href="#equation-l2-26" title="Permalink to this equation">#</a></span>\[
+g_p(t) = \frac{1}{T} \sum_{k=0}^{m} c_{k}\,\left[\bar{F}_k\,e^{i\,\omega_k\,t}+\bar{F}_k^*\,e^{-i\,\omega_k\,t}\right] 
+\]</div>
+<p>This function coincides with the original signal when evaluated at the discrete times <span class="math notranslate nohighlight">\(t_j\)</span> and keeps real values also in between the discrete times. In this respect, it can be seen as an approximation of the original signal within the sampling time interval <span class="math notranslate nohighlight">\([0,T)\)</span>.</p>
+<p>By defining also the associated function with compact support on the sampling time interval</p>
+<div class="math notranslate nohighlight" id="equation-l2-27">
+<span class="eqno">(5.33)<a class="headerlink" href="#equation-l2-27" title="Permalink to this equation">#</a></span>\[
+g_c(t) = g_p(t)\,B_T(t)
+\]</div>
+<p>we can use it as an approximation of the original function everywhere, even outside the sampling time interval. Moreover, its Fourier transform yields</p>
+<div class="math notranslate nohighlight" id="equation-l2-28">
+<span class="eqno">(5.34)<a class="headerlink" href="#equation-l2-28" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+\tilde{g}_c(\omega) = \int_0^T\,g_p(t)\,e^{-i\,\omega\,t}\,d t = \frac{1}{T}\,\sum_{k=0}^{m} c_{k}\,\left[\bar{F}_k\,\frac{e^{i\,(\omega_k-\omega)\,T}-1}{i\,(\omega_k-\omega)} +\bar{F}_k^*\,\frac{e^{-i\,(\omega_k+\omega)\,T}-1}{-i\,(\omega_k+\omega)}\right] 
+\\
+=\sum_{k=0}^{m} c_{k}\,\left[\bar{F}_k\,e^{i\,x_k(\omega)}\,J(x_k(\omega)) + \bar{F}_k^*\,e^{i\,x_{-k}(\omega)}\,J(x_{-k}(\omega)\right]
+\end{align}
+\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(x_k\)</span> given by eq. <a class="reference internal" href="#equation-l2-10">(5.10)</a>.</p>
+</div>
+</section>
+</section>
+<section id="preliminary-considerations">
+<h2><a class="toc-backref" href="#id5"><span class="section-number">5.2. </span>Preliminary considerations</a><a class="headerlink" href="#preliminary-considerations" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>We have just seen as it is possible to approximate the Fourier transform of a time-dependent real-valued function using the real discrete Fourier transform. The latter, nevertheless, it is based on the Fourier series representation and it can be applied only to periodic functions. This means that when we choose the finite time interval <span class="math notranslate nohighlight">\([0,T)\)</span> where we sample the time-dependent function, we are also choosing the period <span class="math notranslate nohighlight">\(T\)</span> of the periodic function that we will actually consider.</p>
+</div>
+<section id="box-function">
+<h3><a class="toc-backref" href="#id6"><span class="section-number">5.2.1. </span>Box function</a><a class="headerlink" href="#box-function" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>In order to make practise on the real DFT, let us import the main python libraries and the local seislab module</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> widget
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>As first example, let us implement the box function and its Fourier transform as already done in <a class="reference internal" href="T1_Fourier.html#chap-f"><span class="std std-ref">Fourier transform</span></a></p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">theory</span> <span class="kn">import</span> <span class="n">eva_box</span><span class="p">,</span> <span class="n">eva_FT_box</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>Then, we make use of the functions implementing the real DFT (<code class="docutils literal notranslate"><span class="pre">np.fft.rfft</span></code>) and its inverse (<code class="docutils literal notranslate"><span class="pre">np.fft.irfft</span></code>), and of the function returning the discretized frequency (<code class="docutils literal notranslate"><span class="pre">np.fft.rfftfreq</span></code>) for the box function <span class="math notranslate nohighlight">\(B_{T_b}\)</span>, with <span class="math notranslate nohighlight">\(T_b=3\)</span> s, sampled over time interval [0,5) s with time step 0.5 s. We also make two figures showing the comparison in the time and frequency domain using the function <code class="docutils literal notranslate"><span class="pre">plot_comparison</span></code> of the <code class="docutils literal notranslate"><span class="pre">seislab</span></code> module.</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tb</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Discretized times</span>
+<span class="n">T</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+<span class="c1"># Samplings of the box function </span>
+<span class="n">box</span> <span class="o">=</span> <span class="n">eva_box</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">Tb</span><span class="o">=</span><span class="n">Tb</span><span class="p">)</span>
+
+<span class="c1"># Discretized frequencies and the DFT</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+<span class="n">DFT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">box</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span>
+<span class="n">FT</span> <span class="o">=</span> <span class="n">eva_FT_box</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="n">Tb</span><span class="o">=</span><span class="n">Tb</span><span class="p">)</span>
+
+<span class="c1"># Inverse DFT</span>
+<span class="n">box_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">DFT</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">d</span>
+
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Samplings:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index   Time    Sample   Sample from IDFT&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,(</span><span class="n">t</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val_check</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">box</span><span class="p">,</span> <span class="n">box_check</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:&lt;4d}</span><span class="s1">   </span><span class="si">{1:6.3f}</span><span class="s1">   </span><span class="si">{2:6.3f}</span><span class="s1">   </span><span class="si">{3:6.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val_check</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DFT:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index   Freq     DFT               FT&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,(</span><span class="n">f</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val_ft</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">DFT</span><span class="p">,</span> <span class="n">FT</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:&lt;4d}</span><span class="s1">   </span><span class="si">{1:6.3f}</span><span class="s1">   </span><span class="si">{2.real:6.3f}</span><span class="s1"> + </span><span class="si">{2.imag:6.3f}</span><span class="s1">j  </span><span class="si">{3.real:6.3f}</span><span class="s1"> + </span><span class="si">{3.imag:6.3f}</span><span class="s1">j&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val_ft</span><span class="p">))</span>
+    
+<span class="c1"># Plotting</span>
+<span class="n">fig1</span><span class="p">,</span><span class="n">fig2</span> <span class="o">=</span> <span class="n">plot_comparison</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">eva_box</span><span class="p">,</span> <span class="n">eva_FT_box</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">Tb</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Samplings:
+Index   Time    Sample   Sample from IDFT
+0       0.000    1.000    1.000
+1       0.500    1.000    1.000
+2       1.000    1.000    1.000
+3       1.500    1.000    1.000
+4       2.000    1.000    1.000
+5       2.500    1.000    1.000
+6       3.000    0.000    0.000
+7       3.500    0.000    0.000
+8       4.000    0.000    0.000
+9       4.500    0.000    0.000
+
+DFT:
+Index   Freq     DFT               FT
+0       0.000    3.000 +  0.000j   3.000 +  0.000j
+1       0.200    0.000 + -1.539j  -0.468 + -1.440j
+2       0.400    0.500 +  0.000j   0.378 + -0.275j
+3       0.600    0.000 + -0.363j  -0.252 + -0.183j
+4       0.800    0.500 +  0.000j   0.117 + -0.360j
+5       1.000    0.000 +  0.000j  -0.000 + -0.000j
+</pre></div>
+</div>
+<img alt="../_images/T2_Discrete_15_1.png" src="../_images/T2_Discrete_15_1.png" />
+<img alt="../_images/T2_Discrete_15_2.png" src="../_images/T2_Discrete_15_2.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>Here, as it concerns the comparison in the time domain, the blue and orange lines indicates the original signal and the approximating periodic function <span class="math notranslate nohighlight">\(g_p\)</span>, eq. (). Also, the gray area indicates the sampling time interval. In the bottom pannel is shown the difference among the two functions. As it concerns the comparison in the frequency domain, instead, the blue and orange lines indicates the real and imaginary parts (top and middle pannels) of the Fourier transform of the original signal and of the Fourier transform of the approximating function with compact support <span class="math notranslate nohighlight">\(g_c\)</span>, eq. (). The bottom pannel shown the difference <span class="math notranslate nohighlight">\(|\tilde{f}(\omega)-\tilde{g}_c(\omega)|\)</span>.</p>
+<p>We note that the approximating periodic function coincides with the original function at the discretized times. On the other hand, the approximating periodic function is much smoother than the box function just because it is composed of sine and cosine terms with low frequencies and this makes the largest difference in the surrounding of the discontinuity of the box function. Also, we note that the comparison makes sense only in the sampling time interval [0,10) s. Outisde the sampling time interval, indeed, the original signal is zero while the periodic function repeats itself just with period 10 s. In the frequency domain, instead, we note that the approximation underestimate the spectral content at frequencies higher than the Nyquist frequency <span class="math notranslate nohighlight">\(\omega_m\)</span>.</p>
+</div>
+<div class="full-width docutils">
+<p>In order to take into account for higher frequencies, let us now decrease the time step to 0.1 s and make a similar plot</p>
+</div>
+<div class="cell tag_hide-input tag_full-width docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Discretized times</span>
+<span class="n">T</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+<span class="c1"># Samplings of the box function </span>
+<span class="n">box</span> <span class="o">=</span> <span class="n">eva_box</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">Tb</span><span class="o">=</span><span class="n">Tb</span><span class="p">)</span>
+
+<span class="c1"># Discretized frequencies and the DFT</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+<span class="n">DFT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">box</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span>
+<span class="n">FT</span> <span class="o">=</span> <span class="n">eva_FT_box</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">Tb</span><span class="o">=</span><span class="n">Tb</span><span class="p">)</span>
+
+<span class="c1"># Inverse DFT</span>
+<span class="n">box_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">DFT</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">d</span>
+
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Samplings:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index   Time    Sample   Sample from IDFT&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,(</span><span class="n">t</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val_check</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">box</span><span class="p">,</span> <span class="n">box_check</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:&lt;4d}</span><span class="s1">   </span><span class="si">{1:6.3f}</span><span class="s1">   </span><span class="si">{2:6.3f}</span><span class="s1">   </span><span class="si">{3:6.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val_check</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DFT:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index   Freq     DFT               FT&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,(</span><span class="n">f</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val_ft</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">DFT</span><span class="p">,</span> <span class="n">FT</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:&lt;4d}</span><span class="s1">   </span><span class="si">{1:6.3f}</span><span class="s1">   </span><span class="si">{2.real:6.3f}</span><span class="s1"> + </span><span class="si">{2.imag:6.3f}</span><span class="s1">j  </span><span class="si">{3.real:6.3f}</span><span class="s1"> + </span><span class="si">{3.imag:6.3f}</span><span class="s1">j&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val_ft</span><span class="p">))</span>
+    
+<span class="c1"># Plotting</span>
+<span class="n">fig1</span><span class="p">,</span><span class="n">fig2</span> <span class="o">=</span> <span class="n">plot_comparison</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">eva_box</span><span class="p">,</span> <span class="n">eva_FT_box</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">Tb</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Samplings:
+Index   Time    Sample   Sample from IDFT
+0       0.000    1.000    1.000
+1       0.100    1.000    1.000
+2       0.200    1.000    1.000
+3       0.300    1.000    1.000
+4       0.400    1.000    1.000
+5       0.500    1.000    1.000
+6       0.600    1.000    1.000
+7       0.700    1.000    1.000
+8       0.800    1.000    1.000
+9       0.900    1.000    1.000
+10      1.000    1.000    1.000
+11      1.100    1.000    1.000
+12      1.200    1.000    1.000
+13      1.300    1.000    1.000
+14      1.400    1.000    1.000
+15      1.500    1.000    1.000
+16      1.600    1.000    1.000
+17      1.700    1.000    1.000
+18      1.800    1.000    1.000
+19      1.900    1.000    1.000
+20      2.000    1.000    1.000
+21      2.100    1.000    1.000
+22      2.200    1.000    1.000
+23      2.300    1.000    1.000
+24      2.400    1.000    1.000
+25      2.500    1.000    1.000
+26      2.600    1.000    1.000
+27      2.700    1.000    1.000
+28      2.800    1.000    1.000
+29      2.900    1.000    1.000
+30      3.000    0.000    0.000
+31      3.100    0.000    0.000
+32      3.200    0.000    0.000
+33      3.300    0.000    0.000
+34      3.400    0.000    0.000
+35      3.500    0.000    0.000
+36      3.600    0.000    0.000
+37      3.700    0.000    0.000
+38      3.800    0.000   -0.000
+39      3.900    0.000    0.000
+40      4.000    0.000    0.000
+41      4.100    0.000    0.000
+42      4.200    0.000    0.000
+43      4.300    0.000    0.000
+44      4.400    0.000    0.000
+45      4.500    0.000    0.000
+46      4.600    0.000    0.000
+47      4.700    0.000    0.000
+48      4.800    0.000    0.000
+49      4.900    0.000    0.000
+
+DFT:
+Index   Freq     DFT               FT
+0       0.000    3.000 +  0.000j   3.000 +  0.000j
+1       0.200   -0.377 + -1.467j  -0.468 + -1.440j
+2       0.400    0.411 + -0.226j   0.378 + -0.275j
+3       0.600   -0.215 + -0.229j  -0.252 + -0.183j
+4       0.800    0.205 + -0.323j   0.117 + -0.360j
+5       1.000    0.000 +  0.000j  -0.000 + -0.000j
+6       1.200    0.016 + -0.258j  -0.078 + -0.240j
+7       1.400    0.136 + -0.026j   0.108 + -0.079j
+8       1.600   -0.052 + -0.110j  -0.095 + -0.069j
+9       1.800    0.137 + -0.113j   0.052 + -0.160j
+10      2.000    0.000 +  0.000j  -0.000 + -0.000j
+11      2.200    0.055 + -0.139j  -0.043 + -0.131j
+12      2.400    0.085 +  0.011j   0.063 + -0.046j
+13      2.600   -0.010 + -0.080j  -0.058 + -0.042j
+14      2.800    0.115 + -0.045j   0.033 + -0.103j
+15      3.000    0.000 +  0.000j  -0.000 + -0.000j
+16      3.200    0.072 + -0.087j  -0.029 + -0.090j
+17      3.400    0.061 +  0.029j   0.045 + -0.032j
+18      3.600    0.012 + -0.064j  -0.042 + -0.031j
+19      3.800    0.102 + -0.006j   0.025 + -0.076j
+20      4.000    0.000 +  0.000j  -0.000 + -0.000j
+21      4.200    0.083 + -0.053j  -0.022 + -0.069j
+22      4.400    0.044 +  0.041j   0.034 + -0.025j
+23      4.600    0.029 + -0.052j  -0.033 + -0.024j
+24      4.800    0.092 +  0.024j   0.019 + -0.060j
+25      5.000    0.000 +  0.000j  -0.000 + -0.000j
+</pre></div>
+</div>
+<img alt="../_images/T2_Discrete_18_1.png" src="../_images/T2_Discrete_18_1.png" />
+<img alt="../_images/T2_Discrete_18_2.png" src="../_images/T2_Discrete_18_2.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>Decreasing the sampling time step we improve the approximation in the time domain but we do not decrease the sampling frequency step with which we evaluate the Fourier transform. In this perspective, we need to increase the sampling time interval as shown hereinafter where the sampling time interval is set to [0,10) s keeping the sampling time step to 0.1 s</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_comparison</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">eva_box</span><span class="p">,</span> <span class="n">eva_FT_box</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">Tb</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_20_0.png" src="../_images/T2_Discrete_20_0.png" />
+<img alt="../_images/T2_Discrete_20_1.png" src="../_images/T2_Discrete_20_1.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>Increasing the length of the sampling time interaval makes the periodic function similar to the original box function on a wider time interval. Nevertheless, the periodic function is still periodic, althogh it does on a wider time interval.</p>
+<p>The approximating periodic function still coincides with the original function at the sampling times. Nevertheless, it oscillates between the discretized times. These oscillations are the Gibbs effect that presents when we try to approximated sharp discontiniuities as those of the box function.</p>
+</div>
+</section>
+<section id="test-ground-displacement">
+<h3><a class="toc-backref" href="#id7"><span class="section-number">5.2.2. </span>Test ground displacement</a><a class="headerlink" href="#test-ground-displacement" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Let us now perform the same analysis on the test ground displacement that we implenent here only for ground displacements (with default ground period of <span class="math notranslate nohighlight">\(T_g=3\)</span> s)</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">theory</span> <span class="kn">import</span> <span class="n">eva_test_ground_motion</span><span class="p">,</span> <span class="n">eva_test_ground_displacement</span><span class="p">,</span> <span class="n">eva_FT_test_ground_displacement</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="full-width docutils">
+<p>and make the plot for the sampling interval [0,5) with time step 0.5 s</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tg</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">T</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_comparison</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">eva_test_ground_displacement</span><span class="p">,</span> <span class="n">eva_FT_test_ground_displacement</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">Tg</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_25_0.png" src="../_images/T2_Discrete_25_0.png" />
+<img alt="../_images/T2_Discrete_25_1.png" src="../_images/T2_Discrete_25_1.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>Here, instead, the same plot but with the sampling time step decrased to 0.1 s</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_comparison</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">eva_test_ground_displacement</span><span class="p">,</span> <span class="n">eva_FT_test_ground_displacement</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">Tg</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_27_0.png" src="../_images/T2_Discrete_27_0.png" />
+<img alt="../_images/T2_Discrete_27_1.png" src="../_images/T2_Discrete_27_1.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>and extending further the sampling time interval to [0,10) s</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_comparison</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">eva_test_ground_displacement</span><span class="p">,</span> <span class="n">eva_FT_test_ground_displacement</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">Tg</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_29_0.png" src="../_images/T2_Discrete_29_0.png" />
+<img alt="../_images/T2_Discrete_29_1.png" src="../_images/T2_Discrete_29_1.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>We can note that in the case of the displacement ground motion, the periodic function, in addition to coincides with the original function at the discretized times, well approximates the function also in between the discretized times, with differences less than about 0.4 and 0.00001 for sampling time step of 1 and 0.2 s, respectively.</p>
+</div>
+</section>
+</section>
+<section id="convolution">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">5.3. </span>Convolution</a><a class="headerlink" href="#convolution" title="Permalink to this headline">#</a></h2>
+<div class="full-width docutils">
+<p>Having understood the main aspect of considering a finite sampling time interval and step, let us discuss an efficient numerical method for dealing with sampled signal both in the time and frequency domains. In this respect, we do not longer consider the approximating periodic function, <span class="math notranslate nohighlight">\(g_p\)</span>, and the approximating Fourier transform of the corresponding function with compact support, <span class="math notranslate nohighlight">\(g_c\)</span>. On the contrary, we will base only on the sampled values <span class="math notranslate nohighlight">\(f_j\)</span> and the DFT coefficients <span class="math notranslate nohighlight">\(\bar{F}_k\)</span>. In order to sample finely the signal both in the time and frequency domain, we shall choose large sampling time intervals <span class="math notranslate nohighlight">\([0,T)\)</span> and smalle sampling time step <span class="math notranslate nohighlight">\(\delta t\)</span></p>
+</div>
+<div class="full-width admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Let us consider the samplings <span class="math notranslate nohighlight">\(f_j\)</span> of the time dependent signal <span class="math notranslate nohighlight">\(f(t)\)</span> at the discrete times <span class="math notranslate nohighlight">\(t_j\)</span> over the sampling time interval <span class="math notranslate nohighlight">\([0,T)\)</span> with time step <span class="math notranslate nohighlight">\(\delta t\)</span>. Because the approximating function is periodic, afterwards, it will be convenient to define the sampling <span class="math notranslate nohighlight">\(f_j\)</span> also for <span class="math notranslate nohighlight">\(j&lt;0\)</span> and <span class="math notranslate nohighlight">\(j\geq n\)</span></p>
+<div class="math notranslate nohighlight" id="equation-l2-29">
+<span class="eqno">(5.35)<a class="headerlink" href="#equation-l2-29" title="Permalink to this equation">#</a></span>\[
+f_{j+p\,n} = f_j \qquad\forall\,j=0,\cdots,n-1\qquad\mathrm{and}\qquad\forall p\in\mathbb{N}
+\]</div>
+<p>so that, for instance, we have <span class="math notranslate nohighlight">\(f_{n+j} = f_{j}\)</span> or <span class="math notranslate nohighlight">\(f_{-j} = f_{n-j}\)</span>.</p>
+</div>
+<div class="full-width docutils">
+<p>Let us consider two time dependent signals <span class="math notranslate nohighlight">\(f(t)\)</span> and <span class="math notranslate nohighlight">\(g(t)\)</span> and their time convolution</p>
+<div class="math notranslate nohighlight" id="equation-l2-30">
+<span class="eqno">(5.36)<a class="headerlink" href="#equation-l2-30" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+h(t) &amp;= (f\star g)(t) = \int_{-\infty}^\infty f(\tau)\,g(t-\tau)\,d\tau 
+\end{align}
+\]</div>
+<p>and see how we can obtain the samplings <span class="math notranslate nohighlight">\(h_j\)</span> at the discrete times <span class="math notranslate nohighlight">\(t_j\)</span> over the sampkung time interval <span class="math notranslate nohighlight">\([0,T)\)</span> starting from the samplings <span class="math notranslate nohighlight">\(f_j\)</span> and <span class="math notranslate nohighlight">\(g_j\)</span>.</p>
+<p>Let us first assume that the two signals have compact support over the time intervals <span class="math notranslate nohighlight">\([0,T_f)\)</span> and <span class="math notranslate nohighlight">\([0,T_g)\)</span> with <span class="math notranslate nohighlight">\(T_f&lt;T_g\)</span>. In this case, eq. <a class="reference internal" href="#equation-l2-30">(5.36)</a> can be further specified as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-31">
+<span class="eqno">(5.37)<a class="headerlink" href="#equation-l2-31" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+h(t) &amp;=  \int_{0}^{T_f} f(\tau)\,g(t-\tau)\,d\tau = \int_{t-T_f}^t f(t-\tau)\,g(\tau)\,d\tau  = B(t,T_g+T_f)\,\int_{\max(t-T_f,0)}^{\min(t,T_g)} f(t-\tau)\,g(\tau)\,d\tau
+\end{align}
+\]</div>
+<p>Here, we make use of (i) the compact support of <span class="math notranslate nohighlight">\(f\)</span> in the first step, (ii) the subsitution <span class="math notranslate nohighlight">\(\tau\rightarrow t-\tau\)</span> in the second step and (iii) the compact support of <span class="math notranslate nohighlight">\(g\)</span> in the third and last step. Then, we recast eq. as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-32">
+<span class="eqno">(5.38)<a class="headerlink" href="#equation-l2-32" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+h(t) 
+&amp;=\begin{cases}
+\int_{0}^{t} f(t-\tau)\,g(\tau)\,d\tau &amp; 0\leq t &lt; T_f \\
+\int_{t-T_f}^{t} f(t-\tau)\,g(\tau)\,d\tau &amp; T_f \leq t &lt; T_g \\
+\int_{t-T_f}^{T_g} f(t-\tau)\,g(\tau)\,d\tau &amp; T_g \leq t \leq T_g+T_f  \\
+0 &amp; t \notin [0,T_g+T_f) \\
+\end{cases} = \begin{cases}
+\int_{0}^t f(\tau)\,g(t-\tau)\,d\tau &amp; 0\leq t &lt; T_f \\
+\int_{0}^{T_f} f(\tau)\,g(t-\tau)\,d\tau &amp; T_f \leq t &lt; T_g \\
+\int_{t-T_g}^{T_f} f(\tau)\,g(t-\tau)\,d\tau &amp; T_g \leq t \leq T_g+T_f  \\
+0 &amp; t \notin [0,T_g+T_f) \\
+\end{cases}
+\end{align}
+\end{split}\]</div>
+<p>where in the second and last step we make use of the substitutionn <span class="math notranslate nohighlight">\(\tau\rightarrow t-\tau\)</span>.</p>
+</div>
+<div class="note full-width admonition">
+<p class="admonition-title">Convolution of two box functions</p>
+<p>For the case of two Heaviside functions</p>
+<div class="math notranslate nohighlight" id="equation-l2-33">
+<span class="eqno">(5.39)<a class="headerlink" href="#equation-l2-33" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp;f(t) = B(t,T_f)\qquad g(t) = B(t,T_g)
+\end{align}
+\]</div>
+<p>eq. <a class="reference internal" href="#equation-l2-32">(5.38)</a> yields</p>
+<div class="math notranslate nohighlight" id="equation-l2-34">
+<span class="eqno">(5.40)<a class="headerlink" href="#equation-l2-34" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+h(t) &amp;= \begin{cases}
+t &amp; 0\leq t &lt; T_f \\
+T_f &amp; T_f \leq t &lt; T_g \\
+T_g+T_f-t &amp; T_g \leq t \leq T_g+T_f  \\
+0 &amp; t \notin [0,T_g+T_f) \\
+\end{cases} = R(t,T_f) + R(t-T_g,T_f)
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R\)</span> is the ramp box function</p>
+<div class="math notranslate nohighlight" id="equation-l2-35">
+<span class="eqno">(5.41)<a class="headerlink" href="#equation-l2-35" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; R(t,T) = t\,H(t) + (T-t)\,H(t,T)
+\end{align}
+\]</div>
+</div>
+<section id="fourier-series-of-the-convolution">
+<h3><a class="toc-backref" href="#id9"><span class="section-number">5.3.1. </span>Fourier series of the convolution</a><a class="headerlink" href="#fourier-series-of-the-convolution" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Eq. <a class="reference internal" href="#equation-l2-32">(5.38)</a> shows that the convolution has a compact support over the time interval <span class="math notranslate nohighlight">\([0,T_g+T_f)\)</span> and, so, when we have to choose the sampling time interval <span class="math notranslate nohighlight">\([0,T)\)</span> so that <span class="math notranslate nohighlight">\(T\geq T_f+T_g\)</span>. We note that, thanks to this choise, the time convolution can be expressed in terms of the associated periodic function with compact support on <span class="math notranslate nohighlight">\([0,T)\)</span> and written as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-36">
+<span class="eqno">(5.42)<a class="headerlink" href="#equation-l2-36" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+h(t) &amp;= (f_c\star g_c)(t) = \int_0^T f_p(\tau)\,g_p(t-\tau)\,d\tau = \frac{1}{T^2}\,\sum_{k=-\infty}^\infty\sum_{p=-\infty}^\infty F_k\,G_p\,e^{i\,\omega_p\,t}\,\int_0^T e^{i\,(\omega_k-\omega_p)\,\tau}\,d\tau 
+\\
+&amp;= \frac{1}{T}\,\sum_{k=-\infty}^\infty F_k\,G_k\,e^{i\,\omega_k\,t}
+\end{align}
+\end{split}\]</div>
+<p>This result shows that the Fourier coefficients <span class="math notranslate nohighlight">\(H_k\)</span> of the convolution <span class="math notranslate nohighlight">\(h\)</span> correspond to the product of those of the two signals <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span></p>
+<div class="math notranslate nohighlight" id="equation-l2-37">
+<span class="eqno">(5.43)<a class="headerlink" href="#equation-l2-37" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; H_k = F_k\,G_k
+\end{align}
+\]</div>
+<p>Let us now consider the issue concerning the finiteness of the sampling rate. In this case, we can only get the linear combinations <span class="math notranslate nohighlight">\(\bar{F}_k\)</span> and <span class="math notranslate nohighlight">\(\bar{G}_k\)</span> from the (real) DFT, that we report also here</p>
+<div class="math notranslate nohighlight" id="equation-l2-38">
+<span class="eqno">(5.44)<a class="headerlink" href="#equation-l2-38" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; \bar{F}_k = \sum_{p=-\infty}^\infty F_{k+n\,p} \qquad \bar{G}_k = \sum_{p=-\infty}^\infty G_{k+n\,p}
+\end{align}
+\]</div>
+<p>Nevertheless, we note that their product</p>
+<div class="math notranslate nohighlight" id="equation-l2-39">
+<span class="eqno">(5.45)<a class="headerlink" href="#equation-l2-39" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; \bar{F}_k\,\bar{G_k} = \left(\sum_{p=-\infty}^\infty F_{k+n\,p}\right)\,\left(\sum_{q=-\infty}^\infty G_{k+n\,q}\right) 
+\end{align}
+\]</div>
+<p>differs by the linear combinations <span class="math notranslate nohighlight">\(\bar{H}_k\)</span></p>
+<div class="math notranslate nohighlight" id="equation-l2-40">
+<span class="eqno">(5.46)<a class="headerlink" href="#equation-l2-40" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; \bar{H}_k = \sum_{p=-\infty}^\infty H_{k+n\,p} = \sum_{p=-\infty}^\infty F_{k+n\,p}\,G_{k+n\,p}  \neq \bar{F}_k\,\bar{G}_k 
+\end{align}
+\]</div>
+<p>On the other hand, as far as the two signals <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> have been sampled with high sampling rates, the linear combinations approximates the Fourier coefficients, <span class="math notranslate nohighlight">\(\bar{F}_k\approx F_k\)</span> and <span class="math notranslate nohighlight">\(\bar{G}_k\approx G_k\)</span>, and so</p>
+<div class="math notranslate nohighlight" id="equation-l2-41">
+<span class="eqno">(5.47)<a class="headerlink" href="#equation-l2-41" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; \bar{H}_k \approx \bar{F}_k\,\bar{G}_k
+\end{align}
+\]</div>
+<p>Also, the sampling <span class="math notranslate nohighlight">\(h_j\)</span> can be approximated by taking the inverse (real) DFT</p>
+<div class="math notranslate nohighlight" id="equation-l2-42">
+<span class="eqno">(5.48)<a class="headerlink" href="#equation-l2-42" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+&amp; h_j = \frac{1}{\delta t}\,\frac{1}{n} \sum_{k=0}^{n-1} \bar{H}_k\,e^{i\,\omega_k\,t_j} \approx \frac{1}{\delta t}\,\frac{1}{n} \sum_{k=0}^{n-1} \bar{F}_k\,\bar{G}_k\,e^{i\,\omega_k\,t_j}
+\end{align}
+\]</div>
+</div>
+</section>
+<section id="circular-convolution">
+<h3><a class="toc-backref" href="#id10"><span class="section-number">5.3.2. </span>Circular convolution</a><a class="headerlink" href="#circular-convolution" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>In the end, according to the approximation given by eq. <a class="reference internal" href="#equation-l2-42">(5.48)</a> and to the convention defined by eq. <a class="reference internal" href="#equation-l2-29">(5.35)</a>, we can subsitute the DFT for <span class="math notranslate nohighlight">\(\hat{F}_k\)</span> and <span class="math notranslate nohighlight">\(\bar{G}_{k}\)</span> and recast eq. <a class="reference internal" href="#equation-l2-42">(5.48)</a> as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-43">
+<span class="eqno">(5.49)<a class="headerlink" href="#equation-l2-43" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+h_j &amp;\approx \frac{\delta t}{n} \sum_{k=0}^{n-1} \left(\sum_j f_j \,e^{-i\,\omega_k\,t_j}\right)\left(\sum_p g_p \,e^{-i\,\omega_k\,t_p}\right)\,e^{i\,\omega_k\,t_j}
+=  \frac{\delta t}{n}\sum_k  \sum_p \sum_q\,f_p\,g_q\,e^{i\,\omega_k\,(t_j-t_p-t_q)}
+\\ &amp;=\frac{\delta t}{n} \sum_{p=0}^{n-1} \sum_{q=0}^{n-1}\,f_p\,g_q\,\sum_k \left(e^{2\,\pi\,i\,(j-p-q)/n}\right)^k = \delta t \sum_{p=0}^{n-1} f_p\,g_{j-p}
+\end{align}
+\end{split}\]</div>
+<p>In the last step we make use of the following identity</p>
+<div class="math notranslate nohighlight" id="equation-l2-44">
+<span class="eqno">(5.50)<a class="headerlink" href="#equation-l2-44" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+&amp; \sum_{k=0}^{n-1} \left(e^{2\,\pi\,i\,(j-p-q)/n}\right)^k = \begin{cases}
+n &amp; \forall\,j-p-q = 0 \pmod{n}\\
+0 
+\end{cases}
+\end{align}
+\end{split}\]</div>
+<p>that can be proved starting from the expression for the summation of geometric series, eq. <a class="reference internal" href="#equation-l2-17">(5.23)</a>.</p>
+<p>Eq. <a class="reference internal" href="#equation-l2-43">(5.49)</a> shows that <span class="math notranslate nohighlight">\(h_j\)</span> can be approximated by taking into account the periodic beahviour of the samples <span class="math notranslate nohighlight">\(f_j\)</span> and <span class="math notranslate nohighlight">\(g_j\)</span>, when they are considered as resulting from the associated periodic functions, as expressed by the concetion defined by eq. <a class="reference internal" href="#equation-l2-29">(5.35)</a>. For instance, let us specify eq. <a class="reference internal" href="#equation-l2-43">(5.49)</a> for <span class="math notranslate nohighlight">\(j=0\)</span> and recast it as follows</p>
+<div class="math notranslate nohighlight" id="equation-l2-45">
+<span class="eqno">(5.51)<a class="headerlink" href="#equation-l2-45" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+h_0 &amp;=  \delta t \sum_{p=0}^{n-1} f_p\,g_{-p} =  \delta t \sum_{p=0}^{n-1} f_p\,g_{n-p} 
+\end{align}
+\]</div>
+<p>From this example we can understand that the first samples of the function <span class="math notranslate nohighlight">\(f\)</span> interact with the last samples of the function <span class="math notranslate nohighlight">\(g\)</span>, and viceversa. This is obviously not the time convolution should do and, so, we need to choose the sampling time interval <span class="math notranslate nohighlight">\([0,T)\)</span> to avoid this inconvenience, i.e., with <span class="math notranslate nohighlight">\(T\geq T_f+T_g\)</span> as discussed above.</p>
+</div>
+</section>
+<section id="box-functions">
+<h3><a class="toc-backref" href="#id11"><span class="section-number">5.3.3. </span>Box functions</a><a class="headerlink" href="#box-functions" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Let us now implement the convolution approximation just discussed to the case of the convolution between two box functions <span class="math notranslate nohighlight">\(B_{T_f}\)</span> and <span class="math notranslate nohighlight">\(B_{T_g}\)</span> with <span class="math notranslate nohighlight">\(T_f=3\)</span> s and <span class="math notranslate nohighlight">\(T_g=7\)</span> s and choosing the sampling time interval <span class="math notranslate nohighlight">\([0,T)\)</span> with T<span class="math notranslate nohighlight">\(=20\)</span> s <span class="math notranslate nohighlight">\(&gt;T_f+T_g=10\)</span> s</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">theory</span> <span class="kn">import</span> <span class="n">eva_box</span>
+
+<span class="k">def</span> <span class="nf">eva_ramp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">T</span><span class="p">):</span>
+    <span class="n">ramp</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">ramp</span><span class="p">[</span><span class="n">ts</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ramp</span><span class="p">[</span><span class="n">ts</span><span class="o">&gt;</span><span class="n">T</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
+    <span class="k">return</span> <span class="n">ramp</span>
+
+<span class="k">def</span> <span class="nf">eva_heaviside_conv</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">Tf</span><span class="p">,</span><span class="n">Tg</span><span class="p">):</span>
+    <span class="n">conv</span> <span class="o">=</span> <span class="n">eva_ramp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">Tf</span><span class="p">)</span> <span class="o">-</span> <span class="n">eva_ramp</span><span class="p">(</span><span class="n">ts</span><span class="o">-</span><span class="n">Tg</span><span class="p">,</span><span class="n">Tf</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">conv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_heaviside_convolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">Tf</span><span class="p">,</span><span class="n">Tg</span><span class="p">):</span>
+
+    <span class="n">TT</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">Tf</span><span class="o">+</span><span class="n">Tg</span><span class="p">)</span>
+    
+    <span class="n">tts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TT</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">conv</span> <span class="o">=</span> <span class="n">eva_heaviside_conv</span><span class="p">(</span><span class="n">tts</span><span class="p">,</span><span class="n">Tf</span><span class="p">,</span><span class="n">Tg</span><span class="p">)</span>
+
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">box_f</span> <span class="o">=</span> <span class="n">eva_box</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">Tf</span><span class="p">)</span>
+    <span class="n">box_g</span> <span class="o">=</span> <span class="n">eva_box</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">Tg</span><span class="p">)</span>
+
+    <span class="n">FT_box_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">box_f</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span>
+    <span class="n">FT_box_g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">box_g</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span>
+    <span class="n">FT_conv</span>  <span class="o">=</span> <span class="n">FT_box_f</span> <span class="o">*</span> <span class="n">FT_box_g</span>
+    <span class="n">conv_approx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">FT_conv</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">d</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">box_f</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$T_f$ = &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Tf</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">box_g</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$T_g$ = &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">Tg</span><span class="p">))</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tts</span><span class="p">,</span><span class="n">conv</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;convolution&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">conv_approx</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;approximation&quot;</span><span class="p">)</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">conv</span><span class="p">[</span><span class="n">tts</span><span class="o">&lt;</span><span class="n">T</span><span class="p">]</span><span class="o">-</span><span class="n">conv_approx</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[:</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        
+    <span class="k">if</span> <span class="n">T</span> <span class="o">&lt;</span> <span class="n">TT</span><span class="p">:</span> 
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tf</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">Tg</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">T</span>  <span class="o">=</span> <span class="mi">20</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_heaviside_convolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">Tf</span><span class="p">,</span><span class="n">Tg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_39_0.png" src="../_images/T2_Discrete_39_0.png" />
+</div>
+</div>
+<div class="full-width docutils">
+<p>The issue concerning the circular convolution can be seen by choosing a smaller sampling interval as shown heareinafter for [0,8) s</p>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span>  <span class="o">=</span> <span class="mi">8</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_heaviside_convolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">Tf</span><span class="p">,</span><span class="n">Tg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_41_0.png" src="../_images/T2_Discrete_41_0.png" />
+</div>
+</div>
+</section>
+<section id="relative-motion-from-driven-harmonic-oscillators">
+<h3><a class="toc-backref" href="#id12"><span class="section-number">5.3.4. </span>Relative motion from driven harmonic oscillators</a><a class="headerlink" href="#relative-motion-from-driven-harmonic-oscillators" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">theory</span> <span class="kn">import</span> <span class="n">eva_FT_green</span><span class="p">,</span> <span class="n">eva_FT_response</span><span class="p">,</span> <span class="n">test_driven_oscillator</span>
+
+<span class="n">T</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span><span class="mf">0.01</span>
+<span class="n">Tg</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">plot_green_convolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">Tg</span><span class="p">):</span>
+    
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+    <span class="n">ground_motions</span> <span class="o">=</span> <span class="n">eva_test_ground_motion</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">Tg</span><span class="p">)</span>
+    <span class="n">ground_acce</span> <span class="o">=</span> <span class="n">ground_motions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">relative_motions</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">test_driven_oscillator</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">Tg</span><span class="p">)</span>
+
+    <span class="n">fs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">FT_ground_acce</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">ground_acce</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span>
+
+    <span class="n">FT_green</span> <span class="o">=</span> <span class="n">eva_FT_green</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">green</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">FT_green</span><span class="p">)</span> <span class="o">/</span> <span class="n">d</span>
+
+    <span class="n">FT_relative_disp</span> <span class="o">=</span> <span class="n">FT_ground_acce</span>      <span class="o">*</span> <span class="n">FT_green</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fs</span>
+    <span class="n">relative_motions_approx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="n">FT_relative_disp</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">ws</span> <span class="o">*</span> <span class="n">FT_relative_disp</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span><span class="o">-</span><span class="n">ws</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">FT_relative_disp</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="p">))</span> <span class="o">/</span> <span class="n">d</span>
+
+    <span class="n">ylabels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Displacement [m]&quot;</span><span class="p">,</span><span class="s2">&quot;Velocity [m/s]&quot;</span><span class="p">,</span><span class="s2">&quot;Acceleration [m/s$^2$]&quot;</span><span class="p">]</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">ground_motion</span><span class="p">,</span> <span class="n">relative_motion</span><span class="p">,</span> <span class="n">relative_motion_approx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">ylabels</span><span class="p">,</span> <span class="n">ground_motions</span><span class="p">,</span> <span class="n">relative_motions</span><span class="p">,</span> <span class="n">relative_motions_approx</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">ground_motion</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ground&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">relative_motion</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;relative (exact)&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">relative_motion_approx</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;approximation&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">green</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Green function&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;[s$^2$]&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plot_green_convolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">Tg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_44_0.png" src="../_images/T2_Discrete_44_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plot_green_convolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">Tg</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 5.0)
+</pre></div>
+</div>
+<img alt="../_images/T2_Discrete_45_1.png" src="../_images/T2_Discrete_45_1.png" />
+</div>
+</div>
+</section>
+<section id="filtering">
+<h3><a class="toc-backref" href="#id13"><span class="section-number">5.3.5. </span>Filtering</a><a class="headerlink" href="#filtering" title="Permalink to this headline">#</a></h3>
+<div class="full-width docutils">
+<p>Filters are usually defined and applied in the frequency domanin. For instante, let us consider the low-pass order-2 buttwerworth filter defined as</p>
+<div class="math notranslate nohighlight">
+\[
+Q_L(\omega) = H\big(i\,\omega/\omega_L\big) = \frac{\omega_L^2}{\omega_L^2-\omega^2+i\,\sqrt{2}\,\omega\,\omega_L}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\omega_L\)</span> being the cut-off angular frequency and <span class="math notranslate nohighlight">\(H\)</span> being the so-called transfer function</p>
+<div class="math notranslate nohighlight">
+\[
+H(s) = \frac{1}{s^2+\sqrt{2}\,s+1}
+\]</div>
+<p>Starting from the same transferm function, we can also define the high-pass order-2 butterworth filter</p>
+<div class="math notranslate nohighlight">
+\[
+Q_H(\omega) = H\big(\omega_H/(i\,\omega)\big) = \frac{\omega^2}{\omega^2-\omega_H^2+i\,\sqrt{2}\,\omega_H}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\omega_H\)</span> being the cut-off angular frequency.</p>
+<p>The band-pass order-2 butterworth filter, instead, is defined by</p>
+<div class="math notranslate nohighlight">
+\[
+Q_B(\omega) = H_B\big(i\,\omega/\omega_C\big) =
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H(s) = \frac{Q\,s}{s^2+Q\,s+1}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\omega_C\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> being the central angular frequency and the inverse of the so called quality factor</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_C = \sqrt{\omega_L\,\omega_H}  \qquad Q = \frac{\omega_H-\omega_L}{\omega_C}
+\]</div>
+</div>
+<div class="cell tag_full-width tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;signal&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">freqs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function freqs in module scipy.signal._filter_design:
+
+freqs(b, a, worN=200, plot=None)
+    Compute frequency response of analog filter.
+    
+    Given the M-order numerator `b` and N-order denominator `a` of an analog
+    filter, compute its frequency response::
+    
+             b[0]*(jw)**M + b[1]*(jw)**(M-1) + ... + b[M]
+     H(w) = ----------------------------------------------
+             a[0]*(jw)**N + a[1]*(jw)**(N-1) + ... + a[N]
+    
+    Parameters
+    ----------
+    b : array_like
+        Numerator of a linear filter.
+    a : array_like
+        Denominator of a linear filter.
+    worN : {None, int, array_like}, optional
+        If None, then compute at 200 frequencies around the interesting parts
+        of the response curve (determined by pole-zero locations). If a single
+        integer, then compute at that many frequencies. Otherwise, compute the
+        response at the angular frequencies (e.g., rad/s) given in `worN`.
+    plot : callable, optional
+        A callable that takes two arguments. If given, the return parameters
+        `w` and `h` are passed to plot. Useful for plotting the frequency
+        response inside `freqs`.
+    
+    Returns
+    -------
+    w : ndarray
+        The angular frequencies at which `h` was computed.
+    h : ndarray
+        The frequency response.
+    
+    See Also
+    --------
+    freqz : Compute the frequency response of a digital filter.
+    
+    Notes
+    -----
+    Using Matplotlib&#39;s &quot;plot&quot; function as the callable for `plot` produces
+    unexpected results, this plots the real part of the complex transfer
+    function, not the magnitude. Try ``lambda w, h: plot(w, abs(h))``.
+    
+    Examples
+    --------
+    &gt;&gt;&gt; from scipy.signal import freqs, iirfilter
+    &gt;&gt;&gt; import numpy as np
+    
+    &gt;&gt;&gt; b, a = iirfilter(4, [1, 10], 1, 60, analog=True, ftype=&#39;cheby1&#39;)
+    
+    &gt;&gt;&gt; w, h = freqs(b, a, worN=np.logspace(-1, 2, 1000))
+    
+    &gt;&gt;&gt; import matplotlib.pyplot as plt
+    &gt;&gt;&gt; plt.semilogx(w, 20 * np.log10(abs(h)))
+    &gt;&gt;&gt; plt.xlabel(&#39;Frequency&#39;)
+    &gt;&gt;&gt; plt.ylabel(&#39;Amplitude response [dB]&#39;)
+    &gt;&gt;&gt; plt.grid(True)
+    &gt;&gt;&gt; plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+
+<span class="n">fl</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">wl</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fl</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">wl</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ws</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">freqs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">ws</span><span class="o">/</span><span class="n">wl</span>
+<span class="n">H_check</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="n">ws</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Butterworth filter  f &lt; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; [Hz]&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">H_check</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">H_check</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Phase&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">190</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">180</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span> <span class="c1"># cutoff frequency</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_50_0.png" src="../_images/T2_Discrete_50_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+
+<span class="n">fh</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">wh</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fh</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">wh</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ws</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">freqs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">wh</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">H_check</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="n">ws</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Butterworth filter  f &gt; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; [Hz]&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">H_check</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">H_check</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Phase&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">190</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">180</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span> <span class="c1"># cutoff frequency</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_51_0.png" src="../_images/T2_Discrete_51_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+
+<span class="n">fl</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">fh</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">wl</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fl</span>
+<span class="n">wh</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fh</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">wl</span><span class="p">,</span><span class="n">wh</span><span class="p">],</span> <span class="s1">&#39;bandpass&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ws</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">freqs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="n">fc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">fl</span><span class="o">*</span><span class="n">fh</span><span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="p">(</span><span class="n">fh</span><span class="o">-</span><span class="n">fl</span><span class="p">)</span><span class="o">/</span><span class="n">fc</span>
+<span class="n">wc</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fc</span>
+<span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">ws</span><span class="o">/</span><span class="n">wc</span>
+<span class="n">H_check</span> <span class="o">=</span> <span class="n">Q</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">Q</span><span class="o">*</span><span class="n">s</span><span class="o">+</span><span class="n">wc</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="n">ws</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Butterworth filter  f &gt; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; [Hz] and f &lt; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; [Hz]&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">H_check</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">H_check</span><span class="p">,</span><span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Phase&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">190</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">180</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span> <span class="c1"># cutoff frequency</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_52_0.png" src="../_images/T2_Discrete_52_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_filter_convolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">Tg</span><span class="p">,</span> <span class="n">fl</span><span class="p">,</span> <span class="n">fh</span><span class="p">):</span>
+    
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+    <span class="n">relative_motions</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">test_driven_oscillator</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">Tg</span><span class="p">)</span>
+
+    <span class="n">fs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfftfreq</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">FT_relative_motions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">relative_motions</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span>
+
+    <span class="n">wl</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fl</span>
+    <span class="n">wh</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fh</span>
+
+    <span class="c1">#b, a = signal.butter(2, 1, &#39;low&#39;, analog=True)</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">wl</span><span class="p">,</span><span class="n">wh</span><span class="p">],</span> <span class="s1">&#39;bandpass&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">ws</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">fs</span>
+    <span class="n">ws</span><span class="p">,</span> <span class="n">FT_filter</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">freqs</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ws</span><span class="p">)</span>
+
+    <span class="n">relative_motions_filtered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">irfft</span><span class="p">(</span> <span class="n">FT_relative_motions</span> <span class="o">*</span> <span class="n">FT_filter</span><span class="p">,</span> <span class="n">n</span> <span class="p">)</span> <span class="o">/</span> <span class="n">d</span>
+    
+    <span class="n">ylabels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Displacement [m]&quot;</span><span class="p">,</span><span class="s2">&quot;Velocity [m/s]&quot;</span><span class="p">,</span><span class="s2">&quot;Acceleration [m/s$^2$]&quot;</span><span class="p">]</span>
+
+    <span class="n">nrow</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrow</span><span class="p">,</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">nrow</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">relative_motion</span><span class="p">,</span> <span class="n">relative_motion_filtered</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">ylabels</span><span class="p">,</span> <span class="n">relative_motions</span><span class="p">,</span> <span class="n">relative_motions_filtered</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">relative_motion</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;relative&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">relative_motion_filtered</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;filtered&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">FT_filter</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Tg</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">Tg</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>    
+
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[:</span><span class="mi">3</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.005</span>
+<span class="n">Tg</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">fl</span><span class="p">,</span> <span class="n">fh</span> <span class="o">=</span> <span class="mf">6e-1</span><span class="p">,</span> <span class="mf">3e0</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_filter_convolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">Tg</span><span class="p">,</span><span class="n">fl</span><span class="p">,</span><span class="n">fh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_54_0.png" src="../_images/T2_Discrete_54_0.png" />
+</div>
+</div>
+<div class="cell tag_full-width tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fl</span><span class="p">,</span> <span class="n">fh</span> <span class="o">=</span> <span class="mf">6e-2</span><span class="p">,</span> <span class="mf">3e-1</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_filter_convolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">Tg</span><span class="p">,</span><span class="n">fl</span><span class="p">,</span><span class="n">fh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/T2_Discrete_55_0.png" src="../_images/T2_Discrete_55_0.png" />
+</div>
+</div>
+<p style="page-break-after:always;"></p></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="T1_Fourier.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Fourier transform</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="L1_Seismic_catalogs_and_networks.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Seismic catalogs and networks</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gabriele Cambiotti<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

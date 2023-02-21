@@ -1,0 +1,39 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Setup
+    maxdepth: 2
+    numbered: true
+    chapters:
+    - file: files/S1_Setup
+    - file: files/S2_Tutorial
+  - caption: Theory
+    maxdepth: 2
+    numbered: true
+    chapters:
+    - file: files/T0_Harmonic
+    - file: files/T1_Fourier
+    - file: files/T2_Discrete
+  - caption: Laboratory
+    maxdepth: 2
+    numbered: true
+    chapters:
+    - file: files/L1_Seismic_catalogs_and_networks
+    - file: files/L2_Waveforms
+    - file: files/L3_Local_magnitude
+    - file: files/L4_Earthquake_localization
+  - caption: Appendix
+    maxdepth: 2
+    numbered: true
+    chapters:
+    - file: files/A0_Dirac
+    - file: files/A1_Geographic_Maps
+    - file: files/A2_Inverse_Theory
+  - caption: Libraries
+    maxdepth: 2
+    numbered: True
+    chapters:
+    - file: files/L0_Libraries

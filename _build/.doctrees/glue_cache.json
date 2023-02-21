@@ -1,0 +1,376 @@
+{
+  "files/L1_Seismic_catalogs_and_networks": {
+    "numorigins": {
+      "data": {
+        "text/plain": "8"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "numorigins"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "numevents": {
+      "data": {
+        "text/plain": "9"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "numevents"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "nummagnitudes": {
+      "data": {
+        "text/plain": "8"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "nummagnitudes"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "station": {
+      "data": {
+        "text/plain": "'IV.MRLC'"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "station"
+        }
+      },
+      "output_type": "display_data"
+    }
+  },
+  "files/L2_Waveforms": {
+    "sampling_rate": {
+      "data": {
+        "text/plain": "100"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "sampling_rate"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "numtraces": {
+      "data": {
+        "text/plain": "16"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "numtraces"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_stream": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x1350 with 6 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_stream"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/L2_Waveforms_46_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_gaps_aftreshocks": {
+      "data": {
+        "application/papermill.record/image/png": null,
+        "application/papermill.record/text/plain": "<Figure size 1000x1350 with 6 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "application/papermill.record/",
+          "name": "fig_gaps_aftreshocks"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/L2_Waveforms_60_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "delta": {
+      "data": {
+        "text/plain": "0.01"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "delta"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "starttime": {
+      "data": {
+        "text/plain": "2016-08-24T01:06:30.430000Z"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "starttime"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_aftershocks": {
+      "data": {
+        "application/papermill.record/image/png": null,
+        "application/papermill.record/text/plain": "<Figure size 800x800 with 1 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "application/papermill.record/",
+          "name": "fig_aftershocks"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/L2_Waveforms_55_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "endtime": {
+      "data": {
+        "text/plain": "2016-08-24T01:19:21.790000Z"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "endtime"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "distance": {
+      "data": {
+        "text/plain": "285.9"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "distance"
+        }
+      },
+      "output_type": "display_data"
+    }
+  },
+  "files/L3_Local_magnitude": {
+    "mag": {
+      "data": {
+        "text/plain": "6.0"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "mag"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "std": {
+      "data": {
+        "text/plain": "0.3"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "std"
+        }
+      },
+      "output_type": "display_data"
+    }
+  },
+  "files/L4_Earthquake_localization": {
+    "ref_code": {
+      "data": {
+        "text/plain": "'IV.SMA1..EHZ'"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "ref_code"
+        }
+      },
+      "output_type": "display_data"
+    }
+  },
+  "files/T0_Harmonic": {
+    "fig_response": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x400 with 2 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_response"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_37_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_relative_test": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x600 with 3 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_relative_test"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_62_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_full": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x300 with 1 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_full"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_46_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_dislocation": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x200 with 1 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_dislocation"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_74_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_transient": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x800 with 3 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_transient"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_6_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_relative_test_2": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x600 with 3 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_relative_test_2"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_68_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_test": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x600 with 3 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_test"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_54_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_driven_building": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x800 with 8 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_driven_building"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_24_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_sinusoidal": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x300 with 1 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_sinusoidal"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_15_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "fig_driven_seismometer": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 1000x800 with 8 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "fig_driven_seismometer"
+        },
+        "filenames": {
+          "image/png": "/Users/gabriele/lecture/web/_build/jupyter_execute/files/T0_Harmonic_30_0.png"
+        }
+      },
+      "output_type": "display_data"
+    }
+  }
+}
